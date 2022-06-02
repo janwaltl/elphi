@@ -14,6 +14,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: rikorose/gcc-cmake:gcc-10
     steps:
       - uses: actions/checkout@v3
       - name: Configure CMake
@@ -33,10 +34,10 @@ jobs:
           name: compilation_database
           path: ${{github.workspace}}/compile_commands.json
       - name: Run clang-tidy
-        run: clang-tidy .
+        run: run-clang-tidy
   clang-format:
     runs-on: ubuntu-latest
-    container: "xianpengshen/clang-tools:14"
+    container: mikedld/clang-format:14-debian
     steps:
       - run: |
          git ls-files '*.hpp' '.cpp' | xargs clang-format -i --style=file
