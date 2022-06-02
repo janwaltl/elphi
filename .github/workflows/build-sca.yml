@@ -37,7 +37,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: compilation_database
-          path: compile_commands.json
+          path: .
       - name: Run clang-tidy
         run: |
          ls -la .
