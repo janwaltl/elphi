@@ -1,6 +1,7 @@
 #include "elphi/hello.hpp"
 
-int main(){
-	hello();
-	return 0;
+int
+main() {
+    hello();
+    return 0;
 }
