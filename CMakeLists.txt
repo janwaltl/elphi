@@ -4,27 +4,7 @@ project(elphi VERSION 0.1 LANGUAGES CXX)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-add_executable(elphi)
+add_subdirectory(libs/catch2)
 
-target_compile_options(elphi PRIVATE 
-	-Werror -Wall -Wextra -pedantic
-)
-
-set_target_properties(elphi PROPERTIES
-	CXX_STANDARD 17
-	CXX_STANDARD_REQUIRED ON
-	CXX_EXTENSIONS OFF
-	POSITION_INDEPENDENT_CODE ON
-)
-
-target_include_directories(elphi
-	PRIVATE
-	include
-)
-
-target_sources(elphi
-	PRIVATE
-	include/elphi/hello.hpp
-	src/main.cpp
-	src/hello.cpp
-)
+add_subdirectory(elphi)
+add_subdirectory(tui)

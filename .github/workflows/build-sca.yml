@@ -30,9 +30,10 @@ jobs:
           fetch-depth: 1
       - name: Run clang-tidy
         run: |
+         apt-get install jq
          cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER=clang++-11
-         cp build/compile_commands.json ./
-         run-clang-tidy-11
+         scripts/filter_libs.sh build/compile_commands.json
+         run-clang-tidy-11 -p build
   clang-format:
     runs-on: ubuntu-latest
     steps:
