@@ -18,8 +18,9 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 1
+          submodules: 'true'
       - name: Configure CMake
-        run: cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER=clang++-11
+        run: cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_CXX_COMPILER=clang++-11
       - name: Build
         run: cmake --build build --config ${{env.BUILD_TYPE}}
   clang-tidy:
@@ -28,11 +29,12 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 1
+          submodules: 'true'
       - name: Run clang-tidy
         run: |
          cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER=clang++-11
-         cp build/compile_commands.json ./
-         run-clang-tidy-11
+         scripts/filter_libs.sh build/compile_commands.json
+         run-clang-tidy-11 -p build
   clang-format:
     runs-on: ubuntu-latest
     steps:
@@ -40,5 +42,5 @@ jobs:
         with:
           fetch-depth: 1
       - run: |
-         git ls-files '*.hpp' '*.cpp' | xargs clang-format-11 -i --style=file
+         git ls-files '*.hpp' '*.cpp' | xargs clang-format-11 -i --verbose --style=file
          git diff --exit-code --stat
