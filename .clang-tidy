@@ -26,9 +26,10 @@
 #	- Not used.
 # altera:
 #	- Not used.
+# llvmlibc*
+#   - Not relevant.
 Checks: >
-  *
-  -*,
+  *,
   -modernize-use-trailing-return-type,
   -modernize-use-nodiscard,
   -modernize-avoid-c-arrays,
@@ -41,7 +42,8 @@ Checks: >
   -bugprone-easily-swappable-parameters,
   -fuchsia*,
   -abseil*,
-  -altera*
+  -altera*,
+  -llvmlibc*
 
 WarningsAsErrors: '*'
 
