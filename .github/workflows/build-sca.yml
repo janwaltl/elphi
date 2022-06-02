@@ -42,5 +42,5 @@ jobs:
         with:
           fetch-depth: 1
       - run: |
-         git ls-files '*.hpp' '*.cpp' | xargs clang-format-11 -i --style=file
+         git ls-files '*.hpp' '*.cpp' | xargs clang-format-11 -i --verbose --style=file
          git diff --exit-code --stat
