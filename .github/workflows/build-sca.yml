@@ -22,8 +22,6 @@ jobs:
       - name: Build
         run: |
           cmake --build build --config ${{env.BUILD_TYPE}}
-          ls .
-          ls build
       - uses: actions/upload-artifact@v3
         with:
           name: compilation_database
@@ -39,12 +37,15 @@ jobs:
           name: compilation_database
           path: ${{github.workspace}}/compile_commands.json
       - name: Run clang-tidy
-        run: run-clang-tidy
+        run: |
+          ls /usr/bin/clang*
+          ls /usr/bin/run*
+          run-clang-tidy-11
   clang-format:
     runs-on: ubuntu-latest
     container: teeks99/clang-ubuntu:14
     steps:
       - run: |
-         apt-get install git
+         apt-get install git -y
          git ls-files '*.hpp' '.cpp' | xargs clang-format -i --style=file
          git diff --exit-code --stat
