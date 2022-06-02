@@ -1,0 +1,43 @@
+---
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Configure CMake
+        run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+      - name: Build
+        run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+      - uses: actions/upload-artifact@master
+        with:
+          name: compilation_database
+          path: ${{github.workspace}}/build/compile_commands.json
+  clang-tidy:
+    runs-on: ubuntu-latest
+    container: "xianpengshen/clang-tools:14"
+    steps:
+      - uses: actions/download-artifact@master
+        with:
+          name: compilation_database
+          path: ${{github.workspace}}/compile_commands.json
+      - name: Run clang-tidy
+        run: clang-tidy .
+  clang-format:
+    runs-on: ubuntu-latest
+    container: "xianpengshen/clang-tools:14"
+    steps:
+      - run: |
+         git ls-files '*.hpp' '.cpp' | xargs clang-format -i --style=file
+         git diff --exit-code --stat
