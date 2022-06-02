@@ -22,7 +22,6 @@ jobs:
       - name: Build
         run: |
           cmake --build build --config ${{env.BUILD_TYPE}}
-          cat ${{github.workspace}}
           cat .
           cat build
       - uses: actions/upload-artifact@v3
