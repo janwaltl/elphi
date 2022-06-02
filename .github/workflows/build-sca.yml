@@ -46,5 +46,6 @@ jobs:
     container: mikedld/clang-format:14-debian
     steps:
       - run: |
+         sudo apt-get install git
          git ls-files '*.hpp' '.cpp' | xargs clang-format -i --style=file
          git diff --exit-code --stat
