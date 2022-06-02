@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Configure CMake
-        run: cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+        run: cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER=clang++-11
       - name: Build
         run: cmake --build build --config ${{env.BUILD_TYPE}}
       - uses: actions/upload-artifact@v3
@@ -38,10 +38,10 @@ jobs:
         run: |
          ls /usr/bin/clang*
          ls /usr/bin/run*
-         run-clang-tidy-14
+         run-clang-tidy-11
   clang-format:
     runs-on: ubuntu-latest
     steps:
       - run: |
-         git ls-files '*.hpp' '.cpp' | xargs clang-format-14 -i --style=file
+         git ls-files '*.hpp' '.cpp' | xargs clang-format-11 -i --style=file
          git diff --exit-code --stat
