@@ -28,6 +28,8 @@ jobs:
   clang-tidy:
     runs-on: ubuntu-latest
     container: "xianpengshen/clang-tools:14"
+    needs:
+      - build
     steps:
       - uses: actions/download-artifact@master
         with:
