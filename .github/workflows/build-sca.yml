@@ -27,7 +27,6 @@ jobs:
           path: build/compile_commands.json
   clang-tidy:
     runs-on: ubuntu-latest
-    container: teeks99/clang-ubuntu:14
     needs:
       - build
     steps:
@@ -42,10 +41,7 @@ jobs:
          run-clang-tidy-14
   clang-format:
     runs-on: ubuntu-latest
-    container: teeks99/clang-ubuntu:14
     steps:
       - run: |
-         apt-get update
-         apt-get install git -y
-         git ls-files '*.hpp' '.cpp' | xargs clang-format -i --style=file
+         git ls-files '*.hpp' '.cpp' | xargs clang-format-14 -i --style=file
          git diff --exit-code --stat
