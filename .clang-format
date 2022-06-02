@@ -1,0 +1,22 @@
+BasedOnStyle: LLVM
+Language : Cpp
+Standard: c++17
+IndentWidth : 4
+TabWidth: 4
+ColumnLimit: 120
+AccessModifierOffset: -4
+ContinuationIndentWidth: 4
+UseTab: Never
+BreakStringLiterals: true
+AlwaysBreakTemplateDeclarations : true
+AlignAfterOpenBracket : true
+AlignOperands : true
+AlignTrailingComments : true
+BreakConstructorInitializers : AfterColon
+AlwaysBreakAfterReturnType : All
+SortIncludes : true
+IndentCaseLabels: false
+ReflowComments: true
+PointerAlignment: Left
+MaxEmptyLinesToKeep: 2
+FixNamespaceComments: true

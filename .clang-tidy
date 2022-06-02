@@ -1,0 +1,76 @@
+---
+# modernize-use-trailing-return-type:
+#	- More verbose, less clear.
+# modernize-use-nodiscard:
+#	- Let's leave that to the writer of each function.
+# modernize-avoid-c-arrays:
+#	- Not until `std::array<char,N>` gets a constructor from string literal.
+# cert-err58-cpp:
+#   - Possible throw from global initialization.
+#   - We have worse problems if something like that throws.
+# readability-redundant-declaration:
+#	- Allow in-place declarations, e.g. void foo(class Bar*).
+# readability-named-parameter:
+#	- Allow unused unnamed params on purpose instead of `(void)p;`.
+# readability-magic-numbers:
+#   - Too many false positives.
+# readability-braces-around-statements:
+#   - Less readable, more unnecessary clutter, we have enforce indent.
+# readability-identifier-length:
+#	- I do not want to bother to set all the rules for this.
+# bugprone-easily-swappable-parameters:
+# 	- Too many false positives.
+# fuchsia:
+#	- Too much.
+# abseil:
+#	- Not used.
+# altera:
+#	- Not used.
+Checks: >
+  *
+  -*,
+  -modernize-use-trailing-return-type,
+  -modernize-use-nodiscard,
+  -modernize-avoid-c-arrays,
+  -cert-err58-cpp,
+  -readability-redundant-declaration,
+  -readability-named-parameter,
+  -readability-magic-numbers,
+  -readability-braces-around-statements,
+  -readability-identifier-length,
+  -bugprone-easily-swappable-parameters,
+  -fuchsia*,
+  -abseil*,
+  -altera*
+
+WarningsAsErrors: '*'
+
+CheckOptions:
+  - key:             readability-identifier-naming.ClassCase
+    value:           CamelCase
+  - key:             readability-identifier-naming.StructCase
+    value:           CamelCase
+  - key:             readability-identifier-naming.TemplateParameterCase
+    value:           CamelCase
+  - key:             readability-identifier-naming.EnumCase
+    value:           CamelCase
+  - key:             readability-identifier-naming.FunctionCase
+    value:           lower_case
+  - key:             readability-identifier-naming.MemberCase
+    value:           lower_case
+  - key:             readability-identifier-naming.ParameterCase
+    value:           lower_case
+  - key:             readability-identifier-naming.UnionCase
+    value:           CamelCase
+  - key:             readability-identifier-naming.VariableCase
+    value:           lower_case
+  - key:             readability-identifier-naming.MacroCase
+    value:           UPPER_CASE
+  - key:             readability-identifier-naming.EnumConstantCase
+    value:           CamelCase
+  - key:             readability-identifier-naming.NamespaceCase
+    value:           lower_case
+  - key: readability-implicit-bool-conversion.AllowIntegerConditions
+    value: 1
+  - key: readability-implicit-bool-conversion.AllowPointerConditions
+    value: 1
