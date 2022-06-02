@@ -22,10 +22,6 @@ jobs:
         run: cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER=clang++-11
       - name: Build
         run: cmake --build build --config ${{env.BUILD_TYPE}}
-      - uses: actions/upload-artifact@v3
-        with:
-          name: compilation_database
-          path: build/compile_commands.json
   clang-tidy:
     runs-on: ubuntu-latest
     needs:
@@ -40,7 +36,8 @@ jobs:
           path: .
       - name: Run clang-tidy
         run: |
-         ls -la .
+         cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER=clang++-11
+         cp build/compile_commands.json ./
          run-clang-tidy-11
   clang-format:
     runs-on: ubuntu-latest
