@@ -18,20 +18,24 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Configure CMake
-        run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+        run: cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_EXPORT_COMPILE_COMMANDS=1
       - name: Build
-        run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
-      - uses: actions/upload-artifact@master
+        run: |
+          cmake --build build --config ${{env.BUILD_TYPE}}
+          cat ${{github.workspace}}
+          cat .
+          cat build
+      - uses: actions/upload-artifact@v3
         with:
           name: compilation_database
-          path: ${{github.workspace}}/build/compile_commands.json
+          path: build/compile_commands.json
   clang-tidy:
     runs-on: ubuntu-latest
     container: "xianpengshen/clang-tools:14"
     needs:
       - build
     steps:
-      - uses: actions/download-artifact@master
+      - uses: actions/download-artifact@v3
         with:
           name: compilation_database
           path: ${{github.workspace}}/compile_commands.json
