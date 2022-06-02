@@ -30,7 +30,7 @@ jobs:
           path: build/compile_commands.json
   clang-tidy:
     runs-on: ubuntu-latest
-    container: "xianpengshen/clang-tools:14"
+    container: teeks99/clang-ubuntu:14
     needs:
       - build
     steps:
@@ -42,7 +42,7 @@ jobs:
         run: run-clang-tidy
   clang-format:
     runs-on: ubuntu-latest
-    container: mikedld/clang-format:14-debian
+    container: teeks99/clang-ubuntu:14
     steps:
       - run: |
          apt-get install git
