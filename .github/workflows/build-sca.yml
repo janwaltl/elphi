@@ -45,8 +45,11 @@ jobs:
         run: cmake --build build --config ${{env.BUILD_TYPE}}
       - name: Run Tests with coverage
         run: cd build && make coverage
-      - uses: codecov/codecov-action@v2
+      - name: Trace coverage content
+        run: cat build/coverage.xml
+      - uses: codecov/codecov-action@v3
         with:
+          token: ${{ secrets.CODECOV_TOKEN }}
           files: build/coverage.xml
           name: codecov-elphi
           fail_ci_if_error: true
