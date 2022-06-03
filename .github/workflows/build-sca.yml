@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 1
           submodules: 'true'
       - name: Configure CMake
-        run: cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_CXX_COMPILER=clang++-11
+        run: cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_CXX_COMPILER=g++-10
       - name: Build
         run: cmake --build build --config ${{env.BUILD_TYPE}}
       - name: Test
@@ -40,13 +40,14 @@ jobs:
       - name: Fetch gcovr
         run: pip3 install gcovr
       - name: Configure CMake
-        run: cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_CXX_COMPILER=clang++-11 -DENABLE_COVERAGE=ON
-      - name: Build
-        run: cmake --build build --config ${{env.BUILD_TYPE}}
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Debug -DENABLE_COVERAGE=ON
       - name: Run Tests with coverage
         run: cd build && make coverage
-      - uses: codecov/codecov-action@v2
+      - name: Trace coverage content
+        run: cat build/coverage.xml
+      - uses: codecov/codecov-action@v3
         with:
+          token: ${{ secrets.CODECOV_TOKEN }}
           files: build/coverage.xml
           name: codecov-elphi
           fail_ci_if_error: true
