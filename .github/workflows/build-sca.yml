@@ -37,6 +37,8 @@ jobs:
         with:
           fetch-depth: 1
           submodules: 'true'
+      - name: Fetch gcovr
+        run: pip3 install gcovr
       - name: Configure CMake
         run: cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_CXX_COMPILER=clang++-11 -DENABLE_COVERAGE=ON
       - name: Build
