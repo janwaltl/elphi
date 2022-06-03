@@ -14,9 +14,17 @@ AlignOperands : true
 AlignTrailingComments : true
 BreakConstructorInitializers : AfterColon
 AlwaysBreakAfterReturnType : All
-SortIncludes : true
 IndentCaseLabels: false
 ReflowComments: true
 PointerAlignment: Left
 MaxEmptyLinesToKeep: 2
 FixNamespaceComments: true
+SortIncludes: CaseInsensitive
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex: '<[^.]+>'
+    Priority: 1
+  - Regex: '^<.+\.h(pp)?>'
+    Priority: 2
+  - Regex: '.*'
+    Priority: 3
