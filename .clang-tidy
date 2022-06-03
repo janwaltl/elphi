@@ -15,6 +15,8 @@
 # readability-magic-numbers:
 #   - Too many false positives.
 # readability-braces-around-statements:
+# hicpp-braces-around-statements:
+# google-readability-braces-around-statements:
 #   - Less readable, more unnecessary clutter, we have enforce indent.
 # readability-identifier-length:
 #	- I do not want to bother to set all the rules for this.
@@ -37,6 +39,8 @@ Checks: >
   -readability-redundant-declaration,
   -readability-named-parameter,
   -readability-magic-numbers,
+  -hicpp-braces-around-statements,
+  -google-readability-braces-around-statements,
   -readability-braces-around-statements,
   -readability-identifier-length,
   -bugprone-easily-swappable-parameters,

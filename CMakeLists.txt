@@ -6,5 +6,7 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 add_subdirectory(libs/catch2)
 
+enable_testing()
+
 add_subdirectory(elphi)
 add_subdirectory(tui)
