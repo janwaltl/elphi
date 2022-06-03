@@ -18,8 +18,9 @@ if(ENABLE_COVERAGE)
     BASE_DIRECTORY "../"
     EXCLUDE "*libs*"
   )
-  enable_testing()
 endif(ENABLE_COVERAGE)
+
+enable_testing()
 
 add_subdirectory(elphi)
 add_subdirectory(tui)
