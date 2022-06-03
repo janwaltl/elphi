@@ -12,7 +12,7 @@ env:
   BUILD_TYPE: Release
 
 jobs:
-  build_test:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -25,6 +25,32 @@ jobs:
         run: cmake --build build --config ${{env.BUILD_TYPE}}
       - name: Test
         run: cd build && make test
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
+        with:
+          files: "build/reports/*.xml"
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+          submodules: 'true'
+      - name: Fetch gcovr
+        run: pip3 install gcovr
+      - name: Configure CMake
+        run: cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_CXX_COMPILER=clang++-11 -DENABLE_COVERAGE=ON
+      - name: Build
+        run: cmake --build build --config ${{env.BUILD_TYPE}}
+      - name: Run Tests with coverage
+        run: cd build && make coverage
+      - uses: codecov/codecov-action@v2
+        with:
+          files: build/coverage.xml
+          name: codecov-elphi
+          fail_ci_if_error: true
+          verbose: true
   clang-tidy:
     runs-on: ubuntu-latest
     steps:

@@ -6,4 +6,18 @@ target_link_libraries(elphi_tests PRIVATE Catch2::Catch2WithMain)
 
 include(CTest)
 include(Catch)
-catch_discover_tests(elphi_tests)
+
+make_directory("${CMAKE_BINARY_DIR}/reports")
+catch_discover_tests(
+  elphi_tests
+  OUTPUT_DIR "${CMAKE_BINARY_DIR}/reports"
+  OUTPUT_SUFFIX ".xml"
+  REPORTER junit
+)
+
+if(ENABLE_COVERAGE)
+  if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
+    message(WARNING "Running coverage for non-debug build.")
+  endif(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
+  target_link_options(elphi_tests PRIVATE --coverage)
+endif(ENABLE_COVERAGE)
