@@ -28,3 +28,5 @@ target_sources(
   PRIVATE
   src/hello.cpp
 )
+
+add_subdirectory(test)
