@@ -19,7 +19,7 @@ ReflowComments: true
 PointerAlignment: Left
 MaxEmptyLinesToKeep: 2
 FixNamespaceComments: true
-SortIncludes: CaseInsensitive
+SortIncludes: true
 IncludeBlocks: Regroup
 IncludeCategories:
   - Regex: '<[^.]+>'
