@@ -40,7 +40,7 @@ jobs:
       - name: Fetch gcovr
         run: pip3 install gcovr
       - name: Configure CMake
-        run: cmake -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=clang++-11 -DENABLE_COVERAGE=ON
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Debug -DENABLE_COVERAGE=ON
       - name: Run Tests with coverage
         run: cd build && make coverage
       - name: Trace coverage content
