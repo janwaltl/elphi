@@ -51,6 +51,8 @@ Checks: >
 
 WarningsAsErrors: '*'
 
+# Template template parameters are disabled due to a clang-tidy bug:
+# https://github.com/llvm/llvm-project/issues/46097
 CheckOptions:
   - key:             readability-identifier-naming.ClassCase
     value:           CamelCase
@@ -80,3 +82,5 @@ CheckOptions:
     value: 1
   - key: readability-implicit-bool-conversion.AllowPointerConditions
     value: 1
+  - key: 			 readability-identifier-naming.TypeTemplateParameterCase
+    value: aNy_CasE
