@@ -12,6 +12,7 @@
 #	- Allow in-place declarations, e.g. void foo(class Bar*).
 # readability-named-parameter:
 #	- Allow unused unnamed params on purpose instead of `(void)p;`.
+# cppcoreguidelines-avoid-magic-numbers,
 # readability-magic-numbers:
 #   - Too many false positives.
 # readability-braces-around-statements:
@@ -38,6 +39,7 @@ Checks: >
   -cert-err58-cpp,
   -readability-redundant-declaration,
   -readability-named-parameter,
+  -cppcoreguidelines-avoid-magic-numbers,
   -readability-magic-numbers,
   -hicpp-braces-around-statements,
   -google-readability-braces-around-statements,

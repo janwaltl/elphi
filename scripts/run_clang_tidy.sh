@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 # Run clang-tidy on the project.
-# Meant to be run from project root.
+# $1 = BUILD_DIR.
 
-BUILD_DIR=build
+BUILD_DIR=${1:-build}
+SRC_DIR=${PWD}
+
+set -e
 
 mkdir -p ${BUILD_DIR}
 pushd ${BUILD_DIR}
-
-cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
+cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ${SRC_DIR}
 popd
 
 ./scripts/filter_libs.sh ${BUILD_DIR}/compile_commands.json

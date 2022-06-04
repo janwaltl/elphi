@@ -12,19 +12,15 @@ env:
   BUILD_TYPE: Release
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 1
           submodules: 'true'
-      - name: Configure CMake
-        run: cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_CXX_COMPILER=g++-10
-      - name: Build
-        run: cmake --build build --config ${{env.BUILD_TYPE}}
-      - name: Test
-        run: cd build && make test
+      - name: Build&Test
+        run: ./scripts/run_unit.sh
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1
         if: always()
@@ -39,12 +35,8 @@ jobs:
           submodules: 'true'
       - name: Fetch gcovr
         run: pip3 install gcovr
-      - name: Configure CMake
-        run: cmake -B build -DCMAKE_BUILD_TYPE=Debug -DENABLE_COVERAGE=ON
-      - name: Run Tests with coverage
-        run: cd build && make coverage
-      - name: Trace coverage content
-        run: cat build/coverage.xml
+      - name: Generate coverage
+        run: ./scripts/gen_coverage.sh
       - uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -60,8 +52,7 @@ jobs:
           fetch-depth: 1
           submodules: 'true'
       - name: Run clang-tidy
-        run: |
-         scripts/sca_clang_tidy.sh
+        run: scripts/run_clang_tidy.sh
   clang-format:
     runs-on: ubuntu-latest
     steps:
@@ -69,5 +60,6 @@ jobs:
         with:
           fetch-depth: 1
       - run: |
-         git ls-files '*.hpp' '*.cpp' | xargs clang-format-11 -i --verbose --style=file
+         ./scripts/format_codebase.sh
+         # Reformatting should have made no changes.
          git diff --exit-code --stat
