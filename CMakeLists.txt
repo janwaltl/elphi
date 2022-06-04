@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.15..3.18)
 project(elphi VERSION 0.1 LANGUAGES CXX)
 
 option(ENABLE_COVERAGE "Enable code coverage testing support")
+option(JUNIT_TEST_OUTPUT "Generate test reports in JUNIT(XML) format")
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
