@@ -29,6 +29,8 @@ target_include_directories(
   include
 )
 
+target_link_libraries(elphi PRIVATE fmt::fmt)
+
 target_sources(
   elphi
   PUBLIC
