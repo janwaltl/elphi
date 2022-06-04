@@ -15,7 +15,7 @@ set -e
 mkdir -p ${BUILD_DIR}
 cd ${BUILD_DIR}
 
-cmake -DCMAKE_BUILD_TYPE=Release -DJUNIT_TEST_OUTPUT=ON ${SRC_DIR}
+cmake -DCMAKE_BUILD_TYPE=Release -DJUNIT_TEST_OUTPUT=ON ${SRC_DIR} -DCMAKE_CXX_COMPILER=g++-10
 
 # Build project and tests
 make

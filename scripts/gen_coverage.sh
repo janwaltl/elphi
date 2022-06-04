@@ -15,7 +15,7 @@ BAR=============================================================================
 mkdir -p ${BUILD_DIR}
 cd ${BUILD_DIR}
 
-cmake -DCMAKE_BUILD_TYPE=Debug -DENABLE_COVERAGE=ON ${SRC_DIR}
+cmake -DCMAKE_BUILD_TYPE=Debug -DENABLE_COVERAGE=ON ${SRC_DIR} -DCMAKE_CXX_COMPILER=g++-10
 
 # Build project and tests
 make
