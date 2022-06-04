@@ -44,4 +44,6 @@ target_sources(
   elphi_tests
   PRIVATE
   test_hello.cpp
+  test_sampler.cpp
+  test_timeline_view.cpp
 )
