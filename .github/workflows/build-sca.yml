@@ -61,9 +61,7 @@ jobs:
           submodules: 'true'
       - name: Run clang-tidy
         run: |
-         cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER=clang++-11
-         scripts/filter_libs.sh build/compile_commands.json
-         run-clang-tidy-11 -p build
+         scripts/sca_clang_tidy.sh
   clang-format:
     runs-on: ubuntu-latest
     steps:
