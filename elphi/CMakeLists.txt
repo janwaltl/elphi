@@ -35,11 +35,8 @@ target_sources(
   elphi
   PUBLIC
   include/elphi/hello.hpp
-  include/elphi/exception.hpp
-  include/elphi/sampler.hpp
   PRIVATE
   src/hello.cpp
-  src/sampler.cpp
 )
 
 add_subdirectory(test)
