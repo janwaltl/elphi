@@ -5,6 +5,7 @@ project(elphi VERSION 0.1 LANGUAGES CXX)
 option(ENABLE_COVERAGE "Enable code coverage testing support")
 option(JUNIT_TEST_OUTPUT "Generate test reports in JUNIT(XML) format")
 
+set(CMAKE_CXX_STANDARD 20)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 add_subdirectory(libs/catch2)
