@@ -8,6 +8,7 @@ option(JUNIT_TEST_OUTPUT "Generate test reports in JUNIT(XML) format")
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 add_subdirectory(libs/catch2)
+add_subdirectory(libs/fmt)
 
 if(ENABLE_COVERAGE)
   include(cmake/CodeCoverage.cmake)
