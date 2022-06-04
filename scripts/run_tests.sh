@@ -37,7 +37,7 @@ for file in "reports/*.txt"; do
 	cat $file
 	echo -e "${INFO}$BAR${NORMAL}"
 done
-if [ result ]; then
+if [ ${result} -eq 0 ]; then
 	echo -e "${OK}$BAR"
 	echo -e "ALL TESTS SCENARIOS PASSED."
 	echo -e "${BAR}${NORMAL}"
