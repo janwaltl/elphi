@@ -6,7 +6,7 @@
 
 # License
 
-ElPhi project is licensed under the MIT License, see LICENSE.txt for more information.
+ElPhi project is licensed under the MIT License, see LICENSE for more information.
 
 The repository contains folders and files from other authors having a license of their own.
 
