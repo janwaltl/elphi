@@ -1,5 +1,6 @@
-#include <elphi/timeline_view.hpp>
 #include <fmt/format.h>
+
+#include <elphi/timeline_view.hpp>
 
 
 namespace elphi::view {
