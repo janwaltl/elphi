@@ -15,7 +15,8 @@ BAR=============================================================================
 mkdir -p ${BUILD_DIR}
 cd ${BUILD_DIR}
 
-cmake -DCMAKE_BUILD_TYPE=Debug -DENABLE_COVERAGE=ON  -DCMAKE_CXX_COMPILER=g++-10 ${SRC_DIR}
+CMAKE_MAKE_PROGRAM="make -j4"
+cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug -DENABLE_COVERAGE=ON  -DCMAKE_CXX_COMPILER=g++-10 ${SRC_DIR}
 
 # Build project and tests
 make
