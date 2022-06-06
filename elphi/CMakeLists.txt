@@ -38,10 +38,12 @@ target_sources(
   include/elphi/sampler.hpp
   include/elphi/timeline_view.hpp
   include/elphi/utils.hpp
+  include/elphi/perf_events.hpp
   PRIVATE
   src/sampler.cpp
   src/timeline_view.cpp
   src/utils.cpp
+  src/perf_events.cpp
 )
 
 add_subdirectory(test)
