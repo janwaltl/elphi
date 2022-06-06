@@ -37,3 +37,4 @@ build
 # My environment
 compile_commands.json
 .cache
+.gdb_history
