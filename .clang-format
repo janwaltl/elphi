@@ -24,7 +24,9 @@ IncludeBlocks: Regroup
 IncludeCategories:
   - Regex: '<[^.]+>'
     Priority: 1
-  - Regex: '^<.+\.h(pp)?>'
+  - Regex: '^<.+\.h>'
     Priority: 2
-  - Regex: '.*'
+  - Regex: '^<.+\.hpp>'
     Priority: 3
+  - Regex: '.*'
+    Priority: 4
