@@ -18,8 +18,8 @@ if(ENABLE_COVERAGE)
     NAME coverage
     EXECUTABLE ctest -C
     DEPENDENCIES elphi::elphi elphi::elphi_tests
-    BASE_DIRECTORY "../"
-    EXCLUDE "*libs*"
+    EXCLUDE "elphi/test/test_*"
+    EXCLUDE "libs*"
   )
 endif(ENABLE_COVERAGE)
 
