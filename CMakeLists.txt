@@ -18,7 +18,7 @@ if(ENABLE_COVERAGE)
     NAME coverage
     EXECUTABLE ctest -C
     DEPENDENCIES elphi::elphi elphi::elphi_tests
-    EXCLUDE "elphi/test/test_*"
+    EXCLUDE "elphi/test/*"
     EXCLUDE "libs*"
   )
 endif(ENABLE_COVERAGE)

@@ -37,9 +37,11 @@ target_sources(
   include/elphi/exception.hpp
   include/elphi/sampler.hpp
   include/elphi/timeline_view.hpp
+  include/elphi/utils.hpp
   PRIVATE
   src/sampler.cpp
   src/timeline_view.cpp
+  src/utils.cpp
 )
 
 add_subdirectory(test)
