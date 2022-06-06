@@ -15,7 +15,8 @@ BAR=============================================================================
 mkdir -p ${BUILD_DIR}
 cd ${BUILD_DIR}
 
-cmake -DCMAKE_BUILD_TYPE=Debug -DENABLE_COVERAGE=ON ${SRC_DIR} -DCMAKE_CXX_COMPILER=g++-10
+CMAKE_MAKE_PROGRAM="make -j4"
+cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug -DENABLE_COVERAGE=ON  -DCMAKE_CXX_COMPILER=g++-10 ${SRC_DIR}
 
 # Build project and tests
 make
@@ -23,6 +24,8 @@ if [ $? -ne 0 ]; then
 	echo -e "${ERROR}FAILED TO BUILD THE PROJECT${NORMAL}"
 	exit 1
 fi
+# Clean previous reports
+rm -rf reports/*
 
 # Run the test suite
 make coverage
@@ -48,4 +51,4 @@ fi
 echo -e "${OK}$BAR"
 echo -e "COVERAGE REPORT IS IN ${BUILD_DIR}/coverage/index.html"
 echo -e "${BAR}${NORMAL}"
-	exit ${result}
+exit ${result}

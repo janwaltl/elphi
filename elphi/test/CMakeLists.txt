@@ -4,6 +4,11 @@ add_executable(elphi::elphi_tests ALIAS elphi_tests)
 target_link_libraries(elphi_tests PRIVATE elphi::elphi)
 target_link_libraries(elphi_tests PRIVATE Catch2::Catch2WithMain)
 
+target_compile_options(
+  elphi_tests PRIVATE
+  -Werror -Wall -Wextra -pedantic
+)
+
 include(CTest)
 include(Catch)
 
@@ -28,6 +33,7 @@ if(ENABLE_COVERAGE)
   if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
     message(WARNING "Running coverage for non-debug build.")
   endif(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
+  target_compile_options(elphi_tests PRIVATE --coverage)
   target_link_options(elphi_tests PRIVATE --coverage)
 endif(ENABLE_COVERAGE)
 
@@ -45,4 +51,5 @@ target_sources(
   PRIVATE
   test_sampler.cpp
   test_timeline_view.cpp
+  test_utils.cpp
 )

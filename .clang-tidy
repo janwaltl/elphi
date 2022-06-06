@@ -16,9 +16,8 @@
 # readability-magic-numbers:
 #   - Too many false positives.
 # readability-braces-around-statements:
-# hicpp-braces-around-statements:
 # google-readability-braces-around-statements:
-#   - Less readable, more unnecessary clutter, we have enforce indent.
+#   - Less readable, more unnecessary clutter, we have enforced indent.
 # readability-identifier-length:
 #	- I do not want to bother to set all the rules for this.
 # bugprone-easily-swappable-parameters:
@@ -31,6 +30,10 @@
 #	- Not used.
 # llvmlibc*
 #   - Not relevant.
+# cppcoreguidelines-pro-:
+# hicpp-:
+#   - Impossible to write C code interfacing syscalls.
+#   - reinterpret_cast, bit manipulations, unions...
 Checks: >
   *,
   -modernize-use-trailing-return-type,
@@ -41,7 +44,6 @@ Checks: >
   -readability-named-parameter,
   -cppcoreguidelines-avoid-magic-numbers,
   -readability-magic-numbers,
-  -hicpp-braces-around-statements,
   -google-readability-braces-around-statements,
   -readability-braces-around-statements,
   -readability-identifier-length,
@@ -49,7 +51,9 @@ Checks: >
   -fuchsia*,
   -abseil*,
   -altera*,
-  -llvmlibc*
+  -llvmlibc*,
+  -hicpp-*,
+  -cppcoreguidelines-pro-*
 
 WarningsAsErrors: '*'
 
