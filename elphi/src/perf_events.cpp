@@ -41,7 +41,7 @@ map_perf_event_buffer(int event_fd, std::size_t num_pages) noexcept {
 }
 
 void
-unmap_perf_event_buffer(std::span<unsigned char> event_buffer) noexcept {
+unmap_perf_event_buffer(PerfEventBuffer event_buffer) noexcept {
     if (event_buffer.empty() && (event_buffer.size() % c_page_size) == 0)
         (void)munmap(event_buffer.data(), event_buffer.size());
 }
@@ -55,6 +55,7 @@ get_perf_event(PerfEventBuffer event_buffer, Buffer* dest, bool peek_only) {
     auto* head = type_pune<perf_event_mmap_page>(event_buffer.data());
     const auto buffer = event_buffer.subspan(c_page_size);
 
+    // Extract header from the buffer.
     perf_event_header event_header;
     // Header does not fit -> no unread sample.
     if (head->data_tail + sizeof(event_header) > head->data_head)
@@ -70,9 +71,10 @@ get_perf_event(PerfEventBuffer event_buffer, Buffer* dest, bool peek_only) {
         if (head->data_tail + event_header.size > head->data_head)
             return std::nullopt;
         dest->resize(event_header.size - sizeof(perf_event_header));
+        // Some examples and manpages recommend memory barries after reading the values, not sure why.
         read_memory_barrier();
 
-        move_wrapped(buffer, head->data_tail + sizeof(event_header), std::span{*dest});
+        move_wrapped(buffer, head->data_tail + sizeof(event_header), *dest);
     }
 
     if (!peek_only) {
