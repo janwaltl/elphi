@@ -8,6 +8,11 @@ target_compile_options(
   elphi_tests PRIVATE
   -Werror -Wall -Wextra -pedantic
 )
+target_link_options(
+  elphi_tests PRIVATE
+  -Wl,--wrap=mmap
+  -Wl,--wrap=munmap
+)
 
 include(CTest)
 include(Catch)
@@ -23,7 +28,7 @@ if(JUNIT_TEST_OUTPUT)
 else()
   catch_discover_tests(
     elphi_tests
-    EXTRA_ARGS --colour-mode ansi -d yes
+    EXTRA_ARGS --colour-mode ansi
     OUTPUT_DIR "${CMAKE_BINARY_DIR}/reports"
     OUTPUT_SUFFIX ".txt"
   )
@@ -52,4 +57,5 @@ target_sources(
   test_sampler.cpp
   test_timeline_view.cpp
   test_utils.cpp
+  mock_syscalls.cpp
 )
