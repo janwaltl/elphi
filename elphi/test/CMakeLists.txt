@@ -57,5 +57,6 @@ target_sources(
   test_sampler.cpp
   test_timeline_view.cpp
   test_utils.cpp
+  test_perf_events.cpp
   mock_syscalls.cpp
 )
