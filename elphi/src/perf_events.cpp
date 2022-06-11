@@ -58,12 +58,13 @@ get_perf_event(PerfEventBuffer event_buffer, Buffer* dest, bool peek_only) {
     // Extract header from the buffer.
     perf_event_header event_header;
     // Header does not fit -> no unread sample.
+    // Both values are non-decreasing.
     if (head->data_tail + sizeof(event_header) > head->data_head)
         return std::nullopt;
     read_memory_barrier();
 
     std::span header_dest{reinterpret_cast<unsigned char*>(&event_header), sizeof(event_header)};
-    move_wrapped(buffer, head->data_tail, header_dest);
+    move_wrapped(buffer, head->data_tail % buffer.size(), header_dest);
 
     if (dest) {
         // Whole event has not been fully written yet.
@@ -74,7 +75,7 @@ get_perf_event(PerfEventBuffer event_buffer, Buffer* dest, bool peek_only) {
         // Some examples and manpages recommend memory barries after reading the values, not sure why.
         read_memory_barrier();
 
-        move_wrapped(buffer, head->data_tail + sizeof(event_header), *dest);
+        move_wrapped(buffer, (head->data_tail + sizeof(event_header)) % buffer.size(), *dest);
     }
 
     if (!peek_only) {
