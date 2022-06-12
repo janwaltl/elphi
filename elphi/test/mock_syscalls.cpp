@@ -41,11 +41,25 @@ extern "C" int // NOLINTNEXTLINE
 __wrap_munmap(void* addr, size_t len) {
     if (SysMock::real_syscall["mmap"])
         return __real_munmap(addr, len);
-    if (!SysMock::mmap_clbk) {
+    if (!SysMock::munmap_clbk) {
         FAIL_CHECK("When using mocked mmap, clbk must be provided.");
         return -1;
     }
     return SysMock::munmap_clbk(addr, len);
+}
+
+extern "C" int // NOLINTNEXTLINE
+__real_close(int fd);
+
+extern "C" int // NOLINTNEXTLINE
+__wrap_close(int fd) {
+    if (SysMock::real_syscall["close"])
+        return __real_close(fd);
+    if (!SysMock::close_clbk) {
+        FAIL_CHECK("When using mocked mmap, clbk must be provided.");
+        return -1;
+    }
+    return SysMock::close_clbk(fd);
 }
 
 void
@@ -72,4 +86,10 @@ void
 SysMock::set_munmap_clbk(MunmapClbk clbk) {
     SysMock::use_mocked_syscall("munmap");
     SysMock::munmap_clbk = std::move(clbk);
+}
+
+void
+SysMock::set_close_clbk(CloseClbk clbk) {
+    SysMock::use_mocked_syscall("close");
+    SysMock::close_clbk = std::move(clbk);
 }

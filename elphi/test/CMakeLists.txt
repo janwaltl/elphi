@@ -12,6 +12,7 @@ target_link_options(
   elphi_tests PRIVATE
   -Wl,--wrap=mmap
   -Wl,--wrap=munmap
+  -Wl,--wrap=close
 )
 
 include(CTest)
