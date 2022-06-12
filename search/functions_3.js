@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['gen_5fcpu_5ftimelines_93',['gen_cpu_timelines',['../namespaceelphi_1_1view.html#a77b57c802230a8ac3cc5347fd37c98c4',1,'elphi::view']]],
-  ['get_5fperf_5fevent_94',['get_perf_event',['../namespaceelphi_1_1data.html#a7eb80d3adad62acdb083c2e15b4b2dac',1,'elphi::data']]]
+  ['gen_5fcpu_5ftimelines_92',['gen_cpu_timelines',['../namespaceelphi_1_1view.html#a77b57c802230a8ac3cc5347fd37c98c4',1,'elphi::view']]],
+  ['get_5fperf_5fevent_93',['get_perf_event',['../namespaceelphi_1_1data.html#a7eb80d3adad62acdb083c2e15b4b2dac',1,'elphi::data']]]
 ];

@@ -94,26 +94,23 @@ $(document).ready(function(){initNavTree('utils_8cpp_source.html',''); initResiz
 <div class="title">utils.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="utils_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// Needed for XSI-compliant strerror_r.</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno"><a class="line" href="utils_8cpp.html#a3024ccd4a9af5109d24e6c57565d74a1">    2</a></span>&#160;<span class="preprocessor">#define _POSIX_C_SOURCE 200112L</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;cstring&gt;</span></div>
+<a href="utils_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;cstring&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="utils_8hpp.html">elphi/utils.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="utils_8hpp.html">elphi/utils.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceelphi.html">elphi</a> {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;std::string</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="namespaceelphi.html#ae1be134c3ff9d6e6b90c791a86709219">   11</a></span>&#160;<a class="code" href="namespaceelphi.html#ae1be134c3ff9d6e6b90c791a86709219">strerror</a>(<span class="keywordtype">int</span> err) {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    std::string buffer;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    buffer.resize(256);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    strerror_r(err, buffer.data(), buffer.size());</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    buffer.resize(std::strlen(buffer.data()));</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">return</span> buffer;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;} <span class="comment">// namespace elphi</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceelphi.html">elphi</a> {</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;std::string</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="namespaceelphi.html#ae1be134c3ff9d6e6b90c791a86709219">    8</a></span>&#160;<a class="code" href="namespaceelphi.html#ae1be134c3ff9d6e6b90c791a86709219">strerror</a>(<span class="keywordtype">int</span> err) {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    std::string buffer;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    buffer.resize(256);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    (void)strerror_r(err, buffer.data(), buffer.size());</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    buffer.resize(std::strlen(buffer.data()));</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordflow">return</span> buffer;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;}</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;} <span class="comment">// namespace elphi</span></div>
 <div class="ttc" id="anamespaceelphi_html"><div class="ttname"><a href="namespaceelphi.html">elphi</a></div><div class="ttdef"><b>Definition:</b> <a href="exception_8hpp_source.html#l00005">exception.hpp:5</a></div></div>
-<div class="ttc" id="anamespaceelphi_html_ae1be134c3ff9d6e6b90c791a86709219"><div class="ttname"><a href="namespaceelphi.html#ae1be134c3ff9d6e6b90c791a86709219">elphi::strerror</a></div><div class="ttdeci">std::string strerror(int err)</div><div class="ttdoc">C++ version of strerror, thread-safe.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00011">utils.cpp:11</a></div></div>
+<div class="ttc" id="anamespaceelphi_html_ae1be134c3ff9d6e6b90c791a86709219"><div class="ttname"><a href="namespaceelphi.html#ae1be134c3ff9d6e6b90c791a86709219">elphi::strerror</a></div><div class="ttdeci">std::string strerror(int err)</div><div class="ttdoc">C++ version of strerror, thread-safe.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00008">utils.cpp:8</a></div></div>
 <div class="ttc" id="autils_8hpp_html"><div class="ttname"><a href="utils_8hpp.html">utils.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -121,7 +118,7 @@ $(document).ready(function(){initNavTree('utils_8cpp_source.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_812392a79f9697c1c93a2c8857dce35c.html">elphi</a></li><li class="navelem"><a class="el" href="dir_0aebe75bc63edfbfc54835b492a46e31.html">src</a></li><li class="navelem"><a class="el" href="utils_8cpp.html">utils.cpp</a></li>
-    <li class="footer">Generated on Sun Jun 12 2022 15:44:21 for ElPhi by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sun Jun 12 2022 15:52:40 for ElPhi by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

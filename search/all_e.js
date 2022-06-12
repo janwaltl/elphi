@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['unmap_5fperf_5fevent_5fbuffer_64',['unmap_perf_event_buffer',['../namespaceelphi_1_1data.html#ac35f082615f25885feb63b9615aacb5f',1,'elphi::data']]],
-  ['utils_2ecpp_65',['utils.cpp',['../utils_8cpp.html',1,'']]],
-  ['utils_2ehpp_66',['utils.hpp',['../utils_8hpp.html',1,'']]]
+  ['_7eelphiexception_66',['~ElphiException',['../classelphi_1_1ElphiException.html#a0836f9901bd0ad42c4abbb83cb7a42f0',1,'elphi::ElphiException']]],
+  ['_7efiledescriptor_67',['~FileDescriptor',['../classelphi_1_1FileDescriptor.html#a8675d3c62bac6aa213e2d3909a86547c',1,'elphi::FileDescriptor']]]
 ];

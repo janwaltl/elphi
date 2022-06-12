@@ -1,11 +1,15 @@
 var searchData=
 [
-  ['sample_44',['Sample',['../structelphi_1_1Sample.html',1,'elphi']]],
-  ['sample_5fexecution_5fsync_45',['sample_execution_sync',['../namespaceelphi.html#adb965e14344d1a3c93a2b34e7d10a353',1,'elphi']]],
-  ['sampler_2ecpp_46',['sampler.cpp',['../sampler_8cpp.html',1,'']]],
-  ['sampler_2ehpp_47',['sampler.hpp',['../sampler_8hpp.html',1,'']]],
-  ['samples_48',['samples',['../structelphi_1_1SamplingResult.html#abaaabf94817e96db63fddf1881018473',1,'elphi::SamplingResult']]],
-  ['samplingresult_49',['SamplingResult',['../structelphi_1_1SamplingResult.html',1,'elphi']]],
-  ['samplingtermreason_50',['SamplingTermReason',['../namespaceelphi.html#a1d8a5cbd33f07fdc205e2e22e15ccc64',1,'elphi']]],
-  ['strerror_51',['strerror',['../namespaceelphi.html#ae1be134c3ff9d6e6b90c791a86709219',1,'elphi']]]
+  ['term_5freason_51',['term_reason',['../structelphi_1_1SamplingResult.html#a172ae05989167045e6c74d1b5a38291b',1,'elphi::SamplingResult']]],
+  ['threadid_52',['ThreadId',['../namespaceelphi.html#a054464f2aff4af92f9126ecb9441f336',1,'elphi']]],
+  ['threadtimeslice_53',['ThreadTimeSlice',['../structelphi_1_1view_1_1ThreadTimeSlice.html',1,'elphi::view']]],
+  ['tid_54',['tid',['../structelphi_1_1Sample.html#a3834f21aaae58e08ced5f9e93596db4a',1,'elphi::Sample::tid()'],['../structelphi_1_1view_1_1ThreadTimeSlice.html#ae977bb6cd39309b4cdf19aba87a95129',1,'elphi::view::ThreadTimeSlice::tid()']]],
+  ['time_55',['time',['../structelphi_1_1Sample.html#a89df3c704551e889602b2cc6ca1b7624',1,'elphi::Sample']]],
+  ['time_56',['Time',['../namespaceelphi.html#a1d8a5cbd33f07fdc205e2e22e15ccc64aa76d4ef5f3f6a672bbfab2865563e530',1,'elphi']]],
+  ['timeline_57',['Timeline',['../namespaceelphi_1_1view.html#abab56aae53a8a2d5fd0ef6b909b9ee9a',1,'elphi::view']]],
+  ['timeline_5fview_2ecpp_58',['timeline_view.cpp',['../timeline__view_8cpp.html',1,'']]],
+  ['timeline_5fview_2ehpp_59',['timeline_view.hpp',['../timeline__view_8hpp.html',1,'']]],
+  ['timepoint_60',['TimePoint',['../namespaceelphi.html#a2a75414b566cb9fee910d64479eaadc1',1,'elphi']]],
+  ['token_61',['Token',['../namespaceelphi.html#a1d8a5cbd33f07fdc205e2e22e15ccc64a459a6f79ad9b13cbcb5f692d2cc7a94d',1,'elphi']]],
+  ['type_5fpune_62',['type_pune',['../namespaceelphi.html#afa4cb2edf239a925b83e22c293d0623b',1,'elphi']]]
 ];

@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['fd_19',['fd',['../classelphi_1_1FileDescriptor.html#a26abc9e0898faed5b861e92fa28175da',1,'elphi::FileDescriptor']]],
-  ['file_5fdescriptor_2ecpp_20',['file_descriptor.cpp',['../file__descriptor_8cpp.html',1,'']]],
-  ['file_5fdescriptor_2ehpp_21',['file_descriptor.hpp',['../file__descriptor_8hpp.html',1,'']]],
-  ['filedescriptor_22',['FileDescriptor',['../classelphi_1_1FileDescriptor.html',1,'elphi::FileDescriptor'],['../classelphi_1_1FileDescriptor.html#aa9f5953e886975f93b82b37c8403d2ff',1,'elphi::FileDescriptor::FileDescriptor(int fd)'],['../classelphi_1_1FileDescriptor.html#a6158ba7c706e02af345419d583822275',1,'elphi::FileDescriptor::FileDescriptor(const FileDescriptor &amp;)=delete'],['../classelphi_1_1FileDescriptor.html#aa8948753bf04110d2da30af5a1fbb8ba',1,'elphi::FileDescriptor::FileDescriptor(FileDescriptor &amp;&amp;other) noexcept']]]
+  ['gen_5fcpu_5ftimelines_22',['gen_cpu_timelines',['../namespaceelphi_1_1view.html#a77b57c802230a8ac3cc5347fd37c98c4',1,'elphi::view']]],
+  ['get_5fperf_5fevent_23',['get_perf_event',['../namespaceelphi_1_1data.html#a7eb80d3adad62acdb083c2e15b4b2dac',1,'elphi::data']]],
+  ['groupid_24',['GroupId',['../namespaceelphi.html#a8c69404771734da8eaeb5a75e2f838e9',1,'elphi']]],
+  ['grouptimeline_25',['GroupTimeline',['../namespaceelphi_1_1view.html#ad35a0c65bea8a1f12d50f5ce2836b33d',1,'elphi::view']]]
 ];

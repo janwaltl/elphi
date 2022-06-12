@@ -1,6 +1,11 @@
 var searchData=
 [
-  ['open_5fperf_5fevent_31',['open_perf_event',['../namespaceelphi_1_1data.html#ab8dddcf0edd3c47603f7b4392e03e80b',1,'elphi::data']]],
-  ['operator_3c_3d_3e_32',['operator&lt;=&gt;',['../structelphi_1_1view_1_1ThreadTimeSlice.html#a8d6e351764419bebef4ecdb12e117931',1,'elphi::view::ThreadTimeSlice']]],
-  ['operator_3d_33',['operator=',['../classelphi_1_1ElphiException.html#ac16108a979c823cb4987658e330281cb',1,'elphi::ElphiException::operator=(const ElphiException &amp;other)=default'],['../classelphi_1_1ElphiException.html#a985fbce110383fbbc2d71aad3b9dd402',1,'elphi::ElphiException::operator=(ElphiException &amp;&amp;other) noexcept=default'],['../classelphi_1_1FileDescriptor.html#a8328ff11c44e18a113bbc9a1b1c0bd69',1,'elphi::FileDescriptor::operator=(const FileDescriptor &amp;)=delete'],['../classelphi_1_1FileDescriptor.html#a64ea16c6f0bae894907f28e954f7a624',1,'elphi::FileDescriptor::operator=(FileDescriptor &amp;&amp;other) noexcept']]]
+  ['perf_5fevents_2ecpp_33',['perf_events.cpp',['../perf__events_8cpp.html',1,'']]],
+  ['perf_5fevents_2ehpp_34',['perf_events.hpp',['../perf__events_8hpp.html',1,'']]],
+  ['perf_5fstart_35',['perf_start',['../namespaceelphi_1_1data.html#a7cbab2eefa70013e68ce9f210ebefd6d',1,'elphi::data']]],
+  ['perf_5fstop_36',['perf_stop',['../namespaceelphi_1_1data.html#ad5ce484210fe06b1804efd4b99f81a23',1,'elphi::data']]],
+  ['perfeventbuffer_37',['PerfEventBuffer',['../namespaceelphi_1_1data.html#ab9c8a4d34c8b6b70339ce8f8d50eb158',1,'elphi::data']]],
+  ['pid_38',['pid',['../structelphi_1_1Sample.html#a1381ce78ba69b90d28823534d2aa0f42',1,'elphi::Sample::pid()'],['../structelphi_1_1view_1_1ThreadTimeSlice.html#a877a3f30805fc2c33da3d05f8ecc8b00',1,'elphi::view::ThreadTimeSlice::pid()']]],
+  ['process_5fnames_39',['process_names',['../structelphi_1_1SamplingResult.html#a498605525fe3ac4b4df2fd0a45853493',1,'elphi::SamplingResult']]],
+  ['procid_40',['ProcId',['../namespaceelphi.html#a84c963f7d99455b0230dfc0e7a34bb9a',1,'elphi']]]
 ];
