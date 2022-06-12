@@ -10,6 +10,8 @@
 #include <span>
 #include <vector>
 
+#include <unistd.h>
+
 namespace elphi {
 
 /*! Generic buffer of bytes. */
@@ -71,4 +73,15 @@ move_wrapped(RangeSrc&& src, std::size_t src_offset, RangeDest&& dest) {
 
     return (src_offset + dest_span.size()) % std::max(src_span.size(), 1UL);
 }
+
+/*! OS Page size of the running system. */
+inline const std::size_t c_page_size = getpagesize();
+
+/*******************************************************************************
+ * @brief C++ version of strerror, thread-safe.
+ *
+ * @param err Error code (errno).
+ ******************************************************************************/
+std::string
+strerror(int err);
 } // namespace elphi
