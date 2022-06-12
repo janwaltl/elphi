@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['name_97',['name',['../structelphi_1_1view_1_1ThreadTimeSlice.html#a939c416dca8335dd95ebacad63fbc397',1,'elphi::view::ThreadTimeSlice']]]
+  ['fd_116',['fd',['../classelphi_1_1FileDescriptor.html#a26abc9e0898faed5b861e92fa28175da',1,'elphi::FileDescriptor']]]
 ];

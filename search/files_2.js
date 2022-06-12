@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['sampler_2ecpp_71',['sampler.cpp',['../sampler_8cpp.html',1,'']]],
-  ['sampler_2ehpp_72',['sampler.hpp',['../sampler_8hpp.html',1,'']]]
+  ['perf_5fevents_2ecpp_82',['perf_events.cpp',['../perf__events_8cpp.html',1,'']]],
+  ['perf_5fevents_2ehpp_83',['perf_events.hpp',['../perf__events_8hpp.html',1,'']]]
 ];

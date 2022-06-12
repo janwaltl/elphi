@@ -1,12 +1,10 @@
 var searchData=
 [
-  ['anonymous_5fnamespace_7bperf_5fevents_2ecpp_7d_7',['anonymous_namespace{perf_events.cpp}',['../namespaceelphi_1_1data_1_1anonymous__namespace_02perf__events_8cpp_03.html',1,'elphi::data']]],
-  ['anonymous_5fnamespace_7btimeline_5fview_2ecpp_7d_8',['anonymous_namespace{timeline_view.cpp}',['../namespaceelphi_1_1view_1_1anonymous__namespace_02timeline__view_8cpp_03.html',1,'elphi::view']]],
-  ['data_9',['data',['../namespaceelphi_1_1data.html',1,'elphi']]],
-  ['elphi_10',['elphi',['../namespaceelphi.html',1,'']]],
-  ['elphiexception_11',['ElphiException',['../classelphi_1_1ElphiException.html',1,'elphi::ElphiException'],['../classelphi_1_1ElphiException.html#a6eaa2faac21f6de0fb9691f538e7a66b',1,'elphi::ElphiException::ElphiException(const ElphiException &amp;other)=default'],['../classelphi_1_1ElphiException.html#aec9370ad492bdca381fa71711cd5df7e',1,'elphi::ElphiException::ElphiException(ElphiException &amp;&amp;other) noexcept=default']]],
-  ['end_5ftime_12',['end_time',['../structelphi_1_1view_1_1ThreadTimeSlice.html#ab61973c2432b6304cdae358afdf2bdd6',1,'elphi::view::ThreadTimeSlice']]],
-  ['error_13',['Error',['../namespaceelphi.html#a1d8a5cbd33f07fdc205e2e22e15ccc64a902b0d55fddef6f8d651fe1035b7d4bd',1,'elphi']]],
-  ['exception_2ehpp_14',['exception.hpp',['../exception_8hpp.html',1,'']]],
-  ['view_15',['view',['../namespaceelphi_1_1view.html',1,'elphi']]]
+  ['c_5fno_5ffd_3',['c_no_fd',['../classelphi_1_1FileDescriptor.html#ae67dabae89fdd19ed64e8d1f51c0c27d',1,'elphi::FileDescriptor']]],
+  ['c_5fpage_5fsize_4',['c_page_size',['../namespaceelphi.html#ae8776e6a8b7c452a33f2ba26aa908451',1,'elphi::c_page_size()'],['../namespaceelphi_1_1data_1_1anonymous__namespace_02perf__events_8cpp_03.html#aea209b70ef62f7da23c5cbfc9ae8e1c9',1,'elphi::data::anonymous_namespace{perf_events.cpp}::c_page_size()']]],
+  ['cgroup_5',['cgroup',['../structelphi_1_1Sample.html#a03c16665e34d0984a14975285243f3be',1,'elphi::Sample::cgroup()'],['../structelphi_1_1view_1_1ThreadTimeSlice.html#a811adaffc6f5d44dd73e8ef4c05bb0a9',1,'elphi::view::ThreadTimeSlice::cgroup()']]],
+  ['close_6',['close',['../classelphi_1_1FileDescriptor.html#a408e89c85e1d08aa066168f5018c7ebf',1,'elphi::FileDescriptor']]],
+  ['cpu_7',['cpu',['../structelphi_1_1Sample.html#a103cd778d9fd334df01a184453860150',1,'elphi::Sample::cpu()'],['../structelphi_1_1view_1_1ThreadTimeSlice.html#a6eb0dd67c3819487142ea5f3558c2512',1,'elphi::view::ThreadTimeSlice::cpu()']]],
+  ['cpuid_8',['CpuId',['../namespaceelphi.html#a48239696bd4b2d18fb70a365e56556f3',1,'elphi']]],
+  ['cputimeline_9',['CpuTimeline',['../namespaceelphi_1_1view.html#a3aff89f0dab80a788a15514ddd54e222',1,'elphi::view']]]
 ];

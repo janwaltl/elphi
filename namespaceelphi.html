@@ -95,7 +95,8 @@ $(document).ready(function(){initNavTree('namespaceelphi.html',''); initResizabl
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">elphi Namespace Reference</div>  </div>
 </div><!--header-->
@@ -112,6 +113,8 @@ Namespaces</h2></td></tr>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classelphi_1_1ElphiException.html">ElphiException</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base exception class for ElPhi project.  <a href="classelphi_1_1ElphiException.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classelphi_1_1FileDescriptor.html">FileDescriptor</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structelphi_1_1Sample.html">Sample</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -157,6 +160,14 @@ Functions</h2></td></tr>
 <tr class="memitem:abf3122a8c93cf114646fa8ca48cf46fe"><td class="memTemplItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceelphi.html#abf3122a8c93cf114646fa8ca48cf46fe">move_wrapped</a> (RangeSrc &amp;&amp;src, std::size_t src_offset, RangeDest &amp;&amp;dest)</td></tr>
 <tr class="memdesc:abf3122a8c93cf114646fa8ca48cf46fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move elements from circular <code>src</code> to fill <code>dest</code>.  <a href="namespaceelphi.html#abf3122a8c93cf114646fa8ca48cf46fe">More...</a><br /></td></tr>
 <tr class="separator:abf3122a8c93cf114646fa8ca48cf46fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1be134c3ff9d6e6b90c791a86709219"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceelphi.html#ae1be134c3ff9d6e6b90c791a86709219">strerror</a> (int err)</td></tr>
+<tr class="memdesc:ae1be134c3ff9d6e6b90c791a86709219"><td class="mdescLeft">&#160;</td><td class="mdescRight">C++ version of strerror, thread-safe.  <a href="namespaceelphi.html#ae1be134c3ff9d6e6b90c791a86709219">More...</a><br /></td></tr>
+<tr class="separator:ae1be134c3ff9d6e6b90c791a86709219"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ae8776e6a8b7c452a33f2ba26aa908451"><td class="memItemLeft" align="right" valign="top">const std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceelphi.html#ae8776e6a8b7c452a33f2ba26aa908451">c_page_size</a> = getpagesize()</td></tr>
+<tr class="separator:ae8776e6a8b7c452a33f2ba26aa908451"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Various utilities used in ElPhi. </p>
@@ -174,7 +185,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Generic buffer of bytes. </p>
 
-<p class="definition">Definition at line <a class="el" href="utils_8hpp_source.html#l00016">16</a> of file <a class="el" href="utils_8hpp_source.html">utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_8hpp_source.html#l00018">18</a> of file <a class="el" href="utils_8hpp_source.html">utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -351,7 +362,7 @@ template&lt;std::ranges::sized_range RangeSrc, std::ranges::sized_range RangeDes
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Offset in <code>of</code> the first not-moved element. <code>src[(offset + n) % src.size()]</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_8hpp_source.html#l00059">59</a> of file <a class="el" href="utils_8hpp_source.html">utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_8hpp_source.html#l00061">61</a> of file <a class="el" href="utils_8hpp_source.html">utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -380,7 +391,7 @@ template&lt;std::ranges::sized_range RangeSrc, std::ranges::sized_range RangeDes
 
 <p>Compiler memory barrier. </p>
 
-<p class="definition">Definition at line <a class="el" href="utils_8hpp_source.html#l00022">22</a> of file <a class="el" href="utils_8hpp_source.html">utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_8hpp_source.html#l00024">24</a> of file <a class="el" href="utils_8hpp_source.html">utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -432,6 +443,34 @@ template&lt;std::ranges::sized_range RangeSrc, std::ranges::sized_range RangeDes
 
 </div>
 </div>
+<a id="ae1be134c3ff9d6e6b90c791a86709219"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1be134c3ff9d6e6b90c791a86709219">&#9670;&nbsp;</a></span>strerror()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string elphi::strerror </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>err</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>C++ version of strerror, thread-safe. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">err</td><td>Error code (errno). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00011">11</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+
+</div>
+</div>
 <a id="afa4cb2edf239a925b83e22c293d0623b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afa4cb2edf239a925b83e22c293d0623b">&#9670;&nbsp;</a></span>type_pune()</h2>
 
@@ -474,7 +513,33 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>ptr</code> bytes interpreted as T. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_8hpp_source.html#l00037">37</a> of file <a class="el" href="utils_8hpp_source.html">utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_8hpp_source.html#l00039">39</a> of file <a class="el" href="utils_8hpp_source.html">utils.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="ae8776e6a8b7c452a33f2ba26aa908451"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8776e6a8b7c452a33f2ba26aa908451">&#9670;&nbsp;</a></span>c_page_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::size_t elphi::c_page_size = getpagesize()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>OS Page size of the running system. </p>
+
+<p class="definition">Definition at line <a class="el" href="utils_8hpp_source.html#l00078">78</a> of file <a class="el" href="utils_8hpp_source.html">utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -484,7 +549,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceelphi.html">elphi</a></li>
-    <li class="footer">Generated on Sun Jun 12 2022 10:22:21 for ElPhi by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sun Jun 12 2022 15:44:21 for ElPhi by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

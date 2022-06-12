@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['begin_5ftime_0',['begin_time',['../structelphi_1_1view_1_1ThreadTimeSlice.html#a4cdf100ebd3a8c0ae97ba0f676ec75b1',1,'elphi::view::ThreadTimeSlice']]],
-  ['buffer_1',['Buffer',['../namespaceelphi.html#aa80cffeb43e7aa870c96b1673d7a36d1',1,'elphi']]]
+  ['_5fposix_5fc_5fsource_0',['_POSIX_C_SOURCE',['../utils_8cpp.html#a3024ccd4a9af5109d24e6c57565d74a1',1,'utils.cpp']]]
 ];

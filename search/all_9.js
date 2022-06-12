@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['sample_36',['Sample',['../structelphi_1_1Sample.html',1,'elphi']]],
-  ['sample_5fexecution_5fsync_37',['sample_execution_sync',['../namespaceelphi.html#adb965e14344d1a3c93a2b34e7d10a353',1,'elphi']]],
-  ['sampler_2ecpp_38',['sampler.cpp',['../sampler_8cpp.html',1,'']]],
-  ['sampler_2ehpp_39',['sampler.hpp',['../sampler_8hpp.html',1,'']]],
-  ['samples_40',['samples',['../structelphi_1_1SamplingResult.html#abaaabf94817e96db63fddf1881018473',1,'elphi::SamplingResult']]],
-  ['samplingresult_41',['SamplingResult',['../structelphi_1_1SamplingResult.html',1,'elphi']]],
-  ['samplingtermreason_42',['SamplingTermReason',['../namespaceelphi.html#a1d8a5cbd33f07fdc205e2e22e15ccc64',1,'elphi']]]
+  ['open_5fperf_5fevent_31',['open_perf_event',['../namespaceelphi_1_1data.html#ab8dddcf0edd3c47603f7b4392e03e80b',1,'elphi::data']]],
+  ['operator_3c_3d_3e_32',['operator&lt;=&gt;',['../structelphi_1_1view_1_1ThreadTimeSlice.html#a8d6e351764419bebef4ecdb12e117931',1,'elphi::view::ThreadTimeSlice']]],
+  ['operator_3d_33',['operator=',['../classelphi_1_1ElphiException.html#ac16108a979c823cb4987658e330281cb',1,'elphi::ElphiException::operator=(const ElphiException &amp;other)=default'],['../classelphi_1_1ElphiException.html#a985fbce110383fbbc2d71aad3b9dd402',1,'elphi::ElphiException::operator=(ElphiException &amp;&amp;other) noexcept=default'],['../classelphi_1_1FileDescriptor.html#a8328ff11c44e18a113bbc9a1b1c0bd69',1,'elphi::FileDescriptor::operator=(const FileDescriptor &amp;)=delete'],['../classelphi_1_1FileDescriptor.html#a64ea16c6f0bae894907f28e954f7a624',1,'elphi::FileDescriptor::operator=(FileDescriptor &amp;&amp;other) noexcept']]]
 ];

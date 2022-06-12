@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['read_5fmemory_5fbarrier_86',['read_memory_barrier',['../namespaceelphi.html#aa21883a95e62e8aaffacbf71d1c11b89',1,'elphi']]],
-  ['resolve_5fname_87',['resolve_name',['../namespaceelphi_1_1view_1_1anonymous__namespace_02timeline__view_8cpp_03.html#a08db942ac7af32692608414fac254ed1',1,'elphi::view::anonymous_namespace{timeline_view.cpp}']]]
+  ['map_5fperf_5fevent_5fbuffer_96',['map_perf_event_buffer',['../namespaceelphi_1_1data.html#a007bc54cbcc971c401df7a4bda3861c9',1,'elphi::data']]],
+  ['move_5fwrapped_97',['move_wrapped',['../namespaceelphi.html#abf3122a8c93cf114646fa8ca48cf46fe',1,'elphi']]]
 ];

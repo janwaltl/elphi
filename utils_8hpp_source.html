@@ -104,57 +104,67 @@ $(document).ready(function(){initNavTree('utils_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;span&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceelphi.html">elphi</a> {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="namespaceelphi.html#aa80cffeb43e7aa870c96b1673d7a36d1">   16</a></span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceelphi.html#aa80cffeb43e7aa870c96b1673d7a36d1">Buffer</a> = std::vector&lt;unsigned char&gt;;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="namespaceelphi.html#aa21883a95e62e8aaffacbf71d1c11b89">   22</a></span>&#160;<a class="code" href="namespaceelphi.html#aa21883a95e62e8aaffacbf71d1c11b89">read_memory_barrier</a>() {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;&quot;</span> ::: <span class="stringliteral">&quot;memory&quot;</span>);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;constexpr T*</div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="namespaceelphi.html#afa4cb2edf239a925b83e22c293d0623b">   37</a></span>&#160;<a class="code" href="namespaceelphi.html#afa4cb2edf239a925b83e22c293d0623b">type_pune</a>(<span class="keywordtype">void</span>* ptr) {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    static_assert(std::is_standard_layout_v&lt;T&gt;, <span class="stringliteral">&quot;T must be POD.&quot;</span>);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">// NOLINTNEXTLINE</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">auto</span>* dest = <span class="keyword">new</span> (ptr) <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>[<span class="keyword">sizeof</span>(T)];</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">reinterpret_cast&lt;</span>T*<span class="keyword">&gt;</span>(dest);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">template</span> &lt;std::ranges::sized_range RangeSrc, std::ranges::sized_range RangeDest&gt;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;std::size_t</div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="namespaceelphi.html#abf3122a8c93cf114646fa8ca48cf46fe">   59</a></span>&#160;<a class="code" href="namespaceelphi.html#abf3122a8c93cf114646fa8ca48cf46fe">move_wrapped</a>(RangeSrc&amp;&amp; src, std::size_t src_offset, RangeDest&amp;&amp; dest) {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment">// Restrict the number of elements to move.</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::span dest_span{dest.begin(), std::min(dest.size(), src.size())};</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    std::span src_span{src};</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// Move from offset possibly to the end.</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">auto</span> first = src_span.subspan(src_offset);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">auto</span> first_n = std::min(first.size(), dest_span.size());</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">auto</span> second_dest = std::move(first.begin(), first.begin() + first_n, dest_span.begin());</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="comment">// Move any left-over wrapped portion.</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">auto</span> second = src_span.first(dest_span.size() - first_n);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    std::move(second.begin(), second.end(), second_dest);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">return</span> (src_offset + dest_span.size()) % std::max(src_span.size(), 1UL);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;} <span class="comment">// namespace elphi</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceelphi.html">elphi</a> {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="namespaceelphi.html#aa80cffeb43e7aa870c96b1673d7a36d1">   18</a></span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceelphi.html#aa80cffeb43e7aa870c96b1673d7a36d1">Buffer</a> = std::vector&lt;unsigned char&gt;;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="namespaceelphi.html#aa21883a95e62e8aaffacbf71d1c11b89">   24</a></span>&#160;<a class="code" href="namespaceelphi.html#aa21883a95e62e8aaffacbf71d1c11b89">read_memory_barrier</a>() {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;&quot;</span> ::: <span class="stringliteral">&quot;memory&quot;</span>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;constexpr T*</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="namespaceelphi.html#afa4cb2edf239a925b83e22c293d0623b">   39</a></span>&#160;<a class="code" href="namespaceelphi.html#afa4cb2edf239a925b83e22c293d0623b">type_pune</a>(<span class="keywordtype">void</span>* ptr) {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    static_assert(std::is_standard_layout_v&lt;T&gt;, <span class="stringliteral">&quot;T must be POD.&quot;</span>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="comment">// NOLINTNEXTLINE</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">auto</span>* dest = <span class="keyword">new</span> (ptr) <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>[<span class="keyword">sizeof</span>(T)];</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">reinterpret_cast&lt;</span>T*<span class="keyword">&gt;</span>(dest);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">template</span> &lt;std::ranges::sized_range RangeSrc, std::ranges::sized_range RangeDest&gt;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;std::size_t</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="namespaceelphi.html#abf3122a8c93cf114646fa8ca48cf46fe">   61</a></span>&#160;<a class="code" href="namespaceelphi.html#abf3122a8c93cf114646fa8ca48cf46fe">move_wrapped</a>(RangeSrc&amp;&amp; src, std::size_t src_offset, RangeDest&amp;&amp; dest) {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">// Restrict the number of elements to move.</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    std::span dest_span{dest.begin(), std::min(dest.size(), src.size())};</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    std::span src_span{src};</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="comment">// Move from offset possibly to the end.</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">auto</span> first = src_span.subspan(src_offset);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">auto</span> first_n = std::min(first.size(), dest_span.size());</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">auto</span> second_dest = std::move(first.begin(), first.begin() + first_n, dest_span.begin());</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="comment">// Move any left-over wrapped portion.</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">auto</span> second = src_span.first(dest_span.size() - first_n);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    std::move(second.begin(), second.end(), second_dest);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">return</span> (src_offset + dest_span.size()) % std::max(src_span.size(), 1UL);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="namespaceelphi.html#ae8776e6a8b7c452a33f2ba26aa908451">   78</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">const</span> std::size_t <a class="code" href="namespaceelphi.html#ae8776e6a8b7c452a33f2ba26aa908451">c_page_size</a> = getpagesize();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;std::string</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<a class="code" href="namespaceelphi.html#ae1be134c3ff9d6e6b90c791a86709219">strerror</a>(<span class="keywordtype">int</span> err);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;} <span class="comment">// namespace elphi</span></div>
 <div class="ttc" id="anamespaceelphi_html"><div class="ttname"><a href="namespaceelphi.html">elphi</a></div><div class="ttdef"><b>Definition:</b> <a href="exception_8hpp_source.html#l00005">exception.hpp:5</a></div></div>
-<div class="ttc" id="anamespaceelphi_html_aa21883a95e62e8aaffacbf71d1c11b89"><div class="ttname"><a href="namespaceelphi.html#aa21883a95e62e8aaffacbf71d1c11b89">elphi::read_memory_barrier</a></div><div class="ttdeci">void read_memory_barrier()</div><div class="ttdoc">Compiler memory barrier.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8hpp_source.html#l00022">utils.hpp:22</a></div></div>
-<div class="ttc" id="anamespaceelphi_html_aa80cffeb43e7aa870c96b1673d7a36d1"><div class="ttname"><a href="namespaceelphi.html#aa80cffeb43e7aa870c96b1673d7a36d1">elphi::Buffer</a></div><div class="ttdeci">std::vector&lt; unsigned char &gt; Buffer</div><div class="ttdef"><b>Definition:</b> <a href="utils_8hpp_source.html#l00016">utils.hpp:16</a></div></div>
-<div class="ttc" id="anamespaceelphi_html_abf3122a8c93cf114646fa8ca48cf46fe"><div class="ttname"><a href="namespaceelphi.html#abf3122a8c93cf114646fa8ca48cf46fe">elphi::move_wrapped</a></div><div class="ttdeci">std::size_t move_wrapped(RangeSrc &amp;&amp;src, std::size_t src_offset, RangeDest &amp;&amp;dest)</div><div class="ttdoc">Move elements from circular src to fill dest.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8hpp_source.html#l00059">utils.hpp:59</a></div></div>
-<div class="ttc" id="anamespaceelphi_html_afa4cb2edf239a925b83e22c293d0623b"><div class="ttname"><a href="namespaceelphi.html#afa4cb2edf239a925b83e22c293d0623b">elphi::type_pune</a></div><div class="ttdeci">constexpr T * type_pune(void *ptr)</div><div class="ttdoc">Semi-safely type pune in C++20.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8hpp_source.html#l00037">utils.hpp:37</a></div></div>
+<div class="ttc" id="anamespaceelphi_html_aa21883a95e62e8aaffacbf71d1c11b89"><div class="ttname"><a href="namespaceelphi.html#aa21883a95e62e8aaffacbf71d1c11b89">elphi::read_memory_barrier</a></div><div class="ttdeci">void read_memory_barrier()</div><div class="ttdoc">Compiler memory barrier.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8hpp_source.html#l00024">utils.hpp:24</a></div></div>
+<div class="ttc" id="anamespaceelphi_html_aa80cffeb43e7aa870c96b1673d7a36d1"><div class="ttname"><a href="namespaceelphi.html#aa80cffeb43e7aa870c96b1673d7a36d1">elphi::Buffer</a></div><div class="ttdeci">std::vector&lt; unsigned char &gt; Buffer</div><div class="ttdef"><b>Definition:</b> <a href="utils_8hpp_source.html#l00018">utils.hpp:18</a></div></div>
+<div class="ttc" id="anamespaceelphi_html_abf3122a8c93cf114646fa8ca48cf46fe"><div class="ttname"><a href="namespaceelphi.html#abf3122a8c93cf114646fa8ca48cf46fe">elphi::move_wrapped</a></div><div class="ttdeci">std::size_t move_wrapped(RangeSrc &amp;&amp;src, std::size_t src_offset, RangeDest &amp;&amp;dest)</div><div class="ttdoc">Move elements from circular src to fill dest.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8hpp_source.html#l00061">utils.hpp:61</a></div></div>
+<div class="ttc" id="anamespaceelphi_html_ae1be134c3ff9d6e6b90c791a86709219"><div class="ttname"><a href="namespaceelphi.html#ae1be134c3ff9d6e6b90c791a86709219">elphi::strerror</a></div><div class="ttdeci">std::string strerror(int err)</div><div class="ttdoc">C++ version of strerror, thread-safe.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00011">utils.cpp:11</a></div></div>
+<div class="ttc" id="anamespaceelphi_html_ae8776e6a8b7c452a33f2ba26aa908451"><div class="ttname"><a href="namespaceelphi.html#ae8776e6a8b7c452a33f2ba26aa908451">elphi::c_page_size</a></div><div class="ttdeci">const std::size_t c_page_size</div><div class="ttdef"><b>Definition:</b> <a href="utils_8hpp_source.html#l00078">utils.hpp:78</a></div></div>
+<div class="ttc" id="anamespaceelphi_html_afa4cb2edf239a925b83e22c293d0623b"><div class="ttname"><a href="namespaceelphi.html#afa4cb2edf239a925b83e22c293d0623b">elphi::type_pune</a></div><div class="ttdeci">constexpr T * type_pune(void *ptr)</div><div class="ttdoc">Semi-safely type pune in C++20.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8hpp_source.html#l00039">utils.hpp:39</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_812392a79f9697c1c93a2c8857dce35c.html">elphi</a></li><li class="navelem"><a class="el" href="dir_0a99ce727943174e194d92de1d94584c.html">include</a></li><li class="navelem"><a class="el" href="dir_ddddcc3451061f927d74ed25c407604c.html">elphi</a></li><li class="navelem"><a class="el" href="utils_8hpp.html">utils.hpp</a></li>
-    <li class="footer">Generated on Sun Jun 12 2022 10:22:21 for ElPhi by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sun Jun 12 2022 15:44:21 for ElPhi by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

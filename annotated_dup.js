@@ -5,6 +5,7 @@ var annotated_dup =
         [ "ThreadTimeSlice", "structelphi_1_1view_1_1ThreadTimeSlice.html", "structelphi_1_1view_1_1ThreadTimeSlice" ]
       ] ],
       [ "ElphiException", "classelphi_1_1ElphiException.html", "classelphi_1_1ElphiException" ],
+      [ "FileDescriptor", "classelphi_1_1FileDescriptor.html", "classelphi_1_1FileDescriptor" ],
       [ "Sample", "structelphi_1_1Sample.html", "structelphi_1_1Sample" ],
       [ "SamplingResult", "structelphi_1_1SamplingResult.html", "structelphi_1_1SamplingResult" ]
     ] ]

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['sample_5fexecution_5fsync_88',['sample_execution_sync',['../namespaceelphi.html#adb965e14344d1a3c93a2b34e7d10a353',1,'elphi']]]
+  ['open_5fperf_5fevent_98',['open_perf_event',['../namespaceelphi_1_1data.html#ab8dddcf0edd3c47603f7b4392e03e80b',1,'elphi::data']]],
+  ['operator_3d_99',['operator=',['../classelphi_1_1ElphiException.html#ac16108a979c823cb4987658e330281cb',1,'elphi::ElphiException::operator=(const ElphiException &amp;other)=default'],['../classelphi_1_1ElphiException.html#a985fbce110383fbbc2d71aad3b9dd402',1,'elphi::ElphiException::operator=(ElphiException &amp;&amp;other) noexcept=default'],['../classelphi_1_1FileDescriptor.html#a8328ff11c44e18a113bbc9a1b1c0bd69',1,'elphi::FileDescriptor::operator=(const FileDescriptor &amp;)=delete'],['../classelphi_1_1FileDescriptor.html#a64ea16c6f0bae894907f28e954f7a624',1,'elphi::FileDescriptor::operator=(FileDescriptor &amp;&amp;other) noexcept']]]
 ];

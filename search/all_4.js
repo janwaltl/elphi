@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['map_5fperf_5fevent_5fbuffer_20',['map_perf_event_buffer',['../namespaceelphi_1_1data.html#a007bc54cbcc971c401df7a4bda3861c9',1,'elphi::data']]],
-  ['move_5fwrapped_21',['move_wrapped',['../namespaceelphi.html#abf3122a8c93cf114646fa8ca48cf46fe',1,'elphi']]]
+  ['fd_19',['fd',['../classelphi_1_1FileDescriptor.html#a26abc9e0898faed5b861e92fa28175da',1,'elphi::FileDescriptor']]],
+  ['file_5fdescriptor_2ecpp_20',['file_descriptor.cpp',['../file__descriptor_8cpp.html',1,'']]],
+  ['file_5fdescriptor_2ehpp_21',['file_descriptor.hpp',['../file__descriptor_8hpp.html',1,'']]],
+  ['filedescriptor_22',['FileDescriptor',['../classelphi_1_1FileDescriptor.html',1,'elphi::FileDescriptor'],['../classelphi_1_1FileDescriptor.html#aa9f5953e886975f93b82b37c8403d2ff',1,'elphi::FileDescriptor::FileDescriptor(int fd)'],['../classelphi_1_1FileDescriptor.html#a6158ba7c706e02af345419d583822275',1,'elphi::FileDescriptor::FileDescriptor(const FileDescriptor &amp;)=delete'],['../classelphi_1_1FileDescriptor.html#aa8948753bf04110d2da30af5a1fbb8ba',1,'elphi::FileDescriptor::FileDescriptor(FileDescriptor &amp;&amp;other) noexcept']]]
 ];

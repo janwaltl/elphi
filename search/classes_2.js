@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['threadtimeslice_62',['ThreadTimeSlice',['../structelphi_1_1view_1_1ThreadTimeSlice.html',1,'elphi::view']]]
+  ['sample_71',['Sample',['../structelphi_1_1Sample.html',1,'elphi']]],
+  ['samplingresult_72',['SamplingResult',['../structelphi_1_1SamplingResult.html',1,'elphi']]]
 ];
