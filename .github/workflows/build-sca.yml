@@ -66,7 +66,10 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
-      - name: Generate coverage
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+      - name: Generate documentation
         uses: mattnotmitt/doxygen-action@v1.9.1
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
