@@ -1,4 +1,5 @@
 /*******************************************************************************
+ * @file perf_events.hpp
  * Thin C-like wrapper around perf_event_open syscall.
  ******************************************************************************/
 #pragma once
@@ -31,7 +32,7 @@ using PerfEventBuffer = std::span<unsigned char>;
  * @param flags Flags for the event descriptor.
  * @return FD of the event on success, -1 and errno on error.
  ******************************************************************************/
-int // NOLINTNEXTLINE - unsigned long flags on purpose.
+int
 open_perf_event(const perf_event_attr& attr, pid_t pid, int cpu, int group_fd, unsigned long flags) noexcept;
 
 /*******************************************************************************
@@ -40,7 +41,7 @@ open_perf_event(const perf_event_attr& attr, pid_t pid, int cpu, int group_fd, u
  * The buffer will have one extra page because the first one is used for the
  * event buffer's header.
  *
- * @param fd Filedescriptor from open_perf_event().
+ * @param event_fd Filedescriptor from open_perf_event().
  * @param num_pages Size of the buffer to allocate in number of OS pages.
  * @return The allocated buffer, empty and errno on errors.
  ******************************************************************************/
