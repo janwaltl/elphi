@@ -4,6 +4,7 @@ add_library(elphi::elphi ALIAS elphi)
 target_compile_options(
   elphi PRIVATE
   -Werror -Wall -Wextra -pedantic
+  -D_POSIX_C_SOURCE=200809
 )
 
 set_target_properties(

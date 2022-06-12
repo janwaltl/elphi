@@ -1,6 +1,3 @@
-// Needed for XSI-compliant strerror_r.
-#define _POSIX_C_SOURCE 200112L
-
 #include <cstring>
 
 #include <elphi/utils.hpp>
