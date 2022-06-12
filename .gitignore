@@ -34,7 +34,11 @@
 # CMake
 build
 
+# Documentation
+docs/html
+
 # My environment
 compile_commands.json
 .cache
 .gdb_history
+
