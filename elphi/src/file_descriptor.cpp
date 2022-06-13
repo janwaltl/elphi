@@ -6,31 +6,38 @@
 
 namespace elphi {
 
-FileDescriptor::FileDescriptor(int fd) : fd(fd) {}
+FileDescriptor::FileDescriptor(int fd) : m_fd(fd) {}
 
-FileDescriptor::FileDescriptor(FileDescriptor&& other) noexcept : fd{std::exchange(other.fd, c_no_fd)} {}
+FileDescriptor::FileDescriptor(FileDescriptor&& other) noexcept : m_fd{std::exchange(other.m_fd, c_no_fd)} {}
 
 FileDescriptor&
 FileDescriptor::operator=(FileDescriptor&& other) noexcept {
     if (&other != this) {
         this->close();
-        this->fd = std::exchange(other.fd, c_no_fd);
+        this->m_fd = std::exchange(other.m_fd, c_no_fd);
     }
     return *this;
 }
 
 FileDescriptor::~FileDescriptor() { this->close(); }
 
+FileDescriptor::operator int() const noexcept { return raw(); }
+
+int
+FileDescriptor::raw() const noexcept {
+    return m_fd;
+}
+
 bool
 FileDescriptor::is_opened() const noexcept {
-    return fd != c_no_fd;
+    return m_fd != c_no_fd;
 }
 
 void
 FileDescriptor::close() noexcept {
-    if (fd != c_no_fd) {
-        (void)::close(fd);
-        fd = c_no_fd;
+    if (m_fd != c_no_fd) {
+        (void)::close(m_fd);
+        m_fd = c_no_fd;
     }
 }
 } // namespace elphi

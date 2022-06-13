@@ -10,6 +10,11 @@ namespace elphi {
 class FileDescriptor {
 public:
     /*******************************************************************************
+     * @brief Construct closed descriptor.
+     ******************************************************************************/
+    FileDescriptor() noexcept = default;
+
+    /*******************************************************************************
      * @brief Capture the given C descriptor.
      *
      * @param fd Descriptor to manage.
@@ -45,6 +50,17 @@ public:
     virtual ~FileDescriptor();
 
     /*******************************************************************************
+     * @brief Return the raw file descriptor.
+     ******************************************************************************/
+    explicit operator int() const noexcept;
+
+    /*******************************************************************************
+     * @brief Return the raw file descriptor.
+     ******************************************************************************/
+    int
+    raw() const noexcept;
+
+    /*******************************************************************************
      * @brief Whether the descriptor is opened.
      ******************************************************************************/
     bool
@@ -61,6 +77,6 @@ public:
 private:
     constexpr static int c_no_fd = -1;
     /*! Manage file descriptor. */
-    int fd{c_no_fd};
+    int m_fd{c_no_fd};
 };
 } // namespace elphi
