@@ -4,6 +4,7 @@ add_library(elphi::elphi ALIAS elphi)
 target_compile_options(
   elphi PRIVATE
   -Werror -Wall -Wextra -pedantic
+  -D_POSIX_C_SOURCE=200809
 )
 
 set_target_properties(
@@ -39,11 +40,13 @@ target_sources(
   include/elphi/timeline_view.hpp
   include/elphi/utils.hpp
   include/elphi/perf_events.hpp
+  include/elphi/file_descriptor.hpp
   PRIVATE
   src/sampler.cpp
   src/timeline_view.cpp
   src/utils.cpp
   src/perf_events.cpp
+  src/file_descriptor.cpp
 )
 
 add_subdirectory(test)

@@ -12,6 +12,7 @@
 
 using MmapClbk = std::function<void*(void* addr, size_t len, int prot, int flags, int fd, off_t offset)>;
 using MunmapClbk = std::function<int(void* addr, size_t len)>;
+using CloseClbk = std::function<int(int fd)>;
 
 /*******************************************************************************
  * @brief Singleton for mocking syscalls.
@@ -52,11 +53,21 @@ public:
     static void
     set_munmap_clbk(MunmapClbk clbk);
 
+    /*******************************************************************************
+     * @brief Set mocked close() implementation.
+     *
+     * @param clbk Redirect close to this function.
+     ******************************************************************************/
+    static void
+    set_close_clbk(CloseClbk clbk);
+
     /*! Whether to use the real or mocked syscall. */
-    inline static std::map<std::string, bool> real_syscall{{"mmap", true}, {"munmap", true}};
+    inline static std::map<std::string, bool> real_syscall{{"mmap", true}, {"munmap", true}, {"close", true}};
 
     /*! Active mmap() mocked implementation. */
     inline static MmapClbk mmap_clbk{nullptr};
     /*! Active munmap() mocked implementation. */
     inline static MunmapClbk munmap_clbk{nullptr};
+    /*! Active close() mocked implementation. */
+    inline static CloseClbk close_clbk{nullptr};
 };
