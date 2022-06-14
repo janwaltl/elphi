@@ -6,7 +6,7 @@
 
 #include <fmt/core.h>
 
-#include <elphi/perf_sampler.hpp>
+#include <elphi/perf_cpu_sampler.hpp>
 
 namespace ed = elphi::data;
 using namespace std::chrono_literals;

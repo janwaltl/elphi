@@ -20,7 +20,7 @@ public:
      *
      * @param sampled_cpu CPU to sample.
      * @param pid Optionally restrict the sampling to given process ID.
-     * @param frequence Sampling frequency. Number of samples per second to take.
+     * @param frequency Sampling frequency. Number of samples per second to take.
      * @throws ElphiException if the new sampler cannot be created/configured.
      ******************************************************************************/
     PerfCpuSampler(CpuId sampled_cpu, std::optional<ProcId> pid, std::size_t frequency);
@@ -80,7 +80,7 @@ public:
      *
      * @see get_poll_entry() to poll until samples are generated.
      *
-     * @warn Samples are gathered by perf_event which uses ring buffer, therefore
+     * @warning Samples are gathered by perf_event which uses ring buffer, therefore
      * there is hard limit on number of pending samples unextracted samples.
      * One must call get_next() often enough to not lose any.
      *
