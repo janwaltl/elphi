@@ -108,6 +108,7 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structelphi_1_1view_1_1ThreadTimeSlice.html">ThreadTimeSlice</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time slice executing the given thread.  <a href="structelphi_1_1view_1_1ThreadTimeSlice.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
@@ -122,6 +123,7 @@ Typedefs</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a77b57c802230a8ac3cc5347fd37c98c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceelphi_1_1view.html#abab56aae53a8a2d5fd0ef6b909b9ee9a">Timeline</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceelphi_1_1view.html#a77b57c802230a8ac3cc5347fd37c98c4">gen_cpu_timelines</a> (const <a class="el" href="structelphi_1_1SamplingResult.html">SamplingResult</a> &amp;result)</td></tr>
+<tr class="memdesc:a77b57c802230a8ac3cc5347fd37c98c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process sampling results into cpu activity Timeline.  <a href="namespaceelphi_1_1view.html#a77b57c802230a8ac3cc5347fd37c98c4">More...</a><br /></td></tr>
 <tr class="separator:a77b57c802230a8ac3cc5347fd37c98c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
@@ -138,7 +140,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Timeline for a single CPU. </p>
 
-<p class="definition">Definition at line <a class="el" href="timeline__view_8hpp_source.html#l00034">34</a> of file <a class="el" href="timeline__view_8hpp_source.html">timeline_view.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="timeline__view_8hpp_source.html#l00036">36</a> of file <a class="el" href="timeline__view_8hpp_source.html">timeline_view.hpp</a>.</p>
 
 </div>
 </div>
@@ -155,7 +157,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Timeline for each cgroup. </p>
 
-<p class="definition">Definition at line <a class="el" href="timeline__view_8hpp_source.html#l00038">38</a> of file <a class="el" href="timeline__view_8hpp_source.html">timeline_view.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="timeline__view_8hpp_source.html#l00040">40</a> of file <a class="el" href="timeline__view_8hpp_source.html">timeline_view.hpp</a>.</p>
 
 </div>
 </div>
@@ -172,7 +174,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Timeline for each CPU. </p>
 
-<p class="definition">Definition at line <a class="el" href="timeline__view_8hpp_source.html#l00036">36</a> of file <a class="el" href="timeline__view_8hpp_source.html">timeline_view.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="timeline__view_8hpp_source.html#l00038">38</a> of file <a class="el" href="timeline__view_8hpp_source.html">timeline_view.hpp</a>.</p>
 
 </div>
 </div>
@@ -193,6 +195,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Process sampling results into cpu activity Timeline. </p>
+<p>Timeline shows what process each CPU executed.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td>Result from process sampling. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Constructed Timeline from sampling <code>result</code>. </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="timeline__view_8cpp_source.html#l00020">20</a> of file <a class="el" href="timeline__view_8cpp_source.html">timeline_view.cpp</a>.</p>
 
 </div>
@@ -203,7 +215,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceelphi.html">elphi</a></li><li class="navelem"><a class="el" href="namespaceelphi_1_1view.html">view</a></li>
-    <li class="footer">Generated on Sun Jun 12 2022 16:21:20 for ElPhi by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Jun 14 2022 20:29:43 for ElPhi by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

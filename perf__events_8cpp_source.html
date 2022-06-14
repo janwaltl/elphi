@@ -108,100 +108,98 @@ $(document).ready(function(){initNavTree('perf__events_8cpp_source.html',''); in
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="perf__events_8hpp.html">elphi/perf_events.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utils_8hpp.html">elphi/utils.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;fmt/core.h&quot;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceelphi_1_1data.html">elphi::data</a> {</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="namespaceelphi_1_1data_1_1anonymous__namespace_02perf__events_8cpp_03.html">   20</a></span>&#160;<span class="keyword">namespace </span>{</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="namespaceelphi_1_1data_1_1anonymous__namespace_02perf__events_8cpp_03.html#aea209b70ef62f7da23c5cbfc9ae8e1c9">   21</a></span>&#160;<span class="keyword">const</span> std::size_t <a class="code" href="namespaceelphi.html#ae8776e6a8b7c452a33f2ba26aa908451">c_page_size</a> = getpagesize();</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;} <span class="comment">// namespace</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">int</span> <span class="comment">// NOLINTNEXTLINE - unsigned long on purpose.</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="namespaceelphi_1_1data.html#ab8dddcf0edd3c47603f7b4392e03e80b">   25</a></span>&#160;<a class="code" href="namespaceelphi_1_1data.html#ab8dddcf0edd3c47603f7b4392e03e80b">open_perf_event</a>(<span class="keyword">const</span> perf_event_attr&amp; attr, pid_t pid, <span class="keywordtype">int</span> cpu, <span class="keywordtype">int</span> group_fd, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> flags) noexcept {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">// NOLINTNEXTLINE - syscall is vararg.</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">auto</span> res = syscall(SYS_perf_event_open, &amp;attr, pid, cpu, group_fd, flags);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(res);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<a class="code" href="namespaceelphi_1_1data.html#ab9c8a4d34c8b6b70339ce8f8d50eb158">PerfEventBuffer</a></div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="namespaceelphi_1_1data.html#a007bc54cbcc971c401df7a4bda3861c9">   32</a></span>&#160;<a class="code" href="namespaceelphi_1_1data.html#a007bc54cbcc971c401df7a4bda3861c9">map_perf_event_buffer</a>(<span class="keywordtype">int</span> event_fd, std::size_t num_pages) noexcept {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">if</span> (event_fd &lt; 0 || num_pages == 0)</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">return</span> {};</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">//+1 for the buffer header.</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    std::size_t map_size = <a class="code" href="namespaceelphi.html#ae8776e6a8b7c452a33f2ba26aa908451">c_page_size</a> * (1 + num_pages);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">auto</span>* ptr = <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(mmap(<span class="keyword">nullptr</span>, map_size, PROT_READ | PROT_WRITE, MAP_SHARED, event_fd, 0));</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">return</span> ptr ? <a class="code" href="namespaceelphi_1_1data.html#ab9c8a4d34c8b6b70339ce8f8d50eb158">PerfEventBuffer</a>{ptr, map_size} : <a class="code" href="namespaceelphi_1_1data.html#ab9c8a4d34c8b6b70339ce8f8d50eb158">PerfEventBuffer</a>{};</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="namespaceelphi_1_1data.html#ac35f082615f25885feb63b9615aacb5f">   44</a></span>&#160;<a class="code" href="namespaceelphi_1_1data.html#ac35f082615f25885feb63b9615aacb5f">unmap_perf_event_buffer</a>(<a class="code" href="namespaceelphi_1_1data.html#ab9c8a4d34c8b6b70339ce8f8d50eb158">PerfEventBuffer</a> event_buffer) noexcept {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">if</span> (event_buffer.empty() &amp;&amp; (event_buffer.size() % <a class="code" href="namespaceelphi.html#ae8776e6a8b7c452a33f2ba26aa908451">c_page_size</a>) == 0)</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        (void)munmap(event_buffer.data(), event_buffer.size());</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;std::optional&lt;perf_event_header&gt;</div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="namespaceelphi_1_1data.html#a7eb80d3adad62acdb083c2e15b4b2dac">   51</a></span>&#160;<a class="code" href="namespaceelphi_1_1data.html#a7eb80d3adad62acdb083c2e15b4b2dac">get_perf_event</a>(<a class="code" href="namespaceelphi_1_1data.html#ab9c8a4d34c8b6b70339ce8f8d50eb158">PerfEventBuffer</a> event_buffer, <a class="code" href="namespaceelphi.html#aa80cffeb43e7aa870c96b1673d7a36d1">Buffer</a>* dest, <span class="keywordtype">bool</span> peek_only) {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">if</span> (event_buffer.empty() || (event_buffer.size() % <a class="code" href="namespaceelphi.html#ae8776e6a8b7c452a33f2ba26aa908451">c_page_size</a>) != 0)</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">return</span> std::nullopt;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">auto</span>* head = type_pune&lt;perf_event_mmap_page&gt;(event_buffer.data());</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> buffer = event_buffer.subspan(<a class="code" href="namespaceelphi.html#ae8776e6a8b7c452a33f2ba26aa908451">c_page_size</a>);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">// Extract header from the buffer.</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    perf_event_header event_header;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment">// Header does not fit -&gt; no unread sample.</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="comment">// Both values are non-decreasing.</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">if</span> (head-&gt;data_tail + <span class="keyword">sizeof</span>(event_header) &gt; head-&gt;data_head)</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">return</span> std::nullopt;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="namespaceelphi.html#aa21883a95e62e8aaffacbf71d1c11b89">read_memory_barrier</a>();</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    std::span header_dest{<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;event_header), <span class="keyword">sizeof</span>(event_header)};</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="namespaceelphi.html#abf3122a8c93cf114646fa8ca48cf46fe">move_wrapped</a>(buffer, head-&gt;data_tail % buffer.size(), header_dest);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">if</span> (dest) {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="comment">// Whole event has not been fully written yet.</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="comment">// Can it even happen?</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">if</span> (head-&gt;data_tail + event_header.size &gt; head-&gt;data_head)</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keywordflow">return</span> std::nullopt;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        dest-&gt;resize(event_header.size - <span class="keyword">sizeof</span>(perf_event_header));</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="comment">// Some examples and manpages recommend memory barries after reading the values, not sure why.</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <a class="code" href="namespaceelphi.html#aa21883a95e62e8aaffacbf71d1c11b89">read_memory_barrier</a>();</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="namespaceelphi.html#abf3122a8c93cf114646fa8ca48cf46fe">move_wrapped</a>(buffer, (head-&gt;data_tail + <span class="keyword">sizeof</span>(event_header)) % buffer.size(), *dest);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">if</span> (!peek_only) {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        head-&gt;data_tail += event_header.size;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <a class="code" href="namespaceelphi.html#aa21883a95e62e8aaffacbf71d1c11b89">read_memory_barrier</a>();</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">return</span> event_header;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">bool</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="namespaceelphi_1_1data.html#a7cbab2eefa70013e68ce9f210ebefd6d">   90</a></span>&#160;<a class="code" href="namespaceelphi_1_1data.html#a7cbab2eefa70013e68ce9f210ebefd6d">perf_start</a>(<span class="keywordtype">int</span> event_fd, <span class="keywordtype">bool</span> do_reset) noexcept {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">return</span> (do_reset &amp;&amp; ioctl(event_fd, PERF_EVENT_IOC_RESET, 0) == 0) ||</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;           ioctl(event_fd, PERF_EVENT_IOC_ENABLE, 0) == 0;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keywordtype">void</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="namespaceelphi_1_1data.html#ad5ce484210fe06b1804efd4b99f81a23">   96</a></span>&#160;<a class="code" href="namespaceelphi_1_1data.html#ad5ce484210fe06b1804efd4b99f81a23">perf_stop</a>(<span class="keywordtype">int</span> event_fd) noexcept {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    ioctl(event_fd, PERF_EVENT_IOC_DISABLE, 0);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;} <span class="comment">// namespace elphi::data</span></div>
-<div class="ttc" id="anamespaceelphi_1_1data_html"><div class="ttname"><a href="namespaceelphi_1_1data.html">elphi::data</a></div><div class="ttdef"><b>Definition:</b> <a href="perf__events_8hpp_source.html#l00016">perf_events.hpp:16</a></div></div>
-<div class="ttc" id="anamespaceelphi_1_1data_html_a007bc54cbcc971c401df7a4bda3861c9"><div class="ttname"><a href="namespaceelphi_1_1data.html#a007bc54cbcc971c401df7a4bda3861c9">elphi::data::map_perf_event_buffer</a></div><div class="ttdeci">PerfEventBuffer map_perf_event_buffer(int event_fd, std::size_t num_pages) noexcept</div><div class="ttdoc">Map the event buffer used by perf_event_open for records.</div><div class="ttdef"><b>Definition:</b> <a href="perf__events_8cpp_source.html#l00032">perf_events.cpp:32</a></div></div>
-<div class="ttc" id="anamespaceelphi_1_1data_html_a7cbab2eefa70013e68ce9f210ebefd6d"><div class="ttname"><a href="namespaceelphi_1_1data.html#a7cbab2eefa70013e68ce9f210ebefd6d">elphi::data::perf_start</a></div><div class="ttdeci">bool perf_start(int event_fd, bool do_reset=false) noexcept</div><div class="ttdoc">Start/resume the event.</div><div class="ttdef"><b>Definition:</b> <a href="perf__events_8cpp_source.html#l00090">perf_events.cpp:90</a></div></div>
-<div class="ttc" id="anamespaceelphi_1_1data_html_a7eb80d3adad62acdb083c2e15b4b2dac"><div class="ttname"><a href="namespaceelphi_1_1data.html#a7eb80d3adad62acdb083c2e15b4b2dac">elphi::data::get_perf_event</a></div><div class="ttdeci">std::optional&lt; perf_event_header &gt; get_perf_event(PerfEventBuffer event_buffer, Buffer *dest, bool peek_only)</div><div class="ttdoc">Pop the first event from the event buffer.</div><div class="ttdef"><b>Definition:</b> <a href="perf__events_8cpp_source.html#l00051">perf_events.cpp:51</a></div></div>
-<div class="ttc" id="anamespaceelphi_1_1data_html_ab8dddcf0edd3c47603f7b4392e03e80b"><div class="ttname"><a href="namespaceelphi_1_1data.html#ab8dddcf0edd3c47603f7b4392e03e80b">elphi::data::open_perf_event</a></div><div class="ttdeci">int open_perf_event(const perf_event_attr &amp;attr, pid_t pid, int cpu, int group_fd, unsigned long flags) noexcept</div><div class="ttdoc">perf_event_open syscall.</div><div class="ttdef"><b>Definition:</b> <a href="perf__events_8cpp_source.html#l00025">perf_events.cpp:25</a></div></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="utils_8hpp.html">elphi/utils.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceelphi_1_1data.html">elphi::data</a> {</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="namespaceelphi_1_1data_1_1anonymous__namespace_02perf__events_8cpp_03.html">   18</a></span>&#160;<span class="keyword">namespace </span>{</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="namespaceelphi_1_1data_1_1anonymous__namespace_02perf__events_8cpp_03.html#aea209b70ef62f7da23c5cbfc9ae8e1c9">   19</a></span>&#160;<span class="keyword">const</span> std::size_t <a class="code" href="namespaceelphi.html#ae8776e6a8b7c452a33f2ba26aa908451">c_page_size</a> = getpagesize();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;} <span class="comment">// namespace</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">int</span> <span class="comment">// NOLINTNEXTLINE - unsigned long on purpose.</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="namespaceelphi_1_1data.html#ab8dddcf0edd3c47603f7b4392e03e80b">   23</a></span>&#160;<a class="code" href="namespaceelphi_1_1data.html#ab8dddcf0edd3c47603f7b4392e03e80b">open_perf_event</a>(<span class="keyword">const</span> perf_event_attr&amp; attr, pid_t pid, <span class="keywordtype">int</span> cpu, <span class="keywordtype">int</span> group_fd, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> flags) noexcept {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="comment">// NOLINTNEXTLINE - syscall is vararg.</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">auto</span> res = syscall(SYS_perf_event_open, &amp;attr, pid, cpu, group_fd, flags);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(res);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<a class="code" href="namespaceelphi_1_1data.html#ab9c8a4d34c8b6b70339ce8f8d50eb158">PerfEventBuffer</a></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="namespaceelphi_1_1data.html#a007bc54cbcc971c401df7a4bda3861c9">   30</a></span>&#160;<a class="code" href="namespaceelphi_1_1data.html#a007bc54cbcc971c401df7a4bda3861c9">map_perf_event_buffer</a>(<span class="keywordtype">int</span> event_fd, std::size_t num_pages) noexcept {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">if</span> (event_fd &lt; 0 || num_pages == 0)</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">return</span> {};</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="comment">//+1 for the buffer header.</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    std::size_t map_size = <a class="code" href="namespaceelphi.html#ae8776e6a8b7c452a33f2ba26aa908451">c_page_size</a> * (1 + num_pages);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">auto</span>* ptr = <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(mmap(<span class="keyword">nullptr</span>, map_size, PROT_READ | PROT_WRITE, MAP_SHARED, event_fd, 0));</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">reinterpret_cast&lt;</span>std::intptr_t<span class="keyword">&gt;</span>(ptr) != -1 ? <a class="code" href="namespaceelphi_1_1data.html#ab9c8a4d34c8b6b70339ce8f8d50eb158">PerfEventBuffer</a>{ptr, map_size} : <a class="code" href="namespaceelphi_1_1data.html#ab9c8a4d34c8b6b70339ce8f8d50eb158">PerfEventBuffer</a>{};</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="namespaceelphi_1_1data.html#ac35f082615f25885feb63b9615aacb5f">   42</a></span>&#160;<a class="code" href="namespaceelphi_1_1data.html#ac35f082615f25885feb63b9615aacb5f">unmap_perf_event_buffer</a>(<a class="code" href="namespaceelphi_1_1data.html#ab9c8a4d34c8b6b70339ce8f8d50eb158">PerfEventBuffer</a> event_buffer) noexcept {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">if</span> (event_buffer.empty() &amp;&amp; (event_buffer.size() % <a class="code" href="namespaceelphi.html#ae8776e6a8b7c452a33f2ba26aa908451">c_page_size</a>) == 0)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        (void)munmap(event_buffer.data(), event_buffer.size());</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;std::optional&lt;perf_event_header&gt;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="namespaceelphi_1_1data.html#a7eb80d3adad62acdb083c2e15b4b2dac">   49</a></span>&#160;<a class="code" href="namespaceelphi_1_1data.html#a7eb80d3adad62acdb083c2e15b4b2dac">get_perf_event</a>(<a class="code" href="namespaceelphi_1_1data.html#ab9c8a4d34c8b6b70339ce8f8d50eb158">PerfEventBuffer</a> event_buffer, <a class="code" href="namespaceelphi.html#aa80cffeb43e7aa870c96b1673d7a36d1">Buffer</a>* dest, <span class="keywordtype">bool</span> peek_only) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">if</span> (event_buffer.empty() || (event_buffer.size() % <a class="code" href="namespaceelphi.html#ae8776e6a8b7c452a33f2ba26aa908451">c_page_size</a>) != 0)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> std::nullopt;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">auto</span>* head = type_pune&lt;perf_event_mmap_page&gt;(event_buffer.data());</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> buffer = event_buffer.subspan(<a class="code" href="namespaceelphi.html#ae8776e6a8b7c452a33f2ba26aa908451">c_page_size</a>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">// Extract header from the buffer.</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    perf_event_header event_header;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">// Header does not fit -&gt; no unread sample.</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="comment">// Both values are non-decreasing.</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">if</span> (head-&gt;data_tail + <span class="keyword">sizeof</span>(event_header) &gt; head-&gt;data_head)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">return</span> std::nullopt;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="namespaceelphi.html#aa21883a95e62e8aaffacbf71d1c11b89">read_memory_barrier</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    std::span header_dest{<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;event_header), <span class="keyword">sizeof</span>(event_header)};</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="namespaceelphi.html#abf3122a8c93cf114646fa8ca48cf46fe">move_wrapped</a>(buffer, head-&gt;data_tail % buffer.size(), header_dest);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">if</span> (dest) {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="comment">// Whole event has not been fully written yet.</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="comment">// Can it even happen?</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">if</span> (head-&gt;data_tail + event_header.size &gt; head-&gt;data_head)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordflow">return</span> std::nullopt;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        dest-&gt;resize(event_header.size - <span class="keyword">sizeof</span>(perf_event_header));</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="comment">// Some examples and manpages recommend memory barries after reading the values, not sure why.</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <a class="code" href="namespaceelphi.html#aa21883a95e62e8aaffacbf71d1c11b89">read_memory_barrier</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <a class="code" href="namespaceelphi.html#abf3122a8c93cf114646fa8ca48cf46fe">move_wrapped</a>(buffer, (head-&gt;data_tail + <span class="keyword">sizeof</span>(event_header)) % buffer.size(), *dest);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">if</span> (!peek_only) {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        head-&gt;data_tail += event_header.size;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <a class="code" href="namespaceelphi.html#aa21883a95e62e8aaffacbf71d1c11b89">read_memory_barrier</a>();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">return</span> event_header;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keywordtype">bool</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="namespaceelphi_1_1data.html#a7cbab2eefa70013e68ce9f210ebefd6d">   88</a></span>&#160;<a class="code" href="namespaceelphi_1_1data.html#a7cbab2eefa70013e68ce9f210ebefd6d">perf_start</a>(<span class="keywordtype">int</span> event_fd, <span class="keywordtype">bool</span> do_reset) noexcept {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">return</span> (do_reset &amp;&amp; ioctl(event_fd, PERF_EVENT_IOC_RESET, 0) == 0) ||</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;           ioctl(event_fd, PERF_EVENT_IOC_ENABLE, 0) == 0;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="namespaceelphi_1_1data.html#ad5ce484210fe06b1804efd4b99f81a23">   94</a></span>&#160;<a class="code" href="namespaceelphi_1_1data.html#ad5ce484210fe06b1804efd4b99f81a23">perf_stop</a>(<span class="keywordtype">int</span> event_fd) noexcept {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    ioctl(event_fd, PERF_EVENT_IOC_DISABLE, 0);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;} <span class="comment">// namespace elphi::data</span></div>
+<div class="ttc" id="anamespaceelphi_1_1data_html"><div class="ttname"><a href="namespaceelphi_1_1data.html">elphi::data</a></div><div class="ttdef"><b>Definition:</b> <a href="perf__cpu__sampler_8hpp_source.html#l00009">perf_cpu_sampler.hpp:9</a></div></div>
+<div class="ttc" id="anamespaceelphi_1_1data_html_a007bc54cbcc971c401df7a4bda3861c9"><div class="ttname"><a href="namespaceelphi_1_1data.html#a007bc54cbcc971c401df7a4bda3861c9">elphi::data::map_perf_event_buffer</a></div><div class="ttdeci">PerfEventBuffer map_perf_event_buffer(int event_fd, std::size_t num_pages) noexcept</div><div class="ttdoc">Map the event buffer used by perf_event_open for records.</div><div class="ttdef"><b>Definition:</b> <a href="perf__events_8cpp_source.html#l00030">perf_events.cpp:30</a></div></div>
+<div class="ttc" id="anamespaceelphi_1_1data_html_a7cbab2eefa70013e68ce9f210ebefd6d"><div class="ttname"><a href="namespaceelphi_1_1data.html#a7cbab2eefa70013e68ce9f210ebefd6d">elphi::data::perf_start</a></div><div class="ttdeci">bool perf_start(int event_fd, bool do_reset=false) noexcept</div><div class="ttdoc">Start/resume the event.</div><div class="ttdef"><b>Definition:</b> <a href="perf__events_8cpp_source.html#l00088">perf_events.cpp:88</a></div></div>
+<div class="ttc" id="anamespaceelphi_1_1data_html_a7eb80d3adad62acdb083c2e15b4b2dac"><div class="ttname"><a href="namespaceelphi_1_1data.html#a7eb80d3adad62acdb083c2e15b4b2dac">elphi::data::get_perf_event</a></div><div class="ttdeci">std::optional&lt; perf_event_header &gt; get_perf_event(PerfEventBuffer event_buffer, Buffer *dest, bool peek_only)</div><div class="ttdoc">Pop the first event from the event buffer.</div><div class="ttdef"><b>Definition:</b> <a href="perf__events_8cpp_source.html#l00049">perf_events.cpp:49</a></div></div>
+<div class="ttc" id="anamespaceelphi_1_1data_html_ab8dddcf0edd3c47603f7b4392e03e80b"><div class="ttname"><a href="namespaceelphi_1_1data.html#ab8dddcf0edd3c47603f7b4392e03e80b">elphi::data::open_perf_event</a></div><div class="ttdeci">int open_perf_event(const perf_event_attr &amp;attr, pid_t pid, int cpu, int group_fd, unsigned long flags) noexcept</div><div class="ttdoc">perf_event_open syscall.</div><div class="ttdef"><b>Definition:</b> <a href="perf__events_8cpp_source.html#l00023">perf_events.cpp:23</a></div></div>
 <div class="ttc" id="anamespaceelphi_1_1data_html_ab9c8a4d34c8b6b70339ce8f8d50eb158"><div class="ttname"><a href="namespaceelphi_1_1data.html#ab9c8a4d34c8b6b70339ce8f8d50eb158">elphi::data::PerfEventBuffer</a></div><div class="ttdeci">std::span&lt; unsigned char &gt; PerfEventBuffer</div><div class="ttdef"><b>Definition:</b> <a href="perf__events_8hpp_source.html#l00019">perf_events.hpp:19</a></div></div>
-<div class="ttc" id="anamespaceelphi_1_1data_html_ac35f082615f25885feb63b9615aacb5f"><div class="ttname"><a href="namespaceelphi_1_1data.html#ac35f082615f25885feb63b9615aacb5f">elphi::data::unmap_perf_event_buffer</a></div><div class="ttdeci">void unmap_perf_event_buffer(PerfEventBuffer event_buffer) noexcept</div><div class="ttdoc">Unmap previously mapped event_buffer.</div><div class="ttdef"><b>Definition:</b> <a href="perf__events_8cpp_source.html#l00044">perf_events.cpp:44</a></div></div>
-<div class="ttc" id="anamespaceelphi_1_1data_html_ad5ce484210fe06b1804efd4b99f81a23"><div class="ttname"><a href="namespaceelphi_1_1data.html#ad5ce484210fe06b1804efd4b99f81a23">elphi::data::perf_stop</a></div><div class="ttdeci">void perf_stop(int event_fd) noexcept</div><div class="ttdoc">Pause the event.</div><div class="ttdef"><b>Definition:</b> <a href="perf__events_8cpp_source.html#l00096">perf_events.cpp:96</a></div></div>
+<div class="ttc" id="anamespaceelphi_1_1data_html_ac35f082615f25885feb63b9615aacb5f"><div class="ttname"><a href="namespaceelphi_1_1data.html#ac35f082615f25885feb63b9615aacb5f">elphi::data::unmap_perf_event_buffer</a></div><div class="ttdeci">void unmap_perf_event_buffer(PerfEventBuffer event_buffer) noexcept</div><div class="ttdoc">Unmap previously mapped event_buffer.</div><div class="ttdef"><b>Definition:</b> <a href="perf__events_8cpp_source.html#l00042">perf_events.cpp:42</a></div></div>
+<div class="ttc" id="anamespaceelphi_1_1data_html_ad5ce484210fe06b1804efd4b99f81a23"><div class="ttname"><a href="namespaceelphi_1_1data.html#ad5ce484210fe06b1804efd4b99f81a23">elphi::data::perf_stop</a></div><div class="ttdeci">void perf_stop(int event_fd) noexcept</div><div class="ttdoc">Pause the event.</div><div class="ttdef"><b>Definition:</b> <a href="perf__events_8cpp_source.html#l00094">perf_events.cpp:94</a></div></div>
 <div class="ttc" id="anamespaceelphi_html_aa21883a95e62e8aaffacbf71d1c11b89"><div class="ttname"><a href="namespaceelphi.html#aa21883a95e62e8aaffacbf71d1c11b89">elphi::read_memory_barrier</a></div><div class="ttdeci">void read_memory_barrier()</div><div class="ttdoc">Compiler memory barrier.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8hpp_source.html#l00024">utils.hpp:24</a></div></div>
 <div class="ttc" id="anamespaceelphi_html_aa80cffeb43e7aa870c96b1673d7a36d1"><div class="ttname"><a href="namespaceelphi.html#aa80cffeb43e7aa870c96b1673d7a36d1">elphi::Buffer</a></div><div class="ttdeci">std::vector&lt; unsigned char &gt; Buffer</div><div class="ttdef"><b>Definition:</b> <a href="utils_8hpp_source.html#l00018">utils.hpp:18</a></div></div>
 <div class="ttc" id="anamespaceelphi_html_abf3122a8c93cf114646fa8ca48cf46fe"><div class="ttname"><a href="namespaceelphi.html#abf3122a8c93cf114646fa8ca48cf46fe">elphi::move_wrapped</a></div><div class="ttdeci">std::size_t move_wrapped(RangeSrc &amp;&amp;src, std::size_t src_offset, RangeDest &amp;&amp;dest)</div><div class="ttdoc">Move elements from circular src to fill dest.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8hpp_source.html#l00061">utils.hpp:61</a></div></div>
@@ -214,7 +212,7 @@ $(document).ready(function(){initNavTree('perf__events_8cpp_source.html',''); in
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_812392a79f9697c1c93a2c8857dce35c.html">elphi</a></li><li class="navelem"><a class="el" href="dir_0aebe75bc63edfbfc54835b492a46e31.html">src</a></li><li class="navelem"><a class="el" href="perf__events_8cpp.html">perf_events.cpp</a></li>
-    <li class="footer">Generated on Sun Jun 12 2022 16:21:20 for ElPhi by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Jun 14 2022 20:29:43 for ElPhi by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

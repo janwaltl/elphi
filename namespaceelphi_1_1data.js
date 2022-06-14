@@ -1,8 +1,10 @@
 var namespaceelphi_1_1data =
 [
+    [ "anonymous_namespace{perf_cpu_sampler.cpp}", "namespaceelphi_1_1data_1_1anonymous__namespace_02perf__cpu__sampler_8cpp_03.html", "namespaceelphi_1_1data_1_1anonymous__namespace_02perf__cpu__sampler_8cpp_03" ],
     [ "anonymous_namespace{perf_events.cpp}", "namespaceelphi_1_1data_1_1anonymous__namespace_02perf__events_8cpp_03.html", [
       [ "c_page_size", "namespaceelphi_1_1data_1_1anonymous__namespace_02perf__events_8cpp_03.html#aea209b70ef62f7da23c5cbfc9ae8e1c9", null ]
     ] ],
+    [ "PerfCpuSampler", "classelphi_1_1data_1_1PerfCpuSampler.html", "classelphi_1_1data_1_1PerfCpuSampler" ],
     [ "PerfEventBuffer", "namespaceelphi_1_1data.html#ab9c8a4d34c8b6b70339ce8f8d50eb158", null ],
     [ "get_perf_event", "namespaceelphi_1_1data.html#a7eb80d3adad62acdb083c2e15b4b2dac", null ],
     [ "map_perf_event_buffer", "namespaceelphi_1_1data.html#a007bc54cbcc971c401df7a4bda3861c9", null ],

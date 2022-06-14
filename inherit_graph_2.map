@@ -1,3 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structelphi_1_1Sample.html" title=" " alt="" coords="5,5,104,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,107,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="155,5,261,32"/>
+<area shape="rect" id="node3" href="$classelphi_1_1ElphiException.html" title="Base exception class for ElPhi project." alt="" coords="309,5,448,32"/>
 </map>

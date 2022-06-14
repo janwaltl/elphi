@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['sample_70',['Sample',['../structelphi_1_1Sample.html',1,'elphi']]],
-  ['samplingresult_71',['SamplingResult',['../structelphi_1_1SamplingResult.html',1,'elphi']]]
+  ['perfcpusampler_101',['PerfCpuSampler',['../classelphi_1_1data_1_1PerfCpuSampler.html',1,'elphi::data']]]
 ];
