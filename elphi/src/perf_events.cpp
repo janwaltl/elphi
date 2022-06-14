@@ -12,9 +12,7 @@
 #include <unistd.h>
 
 #include <elphi/perf_events.hpp>
-
-#include "elphi/utils.hpp"
-#include "fmt/core.h"
+#include <elphi/utils.hpp>
 
 namespace elphi::data {
 namespace {
@@ -37,7 +35,7 @@ map_perf_event_buffer(int event_fd, std::size_t num_pages) noexcept {
     std::size_t map_size = c_page_size * (1 + num_pages);
     auto* ptr = static_cast<unsigned char*>(mmap(nullptr, map_size, PROT_READ | PROT_WRITE, MAP_SHARED, event_fd, 0));
 
-    return ptr ? PerfEventBuffer{ptr, map_size} : PerfEventBuffer{};
+    return reinterpret_cast<std::intptr_t>(ptr) != -1 ? PerfEventBuffer{ptr, map_size} : PerfEventBuffer{};
 }
 
 void
