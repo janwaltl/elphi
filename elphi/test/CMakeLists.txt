@@ -59,5 +59,6 @@ target_sources(
   test_timeline_view.cpp
   test_utils.cpp
   test_perf_events.cpp
+  test_file_descriptor.cpp
   mock_syscalls.cpp
 )
