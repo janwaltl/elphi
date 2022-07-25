@@ -3,6 +3,7 @@
  *
  * RAII wrapper around C file descriptor.
  ******************************************************************************/
+#pragma once
 
 #include <cstdint>
 
