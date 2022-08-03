@@ -8,15 +8,11 @@
 #include <unistd.h>
 
 #include <catch2/catch_test_macros.hpp>
+#include <catch2/generators/catch_generators.hpp>
 #include <elphi/perf_events.hpp>
+#include <elphi/utils.hpp>
 
-#include "catch2/generators/catch_generators.hpp"
 #include "mock_syscalls.hpp"
-
-namespace {
-const size_t c_page_size = getpagesize();
-
-} // namespace
 
 
 TEST_CASE("Zero pages events") {
@@ -24,10 +20,6 @@ TEST_CASE("Zero pages events") {
         FAIL_CHECK("Must not be called for zero pages.");
         return nullptr; // Return an error.
     });
-
-    int exp_fd = -1;
-    size_t num_pages = 3;
-    auto buffer = elphi::data::map_perf_event_buffer(exp_fd, num_pages);
 
     REQUIRE(buffer.empty());
 }

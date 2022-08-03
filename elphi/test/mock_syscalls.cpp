@@ -39,10 +39,10 @@ __real_munmap(void* addr, size_t len);
 
 extern "C" int // NOLINTNEXTLINE
 __wrap_munmap(void* addr, size_t len) {
-    if (SysMock::real_syscall["mmap"])
+    if (SysMock::real_syscall["munmap"])
         return __real_munmap(addr, len);
     if (!SysMock::munmap_clbk) {
-        FAIL_CHECK("When using mocked mmap, clbk must be provided.");
+        FAIL_CHECK("When using mocked munmap, clbk must be provided.");
         return -1;
     }
     return SysMock::munmap_clbk(addr, len);
@@ -56,10 +56,24 @@ __wrap_close(int fd) {
     if (SysMock::real_syscall["close"])
         return __real_close(fd);
     if (!SysMock::close_clbk) {
-        FAIL_CHECK("When using mocked mmap, clbk must be provided.");
+        FAIL_CHECK("When using mocked close, clbk must be provided.");
         return -1;
     }
     return SysMock::close_clbk(fd);
+}
+
+extern "C" int // NOLINTNEXTLINE - unsigned long on purpose.
+__real_open_perf_event(const perf_event_attr& attr, pid_t pid, int cpu, int group_fd, unsigned long flags);
+
+extern "C" int // NOLINTNEXTLINE - unsigned long on purpose.
+__wrap_open_perf_event(const perf_event_attr& attr, pid_t pid, int cpu, int group_fd, unsigned long flags) {
+    if (SysMock::real_syscall["perf_event"])
+        return __real_open_perf_event(attr, pid, cpu, group_fd, flags);
+    if (!SysMock::perf_event_clbk) {
+        FAIL_CHECK("When using mocked perf_event_open, clbk must be provided.");
+        return -1;
+    }
+    return SysMock::perf_event_clbk(attr, pid, cpu, group_fd, flags);
 }
 
 void
@@ -92,4 +106,10 @@ void
 SysMock::set_close_clbk(CloseClbk clbk) {
     SysMock::use_mocked_syscall("close");
     SysMock::close_clbk = std::move(clbk);
+}
+
+void
+SysMock::set_perf_event_clbk(PerfEventClbk clbk) {
+    SysMock::use_mocked_syscall("perf_event");
+    SysMock::perf_event_clbk = std::move(clbk);
 }

@@ -26,7 +26,7 @@ namespace elphi {
 
 namespace {
 
-int // NOLINTNEXTLINE - unsigned long on purpose.
+extern "C" int // NOLINTNEXTLINE - unsigned long on purpose.
 open_perf_event(const perf_event_attr& attr, pid_t pid, int cpu, int group_fd, unsigned long flags) noexcept {
     // NOLINTNEXTLINE - syscall is vararg.
     auto res = syscall(SYS_perf_event_open, &attr, pid, cpu, group_fd, flags);

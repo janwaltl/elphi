@@ -13,6 +13,7 @@ target_link_options(
   -Wl,--wrap=mmap
   -Wl,--wrap=munmap
   -Wl,--wrap=close
+  -Wl,--wrap=open_perf_event
 )
 
 include(CTest)
