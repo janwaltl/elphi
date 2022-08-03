@@ -1,3 +1,8 @@
+/*******************************************************************************
+ * @file perf_events.cpp
+ * @copyright Copyright 2022 Jan Waltl.
+ * @license	This file is released under ElPhi project's license, see LICENSE.
+ ******************************************************************************/
 #include <cassert>
 #include <cerrno>
 #include <cstdint>
@@ -5,6 +10,7 @@
 #include <cstring>
 #include <ctime>
 
+#include <fmt/format.h>
 #include <linux/perf_event.h>
 #include <sys/ioctl.h>
 #include <sys/mman.h>
@@ -14,10 +20,11 @@
 #include <elphi/perf_events.hpp>
 #include <elphi/utils.hpp>
 
-namespace elphi::data {
+#include "elphi/exception.hpp"
+
+namespace elphi {
+
 namespace {
-const std::size_t c_page_size = getpagesize();
-} // namespace
 
 int // NOLINTNEXTLINE - unsigned long on purpose.
 open_perf_event(const perf_event_attr& attr, pid_t pid, int cpu, int group_fd, unsigned long flags) noexcept {
@@ -25,59 +32,60 @@ open_perf_event(const perf_event_attr& attr, pid_t pid, int cpu, int group_fd, u
     auto res = syscall(SYS_perf_event_open, &attr, pid, cpu, group_fd, flags);
     return static_cast<int>(res);
 }
+} // namespace
 
-PerfEventBuffer
-map_perf_event_buffer(int event_fd, std::size_t num_pages) noexcept {
-    if (event_fd < 0 || num_pages == 0)
+PerfEvents::PerfEventBuffer
+PerfEvents::map_perf_event_buffer(std::size_t num_pages) noexcept {
+    if (!m_fd.is_opened() || num_pages == 0)
         return {};
 
     //+1 for the buffer header.
     std::size_t map_size = c_page_size * (1 + num_pages);
-    auto* ptr = static_cast<unsigned char*>(mmap(nullptr, map_size, PROT_READ | PROT_WRITE, MAP_SHARED, event_fd, 0));
+    auto* ptr = static_cast<unsigned char*>(mmap(nullptr, map_size, PROT_READ | PROT_WRITE, MAP_SHARED, m_fd.raw(), 0));
 
     return reinterpret_cast<std::intptr_t>(ptr) != -1 ? PerfEventBuffer{ptr, map_size} : PerfEventBuffer{};
 }
 
 void
-unmap_perf_event_buffer(PerfEventBuffer event_buffer) noexcept {
-    if (event_buffer.empty() && (event_buffer.size() % c_page_size) == 0)
-        (void)munmap(event_buffer.data(), event_buffer.size());
+PerfEvents::unmap_perf_event_buffer() noexcept {
+    if (!m_buffer.empty() && (m_buffer.size() % c_page_size) == 0)
+        (void)munmap(m_buffer.data(), m_buffer.size());
 }
 
 
 std::optional<perf_event_header>
-get_perf_event(PerfEventBuffer event_buffer, Buffer* dest, bool peek_only) {
-    if (event_buffer.empty() || (event_buffer.size() % c_page_size) != 0)
+PerfEvents::get_perf_event(Buffer* dest, bool peek_only) {
+    if (!m_fd.is_opened() || m_buffer.empty() || (m_buffer.size() % c_page_size) != 0)
         return std::nullopt;
 
-    auto* head = type_pune<perf_event_mmap_page>(event_buffer.data());
-    const auto buffer = event_buffer.subspan(c_page_size);
+    auto* header = type_pune<perf_event_mmap_page>(m_buffer.data());
+    // The ring buffer begins at the next page.
+    const auto buffer = m_buffer.subspan(c_page_size);
 
-    // Extract header from the buffer.
     perf_event_header event_header;
     // Header does not fit -> no unread sample.
     // Both values are non-decreasing.
-    if (head->data_tail + sizeof(event_header) > head->data_head)
+    if (header->data_tail + sizeof(event_header) > header->data_head)
         return std::nullopt;
     read_memory_barrier();
 
     std::span header_dest{reinterpret_cast<unsigned char*>(&event_header), sizeof(event_header)};
-    move_wrapped(buffer, head->data_tail % buffer.size(), header_dest);
+    move_wrapped(buffer, header->data_tail % buffer.size(), header_dest);
 
     if (dest) {
-        // Whole event has not been fully written yet.
-        // Can it even happen?
-        if (head->data_tail + event_header.size > head->data_head)
+        // The event is only partially written. Can it even happen?
+        if (header->data_tail + event_header.size > header->data_head) [[unlikely]]
             return std::nullopt;
+
         dest->resize(event_header.size - sizeof(perf_event_header));
         // Some examples and manpages recommend memory barries after reading the values, not sure why.
         read_memory_barrier();
 
-        move_wrapped(buffer, (head->data_tail + sizeof(event_header)) % buffer.size(), *dest);
+        move_wrapped(buffer, (header->data_tail + sizeof(event_header)) % buffer.size(), *dest);
     }
 
     if (!peek_only) {
-        head->data_tail += event_header.size;
+        header->data_tail += event_header.size;
         read_memory_barrier();
     }
 
@@ -85,14 +93,37 @@ get_perf_event(PerfEventBuffer event_buffer, Buffer* dest, bool peek_only) {
 }
 
 bool
-perf_start(int event_fd, bool do_reset) noexcept {
-    return (do_reset && ioctl(event_fd, PERF_EVENT_IOC_RESET, 0) == 0) ||
-           ioctl(event_fd, PERF_EVENT_IOC_ENABLE, 0) == 0;
+PerfEvents::perf_start(bool do_reset) noexcept {
+    return (do_reset && ioctl(m_fd.raw(), PERF_EVENT_IOC_RESET, 0) == 0) ||
+           ioctl(m_fd.raw(), PERF_EVENT_IOC_ENABLE, 0) == 0;
 }
 
 void
-perf_stop(int event_fd) noexcept {
-    ioctl(event_fd, PERF_EVENT_IOC_DISABLE, 0);
+PerfEvents::perf_stop() noexcept {
+    (void)ioctl(m_fd.raw(), PERF_EVENT_IOC_DISABLE, 0);
 }
 
-} // namespace elphi::data
+PerfEvents::PerfEvents(const perf_event_attr& attr, pid_t pid, int cpu, int group_fd, std::uint64_t flags,
+                       std::size_t num_pages) {
+    m_fd = FileDescriptor{open_perf_event(attr, pid, cpu, group_fd, flags)};
+    if (m_fd.raw() == -1) [[unlikely]]
+        throw ElphiException(fmt::format("Failed to open the event, reason: {}", strerror(errno)));
+
+    m_buffer = map_perf_event_buffer(num_pages);
+    if (m_buffer.empty()) [[unlikely]]
+        throw ElphiException(fmt::format("Failed to map the buffer, reason: {}", strerror(errno)));
+}
+
+PerfEvents&
+PerfEvents::operator=(PerfEvents&& other) noexcept {
+    if (this != &other) [[unlikely]] {
+        this->unmap_perf_event_buffer();
+        this->m_fd = std::move(other.m_fd);
+        this->m_buffer = other.m_buffer;
+    }
+    return *this;
+}
+
+PerfEvents::~PerfEvents() noexcept { unmap_perf_event_buffer(); }
+
+} // namespace elphi
