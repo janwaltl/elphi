@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ElPhi: elphi::data::anonymous_namespace{perf_events.cpp} Namespace Reference</title>
+<title>ElPhi: elphi::anonymous_namespace{perf_events.cpp} Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -71,7 +71,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('namespaceelphi_1_1data_1_1anonymous__namespace_02perf__events_8cpp_03.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('namespaceelphi_1_1anonymous__namespace_02perf__events_8cpp_03.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -91,31 +91,71 @@ $(document).ready(function(){initNavTree('namespaceelphi_1_1data_1_1anonymous__n
 
 <div class="header">
   <div class="summary">
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">elphi::data::anonymous_namespace{perf_events.cpp} Namespace Reference</div>  </div>
+<div class="title">elphi::anonymous_namespace{perf_events.cpp} Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:aea209b70ef62f7da23c5cbfc9ae8e1c9"><td class="memItemLeft" align="right" valign="top">const std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceelphi_1_1data_1_1anonymous__namespace_02perf__events_8cpp_03.html#aea209b70ef62f7da23c5cbfc9ae8e1c9">c_page_size</a> = getpagesize()</td></tr>
-<tr class="separator:aea209b70ef62f7da23c5cbfc9ae8e1c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a22475c578e9383056674dbcab05b364e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceelphi_1_1anonymous__namespace_02perf__events_8cpp_03.html#a22475c578e9383056674dbcab05b364e">open_perf_event</a> (const perf_event_attr &amp;attr, pid_t pid, int cpu, int group_fd, unsigned long flags) noexcept</td></tr>
+<tr class="separator:a22475c578e9383056674dbcab05b364e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="aea209b70ef62f7da23c5cbfc9ae8e1c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aea209b70ef62f7da23c5cbfc9ae8e1c9">&#9670;&nbsp;</a></span>c_page_size</h2>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a22475c578e9383056674dbcab05b364e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22475c578e9383056674dbcab05b364e">&#9670;&nbsp;</a></span>open_perf_event()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const std::size_t elphi::data::anonymous_namespace{perf_events.cpp}::c_page_size = getpagesize()</td>
+          <td class="memname">int elphi::anonymous_namespace{perf_events.cpp}::open_perf_event </td>
+          <td>(</td>
+          <td class="paramtype">const perf_event_attr &amp;&#160;</td>
+          <td class="paramname"><em>attr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">pid_t&#160;</td>
+          <td class="paramname"><em>pid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cpu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>group_fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned long&#160;</td>
+          <td class="paramname"><em>flags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="perf__events_8cpp_source.html#l00019">19</a> of file <a class="el" href="perf__events_8cpp_source.html">perf_events.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="perf__events_8cpp_source.html#l00030">30</a> of file <a class="el" href="perf__events_8cpp_source.html">perf_events.cpp</a>.</p>
 
 </div>
 </div>
@@ -124,8 +164,8 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="namespaceelphi.html">elphi</a></li><li class="navelem"><a class="el" href="namespaceelphi_1_1data.html">data</a></li><li class="navelem"><a class="el" href="namespaceelphi_1_1data_1_1anonymous__namespace_02perf__events_8cpp_03.html">anonymous_namespace{perf_events.cpp}</a></li>
-    <li class="footer">Generated on Tue Jun 14 2022 20:29:43 for ElPhi by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="navelem"><a class="el" href="namespaceelphi.html">elphi</a></li><li class="navelem"><a class="el" href="namespaceelphi_1_1anonymous__namespace_02perf__events_8cpp_03.html">anonymous_namespace{perf_events.cpp}</a></li>
+    <li class="footer">Generated on Wed Aug 3 2022 20:45:03 for ElPhi by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

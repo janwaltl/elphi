@@ -1,9 +1,13 @@
 var namespaceelphi =
 [
+    [ "anonymous_namespace{perf_events.cpp}", "namespaceelphi_1_1anonymous__namespace_02perf__events_8cpp_03.html", [
+      [ "open_perf_event", "namespaceelphi_1_1anonymous__namespace_02perf__events_8cpp_03.html#a22475c578e9383056674dbcab05b364e", null ]
+    ] ],
     [ "data", "namespaceelphi_1_1data.html", "namespaceelphi_1_1data" ],
     [ "view", "namespaceelphi_1_1view.html", "namespaceelphi_1_1view" ],
     [ "ElphiException", "classelphi_1_1ElphiException.html", "classelphi_1_1ElphiException" ],
     [ "FileDescriptor", "classelphi_1_1FileDescriptor.html", "classelphi_1_1FileDescriptor" ],
+    [ "PerfEvents", "classelphi_1_1PerfEvents.html", "classelphi_1_1PerfEvents" ],
     [ "Sample", "structelphi_1_1Sample.html", "structelphi_1_1Sample" ],
     [ "SamplingResult", "structelphi_1_1SamplingResult.html", "structelphi_1_1SamplingResult" ],
     [ "Buffer", "namespaceelphi.html#aa80cffeb43e7aa870c96b1673d7a36d1", null ],

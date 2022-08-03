@@ -91,9 +91,8 @@ $(document).ready(function(){initNavTree('perf__events_8hpp.html',''); initResiz
 
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
 <div class="title">perf_events.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -103,11 +102,12 @@ $(document).ready(function(){initNavTree('perf__events_8hpp.html',''); initResiz
 <code>#include &lt;variant&gt;</code><br />
 <code>#include &lt;linux/perf_event.h&gt;</code><br />
 <code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="file__descriptor_8hpp_source.html">elphi/file_descriptor.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="utils_8hpp_source.html">elphi/utils.hpp</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for perf_events.hpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="perf__events_8hpp__incl.svg" width="626" height="202"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="perf__events_8hpp__incl.svg" width="738" height="202"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -119,41 +119,20 @@ This graph shows which files directly or indirectly include this file:</div>
 </div>
 <p><a href="perf__events_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classelphi_1_1PerfEvents.html">elphi::PerfEvents</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">RAII wrapper around perf_event Linux subsystem.  <a href="classelphi_1_1PerfEvents.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceelphi"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceelphi.html">elphi</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespaceelphi_1_1data"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceelphi_1_1data.html">elphi::data</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:ab9c8a4d34c8b6b70339ce8f8d50eb158"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceelphi_1_1data.html#ab9c8a4d34c8b6b70339ce8f8d50eb158">elphi::data::PerfEventBuffer</a> = std::span&lt; unsigned char &gt;</td></tr>
-<tr class="separator:ab9c8a4d34c8b6b70339ce8f8d50eb158"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:ab8dddcf0edd3c47603f7b4392e03e80b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceelphi_1_1data.html#ab8dddcf0edd3c47603f7b4392e03e80b">elphi::data::open_perf_event</a> (const perf_event_attr &amp;attr, pid_t pid, int cpu, int group_fd, unsigned long flags) noexcept</td></tr>
-<tr class="memdesc:ab8dddcf0edd3c47603f7b4392e03e80b"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf_event_open syscall.  <a href="namespaceelphi_1_1data.html#ab8dddcf0edd3c47603f7b4392e03e80b">More...</a><br /></td></tr>
-<tr class="separator:ab8dddcf0edd3c47603f7b4392e03e80b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a007bc54cbcc971c401df7a4bda3861c9"><td class="memItemLeft" align="right" valign="top">PerfEventBuffer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceelphi_1_1data.html#a007bc54cbcc971c401df7a4bda3861c9">elphi::data::map_perf_event_buffer</a> (int event_fd, std::size_t num_pages) noexcept</td></tr>
-<tr class="memdesc:a007bc54cbcc971c401df7a4bda3861c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map the event buffer used by perf_event_open for records.  <a href="namespaceelphi_1_1data.html#a007bc54cbcc971c401df7a4bda3861c9">More...</a><br /></td></tr>
-<tr class="separator:a007bc54cbcc971c401df7a4bda3861c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac35f082615f25885feb63b9615aacb5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceelphi_1_1data.html#ac35f082615f25885feb63b9615aacb5f">elphi::data::unmap_perf_event_buffer</a> (PerfEventBuffer event_buffer) noexcept</td></tr>
-<tr class="memdesc:ac35f082615f25885feb63b9615aacb5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unmap previously mapped event_buffer.  <a href="namespaceelphi_1_1data.html#ac35f082615f25885feb63b9615aacb5f">More...</a><br /></td></tr>
-<tr class="separator:ac35f082615f25885feb63b9615aacb5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7eb80d3adad62acdb083c2e15b4b2dac"><td class="memItemLeft" align="right" valign="top">std::optional&lt; perf_event_header &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceelphi_1_1data.html#a7eb80d3adad62acdb083c2e15b4b2dac">elphi::data::get_perf_event</a> (PerfEventBuffer event_buffer, Buffer *dest, bool peek_only)</td></tr>
-<tr class="memdesc:a7eb80d3adad62acdb083c2e15b4b2dac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pop the first event from the event buffer.  <a href="namespaceelphi_1_1data.html#a7eb80d3adad62acdb083c2e15b4b2dac">More...</a><br /></td></tr>
-<tr class="separator:a7eb80d3adad62acdb083c2e15b4b2dac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7cbab2eefa70013e68ce9f210ebefd6d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceelphi_1_1data.html#a7cbab2eefa70013e68ce9f210ebefd6d">elphi::data::perf_start</a> (int event_fd, bool do_reset=false) noexcept</td></tr>
-<tr class="memdesc:a7cbab2eefa70013e68ce9f210ebefd6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start/resume the event.  <a href="namespaceelphi_1_1data.html#a7cbab2eefa70013e68ce9f210ebefd6d">More...</a><br /></td></tr>
-<tr class="separator:a7cbab2eefa70013e68ce9f210ebefd6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5ce484210fe06b1804efd4b99f81a23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceelphi_1_1data.html#ad5ce484210fe06b1804efd4b99f81a23">elphi::data::perf_stop</a> (int event_fd) noexcept</td></tr>
-<tr class="memdesc:ad5ce484210fe06b1804efd4b99f81a23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pause the event.  <a href="namespaceelphi_1_1data.html#ad5ce484210fe06b1804efd4b99f81a23">More...</a><br /></td></tr>
-<tr class="separator:ad5ce484210fe06b1804efd4b99f81a23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Thin C-like wrapper around perf_event_open syscall. </p>
+<div class="textblock"><dl class="section copyright"><dt>Copyright</dt><dd>Copyright 2022 Jan Waltl. </dd></dl>
+<dl class="section user"><dt>License </dt><dd>This file is released under ElPhi project's license, see LICENSE. </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="perf__events_8hpp_source.html">perf_events.hpp</a>.</p>
 </div></div><!-- contents -->
@@ -162,7 +141,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_812392a79f9697c1c93a2c8857dce35c.html">elphi</a></li><li class="navelem"><a class="el" href="dir_0a99ce727943174e194d92de1d94584c.html">include</a></li><li class="navelem"><a class="el" href="dir_ddddcc3451061f927d74ed25c407604c.html">elphi</a></li><li class="navelem"><a class="el" href="perf__events_8hpp.html">perf_events.hpp</a></li>
-    <li class="footer">Generated on Tue Jun 14 2022 20:29:43 for ElPhi by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Aug 3 2022 20:45:03 for ElPhi by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

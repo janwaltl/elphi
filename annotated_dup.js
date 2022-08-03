@@ -12,6 +12,7 @@ var annotated_dup =
       ] ],
       [ "ElphiException", "classelphi_1_1ElphiException.html", "classelphi_1_1ElphiException" ],
       [ "FileDescriptor", "classelphi_1_1FileDescriptor.html", "classelphi_1_1FileDescriptor" ],
+      [ "PerfEvents", "classelphi_1_1PerfEvents.html", "classelphi_1_1PerfEvents" ],
       [ "Sample", "structelphi_1_1Sample.html", "structelphi_1_1Sample" ],
       [ "SamplingResult", "structelphi_1_1SamplingResult.html", "structelphi_1_1SamplingResult" ]
     ] ]
