@@ -1,15 +1,12 @@
 var searchData=
 [
-  ['term_5freason_83',['term_reason',['../structelphi_1_1SamplingResult.html#a172ae05989167045e6c74d1b5a38291b',1,'elphi::SamplingResult']]],
-  ['threadid_84',['ThreadId',['../namespaceelphi.html#a054464f2aff4af92f9126ecb9441f336',1,'elphi']]],
-  ['threadtimeslice_85',['ThreadTimeSlice',['../structelphi_1_1view_1_1ThreadTimeSlice.html',1,'elphi::view']]],
-  ['tid_86',['tid',['../structelphi_1_1Sample.html#a3834f21aaae58e08ced5f9e93596db4a',1,'elphi::Sample::tid()'],['../structelphi_1_1view_1_1ThreadTimeSlice.html#ae977bb6cd39309b4cdf19aba87a95129',1,'elphi::view::ThreadTimeSlice::tid()']]],
-  ['time_87',['time',['../structelphi_1_1Sample.html#a89df3c704551e889602b2cc6ca1b7624',1,'elphi::Sample']]],
-  ['time_88',['Time',['../namespaceelphi.html#a1d8a5cbd33f07fdc205e2e22e15ccc64aa76d4ef5f3f6a672bbfab2865563e530',1,'elphi']]],
-  ['timeline_89',['Timeline',['../namespaceelphi_1_1view.html#abab56aae53a8a2d5fd0ef6b909b9ee9a',1,'elphi::view']]],
-  ['timeline_5fview_2ecpp_90',['timeline_view.cpp',['../timeline__view_8cpp.html',1,'']]],
-  ['timeline_5fview_2ehpp_91',['timeline_view.hpp',['../timeline__view_8hpp.html',1,'']]],
-  ['timepoint_92',['TimePoint',['../namespaceelphi.html#a2a75414b566cb9fee910d64479eaadc1',1,'elphi']]],
-  ['token_93',['Token',['../namespaceelphi.html#a1d8a5cbd33f07fdc205e2e22e15ccc64a459a6f79ad9b13cbcb5f692d2cc7a94d',1,'elphi']]],
-  ['type_5fpune_94',['type_pune',['../namespaceelphi.html#afa4cb2edf239a925b83e22c293d0623b',1,'elphi']]]
+  ['threadid_66',['ThreadId',['../namespaceelphi.html#a054464f2aff4af92f9126ecb9441f336',1,'elphi']]],
+  ['threadtimeslice_67',['ThreadTimeSlice',['../structelphi_1_1view_1_1ThreadTimeSlice.html',1,'elphi::view']]],
+  ['tid_68',['tid',['../structelphi_1_1CpuSample.html#a301808de365a25307fefc50921496ec0',1,'elphi::CpuSample::tid()'],['../structelphi_1_1view_1_1ThreadTimeSlice.html#ae977bb6cd39309b4cdf19aba87a95129',1,'elphi::view::ThreadTimeSlice::tid()']]],
+  ['time_69',['time',['../structelphi_1_1CpuSample.html#afa484587cff11c784cfd54c909ab52ea',1,'elphi::CpuSample']]],
+  ['timeline_70',['Timeline',['../namespaceelphi_1_1view.html#abab56aae53a8a2d5fd0ef6b909b9ee9a',1,'elphi::view']]],
+  ['timeline_5fview_2ecpp_71',['timeline_view.cpp',['../timeline__view_8cpp.html',1,'']]],
+  ['timeline_5fview_2ehpp_72',['timeline_view.hpp',['../timeline__view_8hpp.html',1,'']]],
+  ['timepoint_73',['TimePoint',['../namespaceelphi.html#a2a75414b566cb9fee910d64479eaadc1',1,'elphi']]],
+  ['type_5fpune_74',['type_pune',['../namespaceelphi.html#afa4cb2edf239a925b83e22c293d0623b',1,'elphi']]]
 ];

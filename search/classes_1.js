@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['filedescriptor_103',['FileDescriptor',['../classelphi_1_1FileDescriptor.html',1,'elphi']]]
+  ['elphiexception_83',['ElphiException',['../classelphi_1_1ElphiException.html',1,'elphi']]]
 ];

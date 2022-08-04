@@ -103,15 +103,11 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>c_no_fd
 : <a class="el" href="classelphi_1_1FileDescriptor.html#ae67dabae89fdd19ed64e8d1f51c0c27d">elphi::FileDescriptor</a>
 </li>
-<li>cgroup
-: <a class="el" href="structelphi_1_1Sample.html#a03c16665e34d0984a14975285243f3be">elphi::Sample</a>
-, <a class="el" href="structelphi_1_1view_1_1ThreadTimeSlice.html#a811adaffc6f5d44dd73e8ef4c05bb0a9">elphi::view::ThreadTimeSlice</a>
-</li>
 <li>close()
 : <a class="el" href="classelphi_1_1FileDescriptor.html#a408e89c85e1d08aa066168f5018c7ebf">elphi::FileDescriptor</a>
 </li>
 <li>cpu
-: <a class="el" href="structelphi_1_1Sample.html#a103cd778d9fd334df01a184453860150">elphi::Sample</a>
+: <a class="el" href="structelphi_1_1CpuSample.html#ad3f81f1d8274d5ffd88b3f63d13df737">elphi::CpuSample</a>
 , <a class="el" href="structelphi_1_1view_1_1ThreadTimeSlice.html#a6eb0dd67c3819487142ea5f3558c2512">elphi::view::ThreadTimeSlice</a>
 </li>
 </ul>
@@ -128,6 +124,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 
 <h3><a id="index_f"></a>- f -</h3><ul>
+<li>fd()
+: <a class="el" href="classelphi_1_1PerfEvents.html#a31c7a095afd6ead1daaad20f9affa885">elphi::PerfEvents</a>
+</li>
 <li>FileDescriptor()
 : <a class="el" href="classelphi_1_1FileDescriptor.html#a0c13ce7c73d0669e2020f99d96349cf3">elphi::FileDescriptor</a>
 </li>
@@ -135,14 +134,8 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 
 <h3><a id="index_g"></a>- g -</h3><ul>
-<li>get_next()
-: <a class="el" href="classelphi_1_1data_1_1PerfCpuSampler.html#af2c116f63e530b3c7bb9ed955752dbed">elphi::data::PerfCpuSampler</a>
-</li>
 <li>get_perf_event()
 : <a class="el" href="classelphi_1_1PerfEvents.html#a02f96a1e28bd8f16a1e12488d3638472">elphi::PerfEvents</a>
-</li>
-<li>get_poll_entry()
-: <a class="el" href="classelphi_1_1data_1_1PerfCpuSampler.html#a18eda1ef864c2d73c9530262d13ba954">elphi::data::PerfCpuSampler</a>
 </li>
 </ul>
 
@@ -151,49 +144,34 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>is_opened()
 : <a class="el" href="classelphi_1_1FileDescriptor.html#a1553e2893f35a621eaa884756c7399ed">elphi::FileDescriptor</a>
 </li>
-<li>is_sampling()
-: <a class="el" href="classelphi_1_1data_1_1PerfCpuSampler.html#a9c98718facc45c6a84105bd26190fce7">elphi::data::PerfCpuSampler</a>
-</li>
 </ul>
 
 
 <h3><a id="index_m"></a>- m -</h3><ul>
 <li>m_addr
-: <a class="el" href="structelphi_1_1data_1_1anonymous__namespace_02perf__cpu__sampler_8cpp_03_1_1RecordSample.html#a0db24ff93e719c643ce11bccecfe59b5">elphi::data::anonymous_namespace{perf_cpu_sampler.cpp}::RecordSample</a>
+: <a class="el" href="structelphi_1_1anonymous__namespace_02cpu__sampler_8cpp_03_1_1RecordSample.html#ae106d3ba5ea78bb531582516306d054e">elphi::anonymous_namespace{cpu_sampler.cpp}::RecordSample</a>
 </li>
 <li>m_buffer
 : <a class="el" href="classelphi_1_1PerfEvents.html#aec3bc1fdae4ec24738a6c9343fe6319d">elphi::PerfEvents</a>
 </li>
 <li>m_cpu
-: <a class="el" href="structelphi_1_1data_1_1anonymous__namespace_02perf__cpu__sampler_8cpp_03_1_1RecordSample.html#a978b02d79f53fd96599cfca488c46f51">elphi::data::anonymous_namespace{perf_cpu_sampler.cpp}::RecordSample</a>
+: <a class="el" href="structelphi_1_1anonymous__namespace_02cpu__sampler_8cpp_03_1_1RecordSample.html#a5cc752df7d5b5c92e4a1117a48a01195">elphi::anonymous_namespace{cpu_sampler.cpp}::RecordSample</a>
 </li>
 <li>m_cpu_pad
-: <a class="el" href="structelphi_1_1data_1_1anonymous__namespace_02perf__cpu__sampler_8cpp_03_1_1RecordSample.html#a08b1af4a17f0e8c2a7037cea0163796e">elphi::data::anonymous_namespace{perf_cpu_sampler.cpp}::RecordSample</a>
-</li>
-<li>m_event
-: <a class="el" href="classelphi_1_1data_1_1PerfCpuSampler.html#a6025b7c2f370e9dc952b30994844ea94">elphi::data::PerfCpuSampler</a>
-</li>
-<li>m_event_buff
-: <a class="el" href="classelphi_1_1data_1_1PerfCpuSampler.html#a63d558e868423f7c65cb8d5af5b3451b">elphi::data::PerfCpuSampler</a>
+: <a class="el" href="structelphi_1_1anonymous__namespace_02cpu__sampler_8cpp_03_1_1RecordSample.html#ad5c2f6d0b236ce143a8b9b063a749207">elphi::anonymous_namespace{cpu_sampler.cpp}::RecordSample</a>
 </li>
 <li>m_fd
 : <a class="el" href="classelphi_1_1FileDescriptor.html#aee937e6a6c8ed77186a36f698d80f27b">elphi::FileDescriptor</a>
 , <a class="el" href="classelphi_1_1PerfEvents.html#a521bd6d9b7f6a17a4a1921af3fd57b11">elphi::PerfEvents</a>
 </li>
 <li>m_pid
-: <a class="el" href="structelphi_1_1data_1_1anonymous__namespace_02perf__cpu__sampler_8cpp_03_1_1RecordSample.html#a37feef4f5b7c4d8161e8b7873f86d35f">elphi::data::anonymous_namespace{perf_cpu_sampler.cpp}::RecordSample</a>
-</li>
-<li>m_record_cache
-: <a class="el" href="classelphi_1_1data_1_1PerfCpuSampler.html#aff8b1d0a0b22117f19b9b474adeae175">elphi::data::PerfCpuSampler</a>
-</li>
-<li>m_sampling
-: <a class="el" href="classelphi_1_1data_1_1PerfCpuSampler.html#a81a78e088a8f922d4b85e0d4e7b80afe">elphi::data::PerfCpuSampler</a>
+: <a class="el" href="structelphi_1_1anonymous__namespace_02cpu__sampler_8cpp_03_1_1RecordSample.html#a8a93295dc275f32be3a99d45ebf725de">elphi::anonymous_namespace{cpu_sampler.cpp}::RecordSample</a>
 </li>
 <li>m_tid
-: <a class="el" href="structelphi_1_1data_1_1anonymous__namespace_02perf__cpu__sampler_8cpp_03_1_1RecordSample.html#a463c91599b02013ba9d602eeaf19a8aa">elphi::data::anonymous_namespace{perf_cpu_sampler.cpp}::RecordSample</a>
+: <a class="el" href="structelphi_1_1anonymous__namespace_02cpu__sampler_8cpp_03_1_1RecordSample.html#a52f0c75cae8fa9deac749dfbc604909a">elphi::anonymous_namespace{cpu_sampler.cpp}::RecordSample</a>
 </li>
 <li>m_time
-: <a class="el" href="structelphi_1_1data_1_1anonymous__namespace_02perf__cpu__sampler_8cpp_03_1_1RecordSample.html#a6daeea08154197f32df2c5369557efc1">elphi::data::anonymous_namespace{perf_cpu_sampler.cpp}::RecordSample</a>
+: <a class="el" href="structelphi_1_1anonymous__namespace_02cpu__sampler_8cpp_03_1_1RecordSample.html#a6abdac247ecd0a0f29325d3c71d784a2">elphi::anonymous_namespace{cpu_sampler.cpp}::RecordSample</a>
 </li>
 <li>map_perf_event_buffer()
 : <a class="el" href="classelphi_1_1PerfEvents.html#a094fe57bcff8791338eef2920f6ff724">elphi::PerfEvents</a>
@@ -216,8 +194,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="structelphi_1_1view_1_1ThreadTimeSlice.html#a8d6e351764419bebef4ecdb12e117931">elphi::view::ThreadTimeSlice</a>
 </li>
 <li>operator=()
-: <a class="el" href="classelphi_1_1data_1_1PerfCpuSampler.html#ae71069f176f9f5c600a950f7b74a74d4">elphi::data::PerfCpuSampler</a>
-, <a class="el" href="classelphi_1_1ElphiException.html#ac16108a979c823cb4987658e330281cb">elphi::ElphiException</a>
+: <a class="el" href="classelphi_1_1ElphiException.html#ac16108a979c823cb4987658e330281cb">elphi::ElphiException</a>
 , <a class="el" href="classelphi_1_1FileDescriptor.html#a8328ff11c44e18a113bbc9a1b1c0bd69">elphi::FileDescriptor</a>
 , <a class="el" href="classelphi_1_1PerfEvents.html#ac47d94e97ae861af8515a44cc612742d">elphi::PerfEvents</a>
 </li>
@@ -231,9 +208,6 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>perf_stop()
 : <a class="el" href="classelphi_1_1PerfEvents.html#a335bcefe714590bb5807bb1e87ce20fa">elphi::PerfEvents</a>
 </li>
-<li>PerfCpuSampler()
-: <a class="el" href="classelphi_1_1data_1_1PerfCpuSampler.html#a42b51ae482d3c161a75a1a116f8a360c">elphi::data::PerfCpuSampler</a>
-</li>
 <li>PerfEventBuffer
 : <a class="el" href="classelphi_1_1PerfEvents.html#a1de18352ef5716f10988cfbcd9b73602">elphi::PerfEvents</a>
 </li>
@@ -241,11 +215,11 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="classelphi_1_1PerfEvents.html#acce362efe08477c890f9e22079b7b0c2">elphi::PerfEvents</a>
 </li>
 <li>pid
-: <a class="el" href="structelphi_1_1Sample.html#a1381ce78ba69b90d28823534d2aa0f42">elphi::Sample</a>
+: <a class="el" href="structelphi_1_1CpuSample.html#a159a6758f943e3eb7c05fab0b83abeb7">elphi::CpuSample</a>
 , <a class="el" href="structelphi_1_1view_1_1ThreadTimeSlice.html#a877a3f30805fc2c33da3d05f8ecc8b00">elphi::view::ThreadTimeSlice</a>
 </li>
 <li>process_names
-: <a class="el" href="structelphi_1_1SamplingResult.html#a498605525fe3ac4b4df2fd0a45853493">elphi::SamplingResult</a>
+: <a class="el" href="structelphi_1_1CpuSamplingResult.html#a7cc0ae9084228ab5d9ce407c280b6ab6">elphi::CpuSamplingResult</a>
 </li>
 </ul>
 
@@ -254,35 +228,23 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>raw()
 : <a class="el" href="classelphi_1_1FileDescriptor.html#a0bf0cfd77b96cd1443ee825b98f573ed">elphi::FileDescriptor</a>
 </li>
-<li>reset()
-: <a class="el" href="classelphi_1_1data_1_1PerfCpuSampler.html#ae10d962a1a86ed990a60f9c7d5357ad5">elphi::data::PerfCpuSampler</a>
-</li>
 </ul>
 
 
 <h3><a id="index_s"></a>- s -</h3><ul>
 <li>samples
-: <a class="el" href="structelphi_1_1SamplingResult.html#abaaabf94817e96db63fddf1881018473">elphi::SamplingResult</a>
-</li>
-<li>start()
-: <a class="el" href="classelphi_1_1data_1_1PerfCpuSampler.html#a3776f1bdf1d7f5e7cb3f359db19cf176">elphi::data::PerfCpuSampler</a>
-</li>
-<li>stop()
-: <a class="el" href="classelphi_1_1data_1_1PerfCpuSampler.html#af0a95eb2acd9cb0e8f18af5f2322f161">elphi::data::PerfCpuSampler</a>
+: <a class="el" href="structelphi_1_1CpuSamplingResult.html#a3c334c328526eb3037a4dfcda87fadd4">elphi::CpuSamplingResult</a>
 </li>
 </ul>
 
 
 <h3><a id="index_t"></a>- t -</h3><ul>
-<li>term_reason
-: <a class="el" href="structelphi_1_1SamplingResult.html#a172ae05989167045e6c74d1b5a38291b">elphi::SamplingResult</a>
-</li>
 <li>tid
-: <a class="el" href="structelphi_1_1Sample.html#a3834f21aaae58e08ced5f9e93596db4a">elphi::Sample</a>
+: <a class="el" href="structelphi_1_1CpuSample.html#a301808de365a25307fefc50921496ec0">elphi::CpuSample</a>
 , <a class="el" href="structelphi_1_1view_1_1ThreadTimeSlice.html#ae977bb6cd39309b4cdf19aba87a95129">elphi::view::ThreadTimeSlice</a>
 </li>
 <li>time
-: <a class="el" href="structelphi_1_1Sample.html#a89df3c704551e889602b2cc6ca1b7624">elphi::Sample</a>
+: <a class="el" href="structelphi_1_1CpuSample.html#afa484587cff11c784cfd54c909ab52ea">elphi::CpuSample</a>
 </li>
 </ul>
 
@@ -301,9 +263,6 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>~FileDescriptor()
 : <a class="el" href="classelphi_1_1FileDescriptor.html#a8675d3c62bac6aa213e2d3909a86547c">elphi::FileDescriptor</a>
 </li>
-<li>~PerfCpuSampler()
-: <a class="el" href="classelphi_1_1data_1_1PerfCpuSampler.html#aeb5eb0470401a0ce885fc265987ef480">elphi::data::PerfCpuSampler</a>
-</li>
 <li>~PerfEvents()
 : <a class="el" href="classelphi_1_1PerfEvents.html#a74ade06d55375952ab1d944109f9a402">elphi::PerfEvents</a>
 </li>
@@ -313,7 +272,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Aug 3 2022 20:45:03 for ElPhi by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Aug 4 2022 21:43:08 for ElPhi by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

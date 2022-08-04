@@ -21,9 +21,9 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="sampler_8hpp.html" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="186,-112.5 186,-131.5 278,-131.5 278,-112.5 186,-112.5"/>
-<text text-anchor="middle" x="232" y="-119.5" font-family="Helvetica,sans-Serif" font-size="10.00">elphi/sampler.hpp</text>
+<g id="a_node2"><a xlink:href="cpu__sampler_8hpp.html" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="175.5,-112.5 175.5,-131.5 288.5,-131.5 288.5,-112.5 175.5,-112.5"/>
+<text text-anchor="middle" x="232" y="-119.5" font-family="Helvetica,sans-Serif" font-size="10.00">elphi/cpu_sampler.hpp</text>
 </a>
 </g>
 </g>

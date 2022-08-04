@@ -1,11 +1,9 @@
 <map id="elphi/include/elphi/exception.hpp" name="elphi/include/elphi/exception.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="425,5,551,47"/>
-<area shape="rect" id="node2" href="$sampler_8hpp.html" title=" " alt="" coords="340,95,465,136"/>
-<area shape="rect" id="node9" href="$perf__events_8cpp.html" title=" " alt="" coords="490,102,657,129"/>
-<area shape="rect" id="node3" href="$perf__cpu__sampler_8hpp.html" title=" " alt="" coords="161,184,314,225"/>
-<area shape="rect" id="node6" href="$timeline__view_8hpp.html" title=" " alt="" coords="338,184,467,225"/>
-<area shape="rect" id="node8" href="$sampler_8cpp.html" title=" " alt="" coords="491,191,637,218"/>
-<area shape="rect" id="node4" href="$system__sampling_8cpp.html" title=" " alt="" coords="5,273,160,315"/>
-<area shape="rect" id="node5" href="$perf__cpu__sampler_8cpp.html" title=" " alt="" coords="184,273,309,315"/>
-<area shape="rect" id="node7" href="$timeline__view_8cpp.html" title=" " alt="" coords="343,273,463,315"/>
+<area shape="rect" id="node1" title=" " alt="" coords="251,5,376,47"/>
+<area shape="rect" id="node2" href="$cpu__sampler_8hpp.html" title=" " alt="" coords="165,95,291,136"/>
+<area shape="rect" id="node7" href="$perf__events_8cpp.html" title=" " alt="" coords="315,102,482,129"/>
+<area shape="rect" id="node3" href="$cpu__sampling_8cpp.html" title=" " alt="" coords="5,184,139,225"/>
+<area shape="rect" id="node4" href="$timeline__view_8hpp.html" title=" " alt="" coords="163,184,293,225"/>
+<area shape="rect" id="node6" href="$cpu__sampler_8cpp.html" title=" " alt="" coords="317,191,491,218"/>
+<area shape="rect" id="node5" href="$timeline__view_8cpp.html" title=" " alt="" coords="168,273,288,315"/>
 </map>

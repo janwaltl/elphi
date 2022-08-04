@@ -94,7 +94,6 @@ $(document).ready(function(){initNavTree('namespaceelphi.html',''); initResizabl
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
@@ -104,15 +103,19 @@ $(document).ready(function(){initNavTree('namespaceelphi.html',''); initResizabl
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:namespaceelphi_1_1anonymous__namespace_02perf__events_8cpp_03"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceelphi_1_1anonymous__namespace_02perf__events_8cpp_03.html">anonymous_namespace{perf_events.cpp}</a></td></tr>
+<tr class="memitem:namespaceelphi_1_1anonymous__namespace_02cpu__sampler_8cpp_03"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceelphi_1_1anonymous__namespace_02cpu__sampler_8cpp_03.html">anonymous_namespace{cpu_sampler.cpp}</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespaceelphi_1_1data"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceelphi_1_1data.html">data</a></td></tr>
+<tr class="memitem:namespaceelphi_1_1anonymous__namespace_02perf__events_8cpp_03"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceelphi_1_1anonymous__namespace_02perf__events_8cpp_03.html">anonymous_namespace{perf_events.cpp}</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceelphi_1_1view"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceelphi_1_1view.html">view</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structelphi_1_1CpuSample.html">CpuSample</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structelphi_1_1CpuSamplingResult.html">CpuSamplingResult</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classelphi_1_1ElphiException.html">ElphiException</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base exception class for ElPhi project.  <a href="classelphi_1_1ElphiException.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,10 +123,6 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classelphi_1_1PerfEvents.html">PerfEvents</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">RAII wrapper around perf_event Linux subsystem.  <a href="classelphi_1_1PerfEvents.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structelphi_1_1Sample.html">Sample</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structelphi_1_1SamplingResult.html">SamplingResult</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
@@ -141,19 +140,11 @@ Typedefs</h2></td></tr>
 <tr class="memitem:aa80cffeb43e7aa870c96b1673d7a36d1"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceelphi.html#aa80cffeb43e7aa870c96b1673d7a36d1">Buffer</a> = std::vector&lt; unsigned char &gt;</td></tr>
 <tr class="separator:aa80cffeb43e7aa870c96b1673d7a36d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:a1d8a5cbd33f07fdc205e2e22e15ccc64"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceelphi.html#a1d8a5cbd33f07fdc205e2e22e15ccc64">SamplingTermReason</a> { <a class="el" href="namespaceelphi.html#a1d8a5cbd33f07fdc205e2e22e15ccc64aa76d4ef5f3f6a672bbfab2865563e530">Time</a>
-, <a class="el" href="namespaceelphi.html#a1d8a5cbd33f07fdc205e2e22e15ccc64a459a6f79ad9b13cbcb5f692d2cc7a94d">Token</a>
-, <a class="el" href="namespaceelphi.html#a1d8a5cbd33f07fdc205e2e22e15ccc64a902b0d55fddef6f8d651fe1035b7d4bd">Error</a>
- }</td></tr>
-<tr class="separator:a1d8a5cbd33f07fdc205e2e22e15ccc64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:adb965e14344d1a3c93a2b34e7d10a353"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structelphi_1_1SamplingResult.html">SamplingResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceelphi.html#adb965e14344d1a3c93a2b34e7d10a353">sample_execution_sync</a> (std::chrono::seconds duration, std::size_t sample_frequency, const std::stop_token &amp;token)</td></tr>
-<tr class="memdesc:adb965e14344d1a3c93a2b34e7d10a353"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structelphi_1_1Sample.html">Sample</a> system for what processes are executed.  <a href="namespaceelphi.html#adb965e14344d1a3c93a2b34e7d10a353">More...</a><br /></td></tr>
-<tr class="separator:adb965e14344d1a3c93a2b34e7d10a353"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f9d834327291a7fc7d83226c489fcd9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structelphi_1_1CpuSamplingResult.html">CpuSamplingResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceelphi.html#a4f9d834327291a7fc7d83226c489fcd9">sample_cpus_sync</a> (const std::vector&lt; <a class="el" href="namespaceelphi.html#a48239696bd4b2d18fb70a365e56556f3">CpuId</a> &gt; &amp;cpus, std::size_t sample_frequency, const std::stop_token &amp;token)</td></tr>
+<tr class="memdesc:a4f9d834327291a7fc7d83226c489fcd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sample system for what processes are executed.  <a href="namespaceelphi.html#a4f9d834327291a7fc7d83226c489fcd9">More...</a><br /></td></tr>
+<tr class="separator:a4f9d834327291a7fc7d83226c489fcd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa21883a95e62e8aaffacbf71d1c11b89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceelphi.html#aa21883a95e62e8aaffacbf71d1c11b89">read_memory_barrier</a> ()</td></tr>
 <tr class="memdesc:aa21883a95e62e8aaffacbf71d1c11b89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiler memory barrier.  <a href="namespaceelphi.html#aa21883a95e62e8aaffacbf71d1c11b89">More...</a><br /></td></tr>
 <tr class="separator:aa21883a95e62e8aaffacbf71d1c11b89"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -207,7 +198,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>CPU ID. </p>
 
-<p class="definition">Definition at line <a class="el" href="sampler_8hpp_source.html#l00019">19</a> of file <a class="el" href="sampler_8hpp_source.html">sampler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cpu__sampler_8hpp_source.html#l00026">26</a> of file <a class="el" href="cpu__sampler_8hpp_source.html">cpu_sampler.hpp</a>.</p>
 
 </div>
 </div>
@@ -224,7 +215,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>CGroup ID. </p>
 
-<p class="definition">Definition at line <a class="el" href="sampler_8hpp_source.html#l00021">21</a> of file <a class="el" href="sampler_8hpp_source.html">sampler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cpu__sampler_8hpp_source.html#l00028">28</a> of file <a class="el" href="cpu__sampler_8hpp_source.html">cpu_sampler.hpp</a>.</p>
 
 </div>
 </div>
@@ -241,7 +232,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Process ID. </p>
 
-<p class="definition">Definition at line <a class="el" href="sampler_8hpp_source.html#l00015">15</a> of file <a class="el" href="sampler_8hpp_source.html">sampler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cpu__sampler_8hpp_source.html#l00022">22</a> of file <a class="el" href="cpu__sampler_8hpp_source.html">cpu_sampler.hpp</a>.</p>
 
 </div>
 </div>
@@ -258,7 +249,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Thread ID. </p>
 
-<p class="definition">Definition at line <a class="el" href="sampler_8hpp_source.html#l00017">17</a> of file <a class="el" href="sampler_8hpp_source.html">sampler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cpu__sampler_8hpp_source.html#l00024">24</a> of file <a class="el" href="cpu__sampler_8hpp_source.html">cpu_sampler.hpp</a>.</p>
 
 </div>
 </div>
@@ -276,41 +267,7 @@ Variables</h2></td></tr>
 <p>Measure time in nanoseconds. <br  />
  </p>
 
-<p class="definition">Definition at line <a class="el" href="sampler_8hpp_source.html#l00023">23</a> of file <a class="el" href="sampler_8hpp_source.html">sampler.hpp</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="a1d8a5cbd33f07fdc205e2e22e15ccc64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d8a5cbd33f07fdc205e2e22e15ccc64">&#9670;&nbsp;</a></span>SamplingTermReason</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="namespaceelphi.html#a1d8a5cbd33f07fdc205e2e22e15ccc64">elphi::SamplingTermReason</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Sampling termination reason. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1d8a5cbd33f07fdc205e2e22e15ccc64aa76d4ef5f3f6a672bbfab2865563e530"></a>Time&#160;</td><td class="fielddoc"><p>Sampling time expired. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a1d8a5cbd33f07fdc205e2e22e15ccc64a459a6f79ad9b13cbcb5f692d2cc7a94d"></a>Token&#160;</td><td class="fielddoc"><p>Termination requested by std::stop_token. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a1d8a5cbd33f07fdc205e2e22e15ccc64a902b0d55fddef6f8d651fe1035b7d4bd"></a>Error&#160;</td><td class="fielddoc"><p>Terminated due to an unrecoverable error. </p>
-</td></tr>
-</table>
-
-<p class="definition">Definition at line <a class="el" href="sampler_8hpp_source.html#l00044">44</a> of file <a class="el" href="sampler_8hpp_source.html">sampler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cpu__sampler_8hpp_source.html#l00030">30</a> of file <a class="el" href="cpu__sampler_8hpp_source.html">cpu_sampler.hpp</a>.</p>
 
 </div>
 </div>
@@ -400,17 +357,17 @@ template&lt;std::ranges::sized_range RangeSrc, std::ranges::sized_range RangeDes
 
 </div>
 </div>
-<a id="adb965e14344d1a3c93a2b34e7d10a353"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb965e14344d1a3c93a2b34e7d10a353">&#9670;&nbsp;</a></span>sample_execution_sync()</h2>
+<a id="a4f9d834327291a7fc7d83226c489fcd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f9d834327291a7fc7d83226c489fcd9">&#9670;&nbsp;</a></span>sample_cpus_sync()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structelphi_1_1SamplingResult.html">SamplingResult</a> elphi::sample_execution_sync </td>
+          <td class="memname"><a class="el" href="structelphi_1_1CpuSamplingResult.html">CpuSamplingResult</a> elphi::sample_cpus_sync </td>
           <td>(</td>
-          <td class="paramtype">std::chrono::seconds&#160;</td>
-          <td class="paramname"><em>duration</em>, </td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="namespaceelphi.html#a48239696bd4b2d18fb70a365e56556f3">CpuId</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>cpus</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -432,19 +389,25 @@ template&lt;std::ranges::sized_range RangeSrc, std::ranges::sized_range RangeDes
       </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="structelphi_1_1Sample.html">Sample</a> system for what processes are executed. </p>
-<p>Synchronous call - takes roughly duration seconds, use <code>token</code> to unblock the call. If cancelled, samples collected before cancellation are returned.</p>
+<p>Sample system for what processes are executed. </p>
+<p>Synchronous call the call, must be cancelled through <code>token</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">duration</td><td>Approximately how to sample. </td></tr>
+    <tr><td class="paramname">cpus</td><td>CPU cores to sample, zero-based indices. </td></tr>
     <tr><td class="paramname">sample_frequency</td><td>Samples to take per second. </td></tr>
-    <tr><td class="paramname">token</td><td>Cancel the sampling early. </td></tr>
+    <tr><td class="paramname">token</td><td>Cancel the sampling. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Collected samples. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classelphi_1_1ElphiException.html" title="Base exception class for ElPhi project.">ElphiException</a></td><td>in case of errors. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="sampler_8cpp_source.html#l00007">7</a> of file <a class="el" href="sampler_8cpp_source.html">sampler.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cpu__sampler_8cpp_source.html#l00063">63</a> of file <a class="el" href="cpu__sampler_8cpp_source.html">cpu_sampler.cpp</a>.</p>
 
 </div>
 </div>
@@ -554,7 +517,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceelphi.html">elphi</a></li>
-    <li class="footer">Generated on Wed Aug 3 2022 20:45:03 for ElPhi by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Aug 4 2022 21:43:08 for ElPhi by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

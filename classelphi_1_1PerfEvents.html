@@ -120,9 +120,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a27cacf09be25985041da05614fe99342"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classelphi_1_1PerfEvents.html#a27cacf09be25985041da05614fe99342">PerfEvents</a> (const <a class="el" href="classelphi_1_1PerfEvents.html">PerfEvents</a> &amp;)=delete</td></tr>
 <tr class="memdesc:a27cacf09be25985041da05614fe99342"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move-only.  <a href="classelphi_1_1PerfEvents.html#a27cacf09be25985041da05614fe99342">More...</a><br /></td></tr>
 <tr class="separator:a27cacf09be25985041da05614fe99342"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a457e5a369b47cc8f3078ad2aa34a1e3b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classelphi_1_1PerfEvents.html#a457e5a369b47cc8f3078ad2aa34a1e3b">PerfEvents</a> (<a class="el" href="classelphi_1_1PerfEvents.html">PerfEvents</a> &amp;&amp;other) noexcept=default</td></tr>
-<tr class="memdesc:a457e5a369b47cc8f3078ad2aa34a1e3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reclaim <code>other</code> resources, left in undetermined state.  <a href="classelphi_1_1PerfEvents.html#a457e5a369b47cc8f3078ad2aa34a1e3b">More...</a><br /></td></tr>
-<tr class="separator:a457e5a369b47cc8f3078ad2aa34a1e3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b25bd57b9eb6f044226d58a15fc22fe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classelphi_1_1PerfEvents.html#a2b25bd57b9eb6f044226d58a15fc22fe">PerfEvents</a> (<a class="el" href="classelphi_1_1PerfEvents.html">PerfEvents</a> &amp;&amp;other) noexcept</td></tr>
+<tr class="memdesc:a2b25bd57b9eb6f044226d58a15fc22fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reclaim <code>other</code> resources, left in undetermined state.  <a href="classelphi_1_1PerfEvents.html#a2b25bd57b9eb6f044226d58a15fc22fe">More...</a><br /></td></tr>
+<tr class="separator:a2b25bd57b9eb6f044226d58a15fc22fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac47d94e97ae861af8515a44cc612742d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classelphi_1_1PerfEvents.html">PerfEvents</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classelphi_1_1PerfEvents.html#ac47d94e97ae861af8515a44cc612742d">operator=</a> (const <a class="el" href="classelphi_1_1PerfEvents.html">PerfEvents</a> &amp;)=delete</td></tr>
 <tr class="memdesc:ac47d94e97ae861af8515a44cc612742d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move-only.  <a href="classelphi_1_1PerfEvents.html#ac47d94e97ae861af8515a44cc612742d">More...</a><br /></td></tr>
 <tr class="separator:ac47d94e97ae861af8515a44cc612742d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,6 +141,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a335bcefe714590bb5807bb1e87ce20fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classelphi_1_1PerfEvents.html#a335bcefe714590bb5807bb1e87ce20fa">perf_stop</a> () noexcept</td></tr>
 <tr class="memdesc:a335bcefe714590bb5807bb1e87ce20fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pause the event collection.  <a href="classelphi_1_1PerfEvents.html#a335bcefe714590bb5807bb1e87ce20fa">More...</a><br /></td></tr>
 <tr class="separator:a335bcefe714590bb5807bb1e87ce20fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31c7a095afd6ead1daaad20f9affa885"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classelphi_1_1FileDescriptor.html">FileDescriptor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classelphi_1_1PerfEvents.html#a31c7a095afd6ead1daaad20f9affa885">fd</a> () const noexcept</td></tr>
+<tr class="memdesc:a31c7a095afd6ead1daaad20f9affa885"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the underlying file descriptor.  <a href="classelphi_1_1PerfEvents.html#a31c7a095afd6ead1daaad20f9affa885">More...</a><br /></td></tr>
+<tr class="separator:a31c7a095afd6ead1daaad20f9affa885"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
 Private Types</h2></td></tr>
@@ -190,7 +193,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Memory-mapped area with the event ring buffer used by perf_event_open. </p>
 
-<p class="definition">Definition at line <a class="el" href="perf__events_8hpp_source.html#l00102">102</a> of file <a class="el" href="perf__events_8hpp_source.html">perf_events.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="perf__events_8hpp_source.html#l00109">109</a> of file <a class="el" href="perf__events_8hpp_source.html">perf_events.hpp</a>.</p>
 
 </div>
 </div>
@@ -258,8 +261,14 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classelphi_1_1ElphiException.html" title="Base exception class for ElPhi project.">ElphiException</a></td><td>if the event cannot be initialized. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="perf__events_8cpp_source.html#l00106">106</a> of file <a class="el" href="perf__events_8cpp_source.html">perf_events.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="perf__events_8cpp_source.html#l00112">112</a> of file <a class="el" href="perf__events_8cpp_source.html">perf_events.cpp</a>.</p>
 
 </div>
 </div>
@@ -291,8 +300,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a457e5a369b47cc8f3078ad2aa34a1e3b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a457e5a369b47cc8f3078ad2aa34a1e3b">&#9670;&nbsp;</a></span>PerfEvents() <span class="overload">[3/3]</span></h2>
+<a id="a2b25bd57b9eb6f044226d58a15fc22fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b25bd57b9eb6f044226d58a15fc22fe">&#9670;&nbsp;</a></span>PerfEvents() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -310,12 +319,14 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Reclaim <code>other</code> resources, left in undetermined state. </p>
+
+<p class="definition">Definition at line <a class="el" href="perf__events_8cpp_source.html#l00122">122</a> of file <a class="el" href="perf__events_8cpp_source.html">perf_events.cpp</a>.</p>
 
 </div>
 </div>
@@ -344,11 +355,40 @@ Private Attributes</h2></td></tr>
 
 <p>Destroy the event descriptor and any uncollected events. </p>
 
-<p class="definition">Definition at line <a class="el" href="perf__events_8cpp_source.html#l00127">127</a> of file <a class="el" href="perf__events_8cpp_source.html">perf_events.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="perf__events_8cpp_source.html#l00137">137</a> of file <a class="el" href="perf__events_8cpp_source.html">perf_events.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a31c7a095afd6ead1daaad20f9affa885"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31c7a095afd6ead1daaad20f9affa885">&#9670;&nbsp;</a></span>fd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classelphi_1_1FileDescriptor.html">FileDescriptor</a> &amp; elphi::PerfEvents::fd </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the underlying file descriptor. </p>
+
+<p class="definition">Definition at line <a class="el" href="perf__events_8cpp_source.html#l00108">108</a> of file <a class="el" href="perf__events_8cpp_source.html">perf_events.cpp</a>.</p>
+
+</div>
+</div>
 <a id="a02f96a1e28bd8f16a1e12488d3638472"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a02f96a1e28bd8f16a1e12488d3638472">&#9670;&nbsp;</a></span>get_perf_event()</h2>
 
@@ -391,7 +431,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="perf__events_8cpp_source.html#l00057">57</a> of file <a class="el" href="perf__events_8cpp_source.html">perf_events.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="perf__events_8cpp_source.html#l00058">58</a> of file <a class="el" href="perf__events_8cpp_source.html">perf_events.cpp</a>.</p>
 
 </div>
 </div>
@@ -487,7 +527,7 @@ Private Attributes</h2></td></tr>
 
 <p>Reclaim <code>other</code> resources, left in undetermined state. </p>
 
-<p class="definition">Definition at line <a class="el" href="perf__events_8cpp_source.html#l00118">118</a> of file <a class="el" href="perf__events_8cpp_source.html">perf_events.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="perf__events_8cpp_source.html#l00127">127</a> of file <a class="el" href="perf__events_8cpp_source.html">perf_events.cpp</a>.</p>
 
 </div>
 </div>
@@ -524,7 +564,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Whether the event have been (re)started successfully. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="perf__events_8cpp_source.html#l00096">96</a> of file <a class="el" href="perf__events_8cpp_source.html">perf_events.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="perf__events_8cpp_source.html#l00097">97</a> of file <a class="el" href="perf__events_8cpp_source.html">perf_events.cpp</a>.</p>
 
 </div>
 </div>
@@ -554,7 +594,7 @@ Private Attributes</h2></td></tr>
 <p>Pause the event collection. </p>
 <p>Errors are ignored. </p>
 
-<p class="definition">Definition at line <a class="el" href="perf__events_8cpp_source.html#l00102">102</a> of file <a class="el" href="perf__events_8cpp_source.html">perf_events.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="perf__events_8cpp_source.html#l00103">103</a> of file <a class="el" href="perf__events_8cpp_source.html">perf_events.cpp</a>.</p>
 
 </div>
 </div>
@@ -609,7 +649,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>MMapped ring buffer. </p>
 
-<p class="definition">Definition at line <a class="el" href="perf__events_8hpp_source.html#l00125">125</a> of file <a class="el" href="perf__events_8hpp_source.html">perf_events.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="perf__events_8hpp_source.html#l00132">132</a> of file <a class="el" href="perf__events_8hpp_source.html">perf_events.hpp</a>.</p>
 
 </div>
 </div>
@@ -634,7 +674,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Event FD. </p>
 
-<p class="definition">Definition at line <a class="el" href="perf__events_8hpp_source.html#l00123">123</a> of file <a class="el" href="perf__events_8hpp_source.html">perf_events.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="perf__events_8hpp_source.html#l00130">130</a> of file <a class="el" href="perf__events_8hpp_source.html">perf_events.hpp</a>.</p>
 
 </div>
 </div>
@@ -648,7 +688,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceelphi.html">elphi</a></li><li class="navelem"><a class="el" href="classelphi_1_1PerfEvents.html">PerfEvents</a></li>
-    <li class="footer">Generated on Wed Aug 3 2022 20:45:03 for ElPhi by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Aug 4 2022 21:43:08 for ElPhi by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

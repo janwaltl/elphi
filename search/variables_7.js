@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['samples_189',['samples',['../structelphi_1_1SamplingResult.html#abaaabf94817e96db63fddf1881018473',1,'elphi::SamplingResult']]]
+  ['samples_151',['samples',['../structelphi_1_1CpuSamplingResult.html#a3c334c328526eb3037a4dfcda87fadd4',1,'elphi::CpuSamplingResult']]]
 ];
