@@ -103,6 +103,11 @@ PerfEvents::perf_stop() noexcept {
     (void)ioctl(m_fd.raw(), PERF_EVENT_IOC_DISABLE, 0);
 }
 
+const FileDescriptor&
+PerfEvents::fd() const noexcept {
+    return m_fd;
+}
+
 PerfEvents::PerfEvents(const perf_event_attr& attr, pid_t pid, int cpu, int group_fd, std::uint64_t flags,
                        std::size_t num_pages) {
     m_fd = FileDescriptor{open_perf_event(attr, pid, cpu, group_fd, flags)};

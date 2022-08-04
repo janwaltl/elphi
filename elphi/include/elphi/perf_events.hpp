@@ -97,6 +97,12 @@ public:
     void
     perf_stop() noexcept;
 
+    /*******************************************************************************
+     * @brief Return the underlying file descriptor.
+     ******************************************************************************/
+    const FileDescriptor&
+    fd() const noexcept;
+
 private:
     /*! Memory-mapped area with the event ring buffer used by perf_event_open. */
     using PerfEventBuffer = std::span<unsigned char>;
