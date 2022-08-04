@@ -1,6 +1,6 @@
 #pragma once
 
-#include <elphi/sampler.hpp>
+#include <elphi/cpu_sampler.hpp>
 
 namespace elphi::view {
 
@@ -22,8 +22,6 @@ struct ThreadTimeSlice {
     ThreadId tid = 0;
     /*! CPU Index */
     CpuId cpu = 0;
-    /*! Group to which the process belongs. */
-    GroupId cgroup = 0;
 
     /*******************************************************************************
      * @brief Default member-wise comparison.
@@ -48,5 +46,5 @@ using GroupTimeline = std::unordered_map<GroupId, Timeline>;
  * @return Constructed Timeline from sampling @p result.
  ******************************************************************************/
 Timeline
-gen_cpu_timelines(const SamplingResult& result);
+gen_cpu_timelines(const CpuSamplingResult& result);
 } // namespace elphi::view

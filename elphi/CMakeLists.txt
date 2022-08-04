@@ -36,13 +36,13 @@ target_sources(
   elphi
   PUBLIC
   include/elphi/exception.hpp
-  include/elphi/sampler.hpp
+  include/elphi/cpu_sampler.hpp
   include/elphi/timeline_view.hpp
   include/elphi/utils.hpp
   include/elphi/perf_events.hpp
   include/elphi/file_descriptor.hpp
   PRIVATE
-  src/sampler.cpp
+  src/cpu_sampler.cpp
   src/timeline_view.cpp
   src/utils.cpp
   src/perf_events.cpp

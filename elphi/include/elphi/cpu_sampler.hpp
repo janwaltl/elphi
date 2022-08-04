@@ -1,3 +1,10 @@
+/*******************************************************************************
+ * @file cpu_sampler.hpp
+ * @copyright Copyright 2022 Jan Waltl.
+ * @license	This file is released under ElPhi project's license, see LICENSE.
+ *
+ * Simple API for basic sampling of CPU cores for executed processes.
+ ******************************************************************************/
 #pragma once
 
 #include <chrono>
@@ -27,32 +34,25 @@ using TimePoint = std::chrono::nanoseconds;
  *
  * Captures what a given CPU was executing at the sampled time.
  ******************************************************************************/
-struct Sample {
+struct CpuSample {
     /*! Process ID */
     ProcId pid = 0;
     /*! Thread ID */
     ThreadId tid = 0;
     /*! CPU Index */
     CpuId cpu = 0;
-    /*! Group to which the process belongs. */
-    GroupId cgroup = 0;
     /*! Time of the sample. */
     TimePoint time = TimePoint::zero();
 };
 
-/*! Sampling termination reason. */
-enum class SamplingTermReason {
-    Time,  /*!< Sampling time expired. */
-    Token, /*!< Termination requested by std::stop_token. */
-    Error, /*!< Terminated due to an unrecoverable error. */
-};
 
 /*******************************************************************************
  * struct SamplingResult - Result of sampling gatherer
  ******************************************************************************/
-struct SamplingResult {
+struct CpuSamplingResult {
+
     /*! Collected samples. */
-    std::vector<Sample> samples;
+    std::vector<CpuSample> samples;
     /**
      * @brief Map processes ids to names.
      *
@@ -62,23 +62,19 @@ struct SamplingResult {
      * the name before process exited.
      */
     std::unordered_map<ProcId, std::string> process_names;
-    /*! Reason for termination. */
-    SamplingTermReason term_reason;
 };
 
 /*******************************************************************************
  * @brief Sample system for what processes are executed.
  *
- * Synchronous call - takes roughly duration seconds, use @p token to unblock
- * the call.
- * If cancelled, samples collected before cancellation are returned.
+ * Synchronous call the call, must be cancelled through @p token.
  *
- * @param duration Approximately how to sample.
  * @param sample_frequency Samples to take per second.
- * @param token Cancel the sampling early.
+ * @param token Cancel the sampling.
  * @return Collected samples.
+ * @throw ElphiException in case of errors.
  ******************************************************************************/
-SamplingResult
-sample_execution_sync(std::chrono::seconds duration, std::size_t sample_frequency, const std::stop_token& token);
+CpuSamplingResult
+sample_cpus_sync(const std::vector<CpuId>& cpus, std::size_t sample_frequency, const std::stop_token& token);
 
 } // namespace elphi
