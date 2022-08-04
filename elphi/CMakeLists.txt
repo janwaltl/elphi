@@ -50,3 +50,4 @@ target_sources(
 )
 
 add_subdirectory(test)
+add_subdirectory(examples)
