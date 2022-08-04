@@ -16,6 +16,14 @@ set_target_properties(
   CMAKE_EXPORT_COMPILE_COMMANDS ON
 )
 
+if(ENABLE_COVERAGE)
+  if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
+    message(WARNING "Running coverage for non-debug build.")
+  endif(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
+  target_compile_options(elphi PRIVATE --coverage)
+  target_link_options(elphi PRIVATE --coverage)
+endif(ENABLE_COVERAGE)
+
 
 find_package(Threads REQUIRED)
 
