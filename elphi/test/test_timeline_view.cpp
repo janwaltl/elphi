@@ -7,7 +7,7 @@ using namespace std::chrono_literals;
 namespace velphi = elphi::view;
 namespace {
 velphi::ThreadTimeSlice
-sample_to_timeslice(const elphi::Sample& sample, std::string name) {
+sample_to_timeslice(const elphi::CpuSample& sample, std::string name) {
     return {
         .begin_time = sample.time,
         .end_time = sample.time,
@@ -15,7 +15,6 @@ sample_to_timeslice(const elphi::Sample& sample, std::string name) {
         .pid = sample.pid,
         .tid = sample.tid,
         .cpu = sample.cpu,
-        .cgroup = sample.cgroup,
     };
 }
 } // namespace
@@ -23,11 +22,12 @@ sample_to_timeslice(const elphi::Sample& sample, std::string name) {
 SCENARIO("Timeline view single sample processing", "[view][timeline]") {
 
     GIVEN("A named sample") {
-        constexpr elphi::Sample sample{.pid = 1, .tid = 4, .cpu = 3, .cgroup = 2, .time = 1s};
+        constexpr elphi::CpuSample sample{.pid = 1, .tid = 4, .cpu = 3, .time = 1s};
         const std::string proc_name = "cat";
-        elphi::SamplingResult result{.samples = {sample},
-                                     .process_names = {{sample.pid, proc_name}},
-                                     .term_reason = elphi::SamplingTermReason::Time};
+        elphi::CpuSamplingResult result{
+            .samples = {sample},
+            .process_names = {{sample.pid, proc_name}},
+        };
 
         WHEN("Processed") {
             velphi::Timeline timeline = velphi::gen_cpu_timelines(result);
@@ -43,9 +43,8 @@ SCENARIO("Timeline view single sample processing", "[view][timeline]") {
     }
 
     GIVEN("An unnamed sample") {
-        constexpr elphi::Sample sample{.pid = 12, .tid = 41, .cpu = 31, .cgroup = 21, .time = 11s};
-        elphi::SamplingResult result{
-            .samples = {sample}, .process_names = {}, .term_reason = elphi::SamplingTermReason::Time};
+        constexpr elphi::CpuSample sample{.pid = 12, .tid = 41, .cpu = 31, .time = 11s};
+        elphi::CpuSamplingResult result{.samples = {sample}, .process_names = {}};
 
         WHEN("Processed") {
             velphi::Timeline timeline = velphi::gen_cpu_timelines(result);
@@ -65,12 +64,10 @@ SCENARIO("Timeline view sample concatenation", "[view][timeline]") {
 
     GIVEN("Two samples from same process and thread") {
 
-        constexpr elphi::Sample sample1{.pid = 1, .tid = 4, .cpu = 3, .cgroup = 2, .time = 1s};
-        constexpr elphi::Sample sample2{.pid = 1, .tid = 4, .cpu = 3, .cgroup = 2, .time = 5s};
+        constexpr elphi::CpuSample sample1{.pid = 1, .tid = 4, .cpu = 3, .time = 1s};
+        constexpr elphi::CpuSample sample2{.pid = 1, .tid = 4, .cpu = 3, .time = 5s};
         const std::string proc_name = "cat";
-        elphi::SamplingResult result{.samples = {sample1, sample2},
-                                     .process_names = {{1, proc_name}},
-                                     .term_reason = elphi::SamplingTermReason::Time};
+        elphi::CpuSamplingResult result{.samples = {sample1, sample2}, .process_names = {{1, proc_name}}};
         WHEN("Processed") {
             velphi::Timeline timeline = velphi::gen_cpu_timelines(result);
             THEN("Samples are merged in the timeline") {
@@ -88,12 +85,10 @@ SCENARIO("Timeline view sample concatenation", "[view][timeline]") {
 
     GIVEN("Two samples from same process but different thread") {
 
-        constexpr elphi::Sample sample1{.pid = 1, .tid = 4, .cpu = 3, .cgroup = 2, .time = 1s};
-        constexpr elphi::Sample sample2{.pid = 1, .tid = 5, .cpu = 3, .cgroup = 2, .time = 5s};
+        constexpr elphi::CpuSample sample1{.pid = 1, .tid = 4, .cpu = 3, .time = 1s};
+        constexpr elphi::CpuSample sample2{.pid = 1, .tid = 5, .cpu = 3, .time = 5s};
         const std::string proc_name = "cat";
-        elphi::SamplingResult result{.samples = {sample1, sample2},
-                                     .process_names = {{1, proc_name}},
-                                     .term_reason = elphi::SamplingTermReason::Time};
+        elphi::CpuSamplingResult result{.samples = {sample1, sample2}, .process_names = {{1, proc_name}}};
         WHEN("Processed") {
             velphi::Timeline timeline = velphi::gen_cpu_timelines(result);
             THEN("Samples appear as two slices in the timeline") {
@@ -110,12 +105,10 @@ SCENARIO("Timeline view sample concatenation", "[view][timeline]") {
     }
     GIVEN("Two samples from different process but same thread") {
 
-        constexpr elphi::Sample sample1{.pid = 1, .tid = 4, .cpu = 3, .cgroup = 2, .time = 1s};
-        constexpr elphi::Sample sample2{.pid = 2, .tid = 4, .cpu = 3, .cgroup = 2, .time = 5s};
+        constexpr elphi::CpuSample sample1{.pid = 1, .tid = 4, .cpu = 3, .time = 1s};
+        constexpr elphi::CpuSample sample2{.pid = 2, .tid = 4, .cpu = 3, .time = 5s};
         const std::string proc_name = "cat";
-        elphi::SamplingResult result{.samples = {sample1, sample2},
-                                     .process_names = {{1, proc_name}},
-                                     .term_reason = elphi::SamplingTermReason::Time};
+        elphi::CpuSamplingResult result{.samples = {sample1, sample2}, .process_names = {{1, proc_name}}};
         WHEN("Processed") {
             velphi::Timeline timeline = velphi::gen_cpu_timelines(result);
             THEN("Samples appear as two slices in the timeline") {

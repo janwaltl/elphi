@@ -12,6 +12,8 @@ target_link_options(
   elphi_tests PRIVATE
   -Wl,--wrap=mmap
   -Wl,--wrap=munmap
+  -Wl,--wrap=close
+  -Wl,--wrap=open_perf_event
 )
 
 include(CTest)
@@ -58,5 +60,6 @@ target_sources(
   test_timeline_view.cpp
   test_utils.cpp
   test_perf_events.cpp
+  test_file_descriptor.cpp
   mock_syscalls.cpp
 )

@@ -1,12 +1,11 @@
 #pragma once
 
-#include <elphi/sampler.hpp>
+#include <elphi/cpu_sampler.hpp>
 
 namespace elphi::view {
 
-
 /*******************************************************************************
- * struct ThreadTimeSlice - Time slice executing the given thread.
+ * @brief Time slice executing the given thread.
  ******************************************************************************/
 struct ThreadTimeSlice {
     /*! Starting of execution. */
@@ -23,9 +22,10 @@ struct ThreadTimeSlice {
     ThreadId tid = 0;
     /*! CPU Index */
     CpuId cpu = 0;
-    /*! Group to which the process belongs. */
-    GroupId cgroup = 0;
 
+    /*******************************************************************************
+     * @brief Default member-wise comparison.
+     ******************************************************************************/
     friend auto
     operator<=>(const ThreadTimeSlice&, const ThreadTimeSlice&) = default;
 };
@@ -37,6 +37,14 @@ using Timeline = std::unordered_map<CpuId, CpuTimeline>;
 /*! Timeline for each cgroup. */
 using GroupTimeline = std::unordered_map<GroupId, Timeline>;
 
+/*******************************************************************************
+ * @brief Process sampling results into cpu activity Timeline.
+ *
+ * Timeline shows what process each CPU executed.
+ *
+ * @param result Result from process sampling.
+ * @return Constructed Timeline from sampling @p result.
+ ******************************************************************************/
 Timeline
-gen_cpu_timelines(const SamplingResult& result);
+gen_cpu_timelines(const CpuSamplingResult& result);
 } // namespace elphi::view
