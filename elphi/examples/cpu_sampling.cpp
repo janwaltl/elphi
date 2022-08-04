@@ -16,8 +16,8 @@
 
 using namespace std::chrono_literals;
 
-
 constexpr std::size_t frequency = 10;
+constexpr auto c_duration = 5000ms;
 
 int
 main() {
@@ -28,7 +28,7 @@ main() {
             promise.set_value(elphi::sample_cpus_sync(std::vector<elphi::CpuId>{0}, frequency, tok));
         }};
 
-        std::this_thread::sleep_for(4s);
+        std::this_thread::sleep_for(c_duration);
         sampling.request_stop();
         sampling.join();
         auto samples = fut.get();
