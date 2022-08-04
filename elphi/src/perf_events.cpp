@@ -111,17 +111,17 @@ PerfEvents::fd() const noexcept {
 PerfEvents::PerfEvents(const perf_event_attr& attr, pid_t pid, int cpu, int group_fd, std::uint64_t flags,
                        std::size_t num_pages) {
     m_fd = FileDescriptor{open_perf_event(attr, pid, cpu, group_fd, flags)};
-    if (m_fd.raw() == -1) [[unlikely]]
+    if (m_fd.raw() == -1)
         throw ElphiException(fmt::format("Failed to open the event, reason: {}", strerror(errno)));
 
     m_buffer = map_perf_event_buffer(num_pages);
-    if (m_buffer.empty()) [[unlikely]]
+    if (m_buffer.empty())
         throw ElphiException(fmt::format("Failed to map the buffer, reason: {}", strerror(errno)));
 }
 
 PerfEvents&
 PerfEvents::operator=(PerfEvents&& other) noexcept {
-    if (this != &other) [[unlikely]] {
+    if (this != &other) {
         this->unmap_perf_event_buffer();
         this->m_fd = std::move(other.m_fd);
         this->m_buffer = other.m_buffer;
