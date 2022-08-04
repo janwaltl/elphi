@@ -43,7 +43,7 @@ creat_attribs(std::size_t frequency) noexcept {
 
     attr.type = PERF_TYPE_SOFTWARE;
     attr.size = sizeof(attr);
-    attr.config = PERF_COUNT_SW_CPU_CLOCK;
+    attr.config = PERF_COUNT_SW_TASK_CLOCK;
     attr.sample_freq = frequency;
     attr.freq = 1;
 
