@@ -20,8 +20,8 @@ if(ENABLE_COVERAGE)
   if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
     message(WARNING "Running coverage for non-debug build.")
   endif(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
-  target_compile_options(elphi PRIVATE --coverage)
-  target_link_options(elphi PRIVATE --coverage)
+  target_compile_options(cpu_sampling PRIVATE --coverage)
+  target_link_options(cpu_sampling PRIVATE --coverage)
 endif(ENABLE_COVERAGE)
 
 
