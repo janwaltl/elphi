@@ -75,7 +75,7 @@ PerfEvents::get_perf_event(Buffer* dest, bool peek_only) {
 
     if (dest) {
         // The event is only partially written. Can it even happen?
-        if (header->data_tail + event_header.size > header->data_head) [[unlikely]]
+        if (header->data_tail + event_header.size > header->data_head)
             return std::nullopt;
 
         dest->resize(event_header.size - sizeof(perf_event_header));
