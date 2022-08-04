@@ -4,6 +4,9 @@
 
 Description will be added when minimal working subset works.
 
+# Documentation
+
+Documentation can be found [here](https://janwaltl.github.io/elphi/index.html).
 # License
 
 ElPhi project is licensed under the MIT License, see LICENSE for more information.
