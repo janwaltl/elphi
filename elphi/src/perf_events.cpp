@@ -95,7 +95,7 @@ PerfEvents::get_perf_event(Buffer* dest, bool peek_only) {
 
 bool
 PerfEvents::perf_start(bool do_reset) noexcept {
-    return (do_reset && ioctl(m_fd.raw(), PERF_EVENT_IOC_RESET, 0) == 0) ||
+    return (do_reset && ioctl(m_fd.raw(), PERF_EVENT_IOC_RESET, 0) == 0) &&
            ioctl(m_fd.raw(), PERF_EVENT_IOC_ENABLE, 0) == 0;
 }
 
