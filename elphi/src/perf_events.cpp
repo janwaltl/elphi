@@ -50,6 +50,7 @@ void
 PerfEvents::unmap_perf_event_buffer() noexcept {
     if (!m_buffer.empty() && (m_buffer.size() % c_page_size) == 0)
         (void)munmap(m_buffer.data(), m_buffer.size());
+    m_buffer = {};
 }
 
 
@@ -118,6 +119,9 @@ PerfEvents::PerfEvents(const perf_event_attr& attr, pid_t pid, int cpu, int grou
     if (m_buffer.empty())
         throw ElphiException(fmt::format("Failed to map the buffer, reason: {}", strerror(errno)));
 }
+PerfEvents::PerfEvents(PerfEvents&& other) noexcept : m_fd(std::move(other.m_fd)), m_buffer(other.m_buffer) {
+    other.m_buffer = {};
+}
 
 PerfEvents&
 PerfEvents::operator=(PerfEvents&& other) noexcept {
@@ -125,6 +129,7 @@ PerfEvents::operator=(PerfEvents&& other) noexcept {
         this->unmap_perf_event_buffer();
         this->m_fd = std::move(other.m_fd);
         this->m_buffer = other.m_buffer;
+        other.m_buffer = {};
     }
     return *this;
 }

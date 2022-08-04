@@ -50,7 +50,7 @@ public:
     /*******************************************************************************
      * @brief Reclaim @p other resources, left in undetermined state.
      ******************************************************************************/
-    PerfEvents(PerfEvents&& other) noexcept = default;
+    PerfEvents(PerfEvents&& other) noexcept;
 
     /*******************************************************************************
      * @brief Move-only.
