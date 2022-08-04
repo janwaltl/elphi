@@ -69,6 +69,7 @@ struct CpuSamplingResult {
  *
  * Synchronous call the call, must be cancelled through @p token.
  *
+ * @param cpus CPU cores to sample, zero-based indices.
  * @param sample_frequency Samples to take per second.
  * @param token Cancel the sampling.
  * @return Collected samples.
