@@ -7,3 +7,6 @@
 [submodule "docs/doxygen-awesome-css"]
 	path = docs/doxygen-awesome-css
 	url = https://github.com/jothepro/doxygen-awesome-css.git
+[submodule "libs/ftxui"]
+	path = libs/ftxui
+	url = git@github.com:ArthurSonzogni/FTXUI.git
