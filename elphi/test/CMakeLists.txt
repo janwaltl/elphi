@@ -4,10 +4,8 @@ add_executable(elphi::elphi_tests ALIAS elphi_tests)
 target_link_libraries(elphi_tests PRIVATE elphi::elphi)
 target_link_libraries(elphi_tests PRIVATE Catch2::Catch2WithMain)
 
-target_compile_options(
-  elphi_tests PRIVATE
-  -Werror -Wall -Wextra -pedantic
-)
+
+config_default_target_flags(elphi_tests)
 target_link_options(
   elphi_tests PRIVATE
   -Wl,--wrap=mmap
@@ -20,7 +18,7 @@ include(CTest)
 include(Catch)
 
 make_directory("${CMAKE_BINARY_DIR}/reports")
-if(JUNIT_TEST_OUTPUT)
+if(ELPHI_JUNIT_TEST_OUTPUT)
   catch_discover_tests(
     elphi_tests
     OUTPUT_DIR "${CMAKE_BINARY_DIR}/reports"
@@ -34,24 +32,7 @@ else()
     OUTPUT_DIR "${CMAKE_BINARY_DIR}/reports"
     OUTPUT_SUFFIX ".txt"
   )
-endif(JUNIT_TEST_OUTPUT)
-
-if(ENABLE_COVERAGE)
-  if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
-    message(WARNING "Running coverage for non-debug build.")
-  endif(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
-  target_compile_options(elphi_tests PRIVATE --coverage)
-  target_link_options(elphi_tests PRIVATE --coverage)
-endif(ENABLE_COVERAGE)
-
-set_target_properties(
-  elphi_tests PROPERTIES
-  CXX_STANDARD 20
-  CXX_STANDARD_REQUIRED ON
-  CXX_EXTENSIONS OFF
-  POSITION_INDEPENDENT_CODE ON
-  CMAKE_EXPORT_COMPILE_COMMANDS ON
-)
+endif(ELPHI_JUNIT_TEST_OUTPUT)
 
 target_sources(
   elphi_tests

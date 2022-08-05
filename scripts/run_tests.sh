@@ -11,10 +11,7 @@ ERROR='\033[0;31m'
 INFO='\033[0;36m'
 BAR=================================================================================
 
-mkdir -p ${BUILD_DIR}
 cd ${BUILD_DIR}
-
-cmake -DCMAKE_BUILD_TYPE=Release ${SRC_DIR} -DCMAKE_CXX_COMPILER=g++-10
 
 # Build project and tests
 make
