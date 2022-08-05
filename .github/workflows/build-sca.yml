@@ -7,10 +7,6 @@ on:
   pull_request:
     branches: [main]
 
-env:
-  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
-  BUILD_TYPE: Release
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -20,7 +16,7 @@ jobs:
           fetch-depth: 1
           submodules: 'true'
       - name: Build&Test
-        run: ./scripts/run_unit.sh
+        run: make junit
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1
         if: always()
@@ -36,11 +32,11 @@ jobs:
       - name: Fetch gcovr
         run: pip3 install gcovr
       - name: Generate coverage
-        run: ./scripts/gen_coverage.sh
+        run: make coverage
       - uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: build/coverage.xml
+          files: build/coverage/coverage.xml
           name: codecov-elphi
           fail_ci_if_error: true
           verbose: true
@@ -52,7 +48,7 @@ jobs:
           fetch-depth: 1
           submodules: 'true'
       - name: Run clang-tidy
-        run: scripts/run_clang_tidy.sh
+        run: make sca
   clang-format:
     runs-on: ubuntu-latest
     steps:
@@ -60,7 +56,7 @@ jobs:
         with:
           fetch-depth: 1
       - run: |
-         ./scripts/format_codebase.sh
+         make format
          # Reformatting should have made no changes.
          git diff --exit-code --stat
   docs:
