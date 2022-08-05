@@ -36,6 +36,7 @@ set(CMAKE_CXX_STANDARD 20)
 # External libs
 add_subdirectory(libs/catch2)
 add_subdirectory(libs/fmt)
+add_subdirectory(libs/ftxui)
 
 
 if(ELPHI_ENABLE_COVERAGE)
