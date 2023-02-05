@@ -4,6 +4,7 @@
  * @license	This file is released under ElPhi project's license, see LICENSE.
  ******************************************************************************/
 #include <algorithm>
+#include <bit>
 #include <cassert>
 
 #include <fmt/format.h>
@@ -33,8 +34,8 @@ static_assert(sizeof(RecordSample) == 32, "The sample must match the record in t
 
 /*! Use buffer large enough to store ten seconds worth of samples. */
 constexpr const std::size_t c_sample_buff_size_secs = 10;
-/*! Wakeup targets 1s, +1s for good measure -> no timeout hopefully. */
-constexpr const std::size_t c_poll_timeout_ms = 2000;
+/*! Wakeup targets 1s, +500ms for good measure -> no timeout hopefully. */
+constexpr const std::size_t c_poll_timeout_ms = 1500;
 
 [[nodiscard]] perf_event_attr
 creat_attribs(std::size_t frequency) noexcept {
@@ -65,7 +66,8 @@ sample_cpus_sync(const std::vector<CpuId>& cpus, std::size_t sample_frequency, c
 
     const auto exp_size_per_sec = sample_frequency * (sizeof(perf_event_header) + sizeof(RecordSample));
     //+1 for rounding, ensuring minimal size.
-    auto num_pages = (exp_size_per_sec * c_sample_buff_size_secs) / c_page_size + 1;
+    // Must be power of two.
+    auto num_pages = std::bit_ceil((exp_size_per_sec * c_sample_buff_size_secs) / c_page_size + 1);
 
     auto attribs = creat_attribs(sample_frequency);
 

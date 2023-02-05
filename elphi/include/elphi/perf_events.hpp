@@ -36,7 +36,7 @@ public:
      * @param group_fd Group leader for events.
      * @param flags Flags for the event descriptor.
      * @param num_pages Number of pages to allocate for the ring event buffer.
-     *  Must be at least 1.
+     *  Must be a power of two, at least 1.
      * @throw ElphiException if the event cannot be initialized.
      ******************************************************************************/
     PerfEvents(const perf_event_attr& attr, pid_t pid, int cpu, int group_fd, std::uint64_t flags,
