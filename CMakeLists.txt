@@ -30,8 +30,7 @@ if(ELPHI_ENABLE_COVERAGE)
     EXECUTABLE ctest -C
     DEPENDENCIES elphi::elphi elphi::elphi_tests
     EXCLUDE "elphi/test/*"
-    EXCLUDE "elphi/examples/*"
-    EXCLUDE "libs*"
+    EXCLUDE "libs/*"
   )
 endif(ELPHI_ENABLE_COVERAGE)
 
