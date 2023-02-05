@@ -1,18 +1,22 @@
-add_library(elphi STATIC)
-add_library(elphi::elphi ALIAS elphi)
+################################################################################
+# libelphi - static library
+# elphi - binary
+################################################################################
+add_library(libelphi STATIC)
+add_library(elphi::libelphi ALIAS libelphi)
 
-config_default_target_flags(elphi)
+config_default_target_flags(libelphi)
 
 target_include_directories(
-  elphi
+  libelphi
   PUBLIC
   include
 )
 
-target_link_libraries(elphi PRIVATE fmt::fmt)
+target_link_libraries(libelphi PRIVATE fmt::fmt)
 
 target_sources(
-  elphi
+  libelphi
   PUBLIC
   include/elphi/exception.hpp
   include/elphi/cpu_sampler.hpp
@@ -21,17 +25,28 @@ target_sources(
   include/elphi/perf_events.hpp
   include/elphi/file_descriptor.hpp
   PRIVATE
-  src/cpu_sampler.cpp
-  src/timeline_view.cpp
-  src/utils.cpp
-  src/perf_events.cpp
-  src/file_descriptor.cpp
+  lib/cpu_sampler.cpp
+  lib/timeline_view.cpp
+  lib/utils.cpp
+  lib/perf_events.cpp
+  lib/file_descriptor.cpp
+)
+
+add_executable(elphi)
+add_executable(elphi::elphi ALIAS elphi)
+
+config_default_target_flags(elphi)
+
+find_package(Threads REQUIRED)
+
+target_link_libraries(elphi PRIVATE elphi::libelphi Threads::Threads fmt::fmt)
+
+target_sources(
+  elphi
+  PRIVATE
+  src/cpu_sampling.cpp
 )
 
 if(ELPHI_BUILD_TEST)
   add_subdirectory(test)
 endif(ELPHI_BUILD_TEST)
-
-if(ELPHI_BUILD_EXAMPLES)
-  add_subdirectory(examples)
-endif(ELPHI_BUILD_EXAMPLES)

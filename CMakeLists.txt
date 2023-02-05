@@ -1,37 +1,21 @@
 cmake_minimum_required(VERSION 3.15..3.18)
 
+# Project global options
 project(elphi VERSION 0.1 LANGUAGES CXX)
 
 option(ELPHI_ENABLE_COVERAGE "Enable code coverage testing support" OFF)
 option(ELPHI_JUNIT_TEST_OUTPUT "Generate test reports in JUNIT(XML) format" OFF)
 option(ELPHI_BUILD_EXAMPLES "Build examples" OFF)
 option(ELPHI_BUILD_TEST "Build tests" OFF)
-
-# Set reasonable build options for Elphi project targets
-function(config_default_target_flags target)
-  target_compile_options(${target} PRIVATE -std=c++20 -Wall -Wextra -Werror -pedantic -fpic -fno-omit-frame-pointer)
-  target_compile_options(${target} PRIVATE -D_POSIX_C_SOURCE=200809)
-
-  if(CMAKE_BUILD_TYPE STREQUAL Debug)
-    target_compile_options(${target} PRIVATE -Og -g3)
-  else()
-    target_compile_options(${target} PRIVATE -O2 -g3)
-    target_link_options(${target} PRIVATE -flto)
-  endif()
-
-  if(ELPHI_ENABLE_COVERAGE)
-    if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
-      message(WARNING "Running coverage for non-debug build of \'${target}\'")
-    endif(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
-    target_compile_options(${target} PRIVATE --coverage)
-    target_link_options(${target} PRIVATE --coverage)
-  endif(ELPHI_ENABLE_COVERAGE)
-
-endfunction()
+option(ELPHI_ASAN "Sanitized build (addr,leak,UB)" OFF)
+option(ELPHI_MSAN "Sanitized build (memory)" OFF)
+option(ELPHI_TSAN "Sanitized build (thread)" OFF)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 20)
+
+include(cmake/project_options.cmake)
 
 # External libs
 add_subdirectory(libs/catch2)
@@ -46,8 +30,7 @@ if(ELPHI_ENABLE_COVERAGE)
     EXECUTABLE ctest -C
     DEPENDENCIES elphi::elphi elphi::elphi_tests
     EXCLUDE "elphi/test/*"
-    EXCLUDE "elphi/examples/*"
-    EXCLUDE "libs*"
+    EXCLUDE "libs/*"
   )
 endif(ELPHI_ENABLE_COVERAGE)
 

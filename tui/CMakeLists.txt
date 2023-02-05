@@ -15,4 +15,4 @@ target_sources(
   src/main.cpp
 )
 
-target_link_libraries(tui PRIVATE elphi::elphi)
+target_link_libraries(tui PRIVATE elphi::libelphi)
